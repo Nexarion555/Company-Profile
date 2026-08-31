@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(): void { Schema::create('appointments',function(Blueprint $t){$t->id();$t->string('name',120);$t->string('phone',40);$t->string('email',160);$t->string('type',120);$t->date('date');$t->string('time',5);$t->text('notes')->nullable();$t->string('status',20)->default('pending')->index();$t->timestamps();}); DB::statement("CREATE UNIQUE INDEX appointments_active_slot_unique ON appointments (date, time) WHERE status IN ('pending','confirmed')"); } public function down(): void {Schema::dropIfExists('appointments');} };

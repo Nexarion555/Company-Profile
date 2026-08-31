@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>KSN Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    fontFamily:{
+                        sans:['Inter','sans-serif'],
+                        serif:['Playfair Display','serif']},
+                        colors:{
+                            navy:{
+                                50:'#eef2f7',
+                                100:'#d4dce8',
+                                200:'#a9b9d1',
+                                300:'#7e96ba',
+                                400:'#5373a3',
+                                500:'#2d5287',
+                                600:'#1b3a6b',
+                                700:'#142d55',
+                                800:'#0d1f3f',
+                                900:'#061228'
+                                },
+                                gold:{
+                                    50:'#fdf8ef',
+                                    100:'#f9edcf',
+                                    200:'#f3db9f',
+                                    300:'#edc96f',
+                                    400:'#e7b73f',
+                                    500:'#c9a044',
+                                    600:'#b88a2a',
+                                    700:'#8f6b1f',
+                                    800:'#664c17',
+                                    900:'#3d2e0e'
+                                    },
+                                    stone:{
+                                        50:'#fafaf9',
+                                        100:'#f5f5f4',
+                                        200:'#e7e5e4',
+                                        300:'#d6d3d1',
+                                        400:'#a8a29e',
+                                        500:'#78716c',
+                                        600:'#57534e',
+                                        700:'#44403c',
+                                        800:'#292524',
+                                        900:'#1c1917'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0d1f3f}::-webkit-scrollbar-thumb{background:#2d5287;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:#c9a044}
+::selection{background:#1b3a6b;color:#fff}
+.gradient-text{background:linear-gradient(135deg,#c9a044,#e7b73f,#c9a044);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tilt-card{transform-style:preserve-3d;transition:transform .15s ease-out,box-shadow .3s ease}.tilt-card:hover{box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}.reveal.rv{opacity:1;transform:translateY(0)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.float-a{animation:float 4s ease-in-out infinite}
+.sidebar-link{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:12px;font-size:.875rem;color:#a8a29e;transition:all .2s ease;cursor:pointer}.sidebar-link:hover{background:rgba(255,255,255,.05);color:#e7e5e4}.sidebar-link.active{background:rgba(201,160,68,.12);color:#e7b73f;font-weight:500}
+.stat-card{transition:transform .2s ease}.stat-card:hover{transform:translateY(-4px)}
+.table-row{transition:background .15s ease}.table-row:hover{background:rgba(255,255,255,.03)}
+.modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(6,18,40,.7);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s}.modal-overlay.show{opacity:1;pointer-events:auto}
+.modal-box{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);z-index:101;width:95%;max-width:640px;max-height:90vh;overflow-y:auto;background:#142d55;border-radius:16px;opacity:0;pointer-events:none;transition:all .3s}.modal-box.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.toast-c{position:fixed;bottom:24px;right:24px;z-index:200;background:#1b3a6b;color:#fff;padding:14px 20px;border-radius:12px;box-shadow:0 15px 35px rgba(0,0,0,.3);transform:translateY(100px);opacity:0;transition:all .4s ease;font-size:.85rem;max-width:380px}.toast-c.show{transform:translateY(0);opacity:1}
+.badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:20px;font-size:.65rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.badge-done{background:rgba(16,185,129,.15);color:#10b981}.badge-active{background:rgba(59,130,246,.15);color:#3b82f6}.badge-pending{background:rgba(168,162,158,.15);color:#a8a29e}.badge-cancelled{background:rgba(239,68,68,.15);color:#ef4444}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#2d5287!important;box-shadow:0 0 0 3px rgba(45,82,135,.15)!important}
+@media(max-width:1023px){.sidebar{transform:translateX(-100%);position:fixed;z-index:90;transition:transform .3s ease}.sidebar.open{transform:translateX(0)}.main-area{margin-left:0!important}}
+</style>
+</head>
+<body class="font-sans bg-navy-900 text-stone-300 min-h-screen">
+
+<!-- LOGIN -->
+<div id="login-screen" class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+  <div class="absolute inset-0" style="background-image:url('https://picsum.photos/seed/construction-skyline/1920/1080');background-size:cover;background-position:center;filter:brightness(.3) blur(2px)"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-navy-900/95 via-navy-800/90 to-navy-900/95"></div>
+  <div class="relative z-10 w-full max-w-md">
+    <div class="text-center mb-10 reveal rv">
+      <div class="w-16 h-16 mx-auto bg-gold-500 rounded-2xl flex items-center justify-center text-navy-900 font-serif font-bold text-2xl mb-4 shadow-lg shadow-gold-500/20">K</div>
+      <h1 class="font-serif text-2xl text-white">Admin Panel</h1>
+      <p class="text-stone-500 text-sm mt-1">PT Karya Struktur Nusantara</p>
+    </div>
+    <div class="bg-navy-800/80 backdrop-blur-xl rounded-2xl p-8 border border-navy-700/50 shadow-2xl reveal rv" style="transition-delay:.1s">
+      <h2 class="font-serif text-xl text-white mb-6">Masuk ke Dashboard</h2>
+      <div class="space-y-4">
+        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email</label><input type="email" id="login-email" value="admin@ksn.co.id" class="w-full mt-1.5 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 transition-all"></div>
+        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Password</label><input type="password" id="login-pass" value="admin123" class="w-full mt-1.5 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 transition-all"></div>
+        <button onclick="doLogin()" class="w-full py-3.5 bg-gold-500 text-navy-900 text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-gold-400 transition-all hover:shadow-lg hover:shadow-gold-500/20 hover:-translate-y-0.5 mt-2">Masuk</button>
+      </div>
+      <p class="text-[10px] text-stone-600 text-center mt-6">Demo: admin@ksn.co.id / admin123</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADMIN LAYOUT -->
+<div id="admin-layout" class="hidden min-h-screen">
+  <!-- Sidebar -->
+  <aside class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-navy-800/95 backdrop-blur-xl border-r border-navy-700/50 z-50 flex flex-col">
+    <div class="p-5 border-b border-navy-700/50">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center text-navy-900 font-serif font-bold text-lg flex-shrink-0">K</div>
+        <div><div class="text-sm font-semibold text-white leading-tight">KSN Admin</div><div class="text-[10px] text-stone-500 tracking-wider">Management Panel</div></div>
+      </div>
+    </div>
+    <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+      <div class="text-[10px] font-semibold tracking-[.15em] uppercase text-stone-600 px-4 mb-2 mt-2">Menu Utama</div>
+      <div class="sidebar-link active" onclick="goPage('dashboard')" data-p="dashboard"><iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon> Dashboard</div>
+      <div class="sidebar-link" onclick="goPage('portfolio')" data-p="portfolio"><iconify-icon icon="lucide:images" width="18"></iconify-icon> Update Portfolio</div>
+      <div class="sidebar-link" onclick="goPage('appointments')" data-p="appointments"><iconify-icon icon="lucide:calendar-check" width="18"></iconify-icon> Jadwal Temu</div>
+      <div class="sidebar-link" onclick="goPage('clients')" data-p="clients"><iconify-icon icon="lucide:users" width="18"></iconify-icon> Klien</div>
+      <div class="sidebar-link" onclick="goPage('messages')" data-p="messages"><iconify-icon icon="lucide:mail" width="18"></iconify-icon> Pesan <span id="msg-badge" class="ml-auto bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">3</span></div>
+      <div class="text-[10px] font-semibold tracking-[.15em] uppercase text-stone-600 px-4 mb-2 mt-6">Pengaturan</div>
+      <div class="sidebar-link" onclick="goPage('team')" data-p="team"><iconify-icon icon="lucide:user-cog" width="18"></iconify-icon> Tim</div>
+      <div class="sidebar-link" onclick="goPage('settings')" data-p="settings"><iconify-icon icon="lucide:settings" width="18"></iconify-icon> Pengaturan</div>
+    </nav>
+    <div class="p-4 border-t border-navy-700/50">
+      <button onclick="doLogout()" class="sidebar-link text-red-400 hover:!text-red-300 hover:!bg-red-500/10 w-full"><iconify-icon icon="lucide:log-out" width="18"></iconify-icon> Keluar</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main-area" style="margin-left:256px;min-height:100vh">
+    <header class="sticky top-0 z-40 bg-navy-900/90 backdrop-blur-xl border-b border-navy-700/30 px-6 h-16 flex items-center justify-between">
+      <button onclick="document.querySelector('.sidebar').classList.toggle('open')" class="lg:hidden text-stone-400 hover:text-white p-1"><iconify-icon icon="lucide:menu" width="22"></iconify-icon></button>
+      <h2 id="page-title" class="font-serif text-lg text-white">Dashboard</h2>
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center gap-2 text-xs text-stone-500"><iconify-icon icon="lucide:clock" width="14"></iconify-icon><span id="live-clock"></span></div>
+        <div class="w-9 h-9 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 font-semibold text-sm">A</div>
+      </div>
+    </header>
+    <div id="pages" class="p-6"></div>
+  </div>
+</div>
+
+<!-- Modal & Toast -->
+<div class="modal-overlay" id="modal-ov" onclick="closeModal()"></div>
+<div class="modal-box" id="modal-box"></div>
+<div class="toast-c" id="toast-c"></div>
+
+<script>
+    var DB={portfolios:[],appointments:[],clients:[],messages:[],team:[],settings:{company:'',address:'',phone:'',email:'',whatsapp:''}};
+    var ADMIN_AUTHENTICATED = @json($authenticated);
+
+async function doLogin(){
+    var email=document.getElementById('login-email').value.trim();
+    var password=document.getElementById('login-pass').value;
+    try{
+      await apiRequest('/admin/login',{method:'POST',body:JSON.stringify({email:email,password:password})});
+      await loadAdminData();
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('admin-layout').classList.remove('hidden');
+      goPage('dashboard');
+    }catch(err){toast('❌ '+err.message);}
+}
+async function doLogout(){
+    try{await apiRequest('/admin/logout',{method:'POST'});}catch(e){}
+    document.getElementById('login-screen').classList.remove('hidden');
+    document.getElementById('admin-layout').classList.add('hidden');
+}
+setInterval(
+    function(){
+        var n=new Date();
+        var el=document.getElementById('live-clock');
+        if(el)el.textContent=n.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})
+    },1000);
+
+var curPage='dashboard';
+function goPage(p){
+  curPage=p;
+  document.querySelectorAll('.sidebar-link').forEach(function(l){l.classList.toggle('active',l.dataset.p===p)});
+  var titles={dashboard:'Dashboard',portfolio:'Update Portfolio',appointments:'Jadwal Pertemuan',clients:'Data Klien',messages:'Pesan Masuk',team:'Manajemen Tim',settings:'Pengaturan'};
+  document.getElementById('page-title').textContent=titles[p]||p;
+  var fn={dashboard:pgDashboard,portfolio:pgPortfolio,appointments:pgAppointments,clients:pgClients,messages:pgMessages,team:pgTeam,settings:pgSettings};
+  if(fn[p])fn[p](document.getElementById('pages'));
+  setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('rv')},i*50)})},50);
+  document.querySelector('.sidebar').classList.remove('open');
+}
+
+function pgDashboard(c){
+    var categories=[];
+    DB.portfolios.forEach(function(p){if(categories.indexOf(p.category)<0)categories.push(p.category)});
+    var unread=DB.messages.filter(function(m){return!m.read}).length;
+    var latestUpdate=DB.portfolios.length?DB.portfolios[0].updated:'-';
+    if(unread>0){var b=document.getElementById('msg-badge');b.textContent=unread;b.classList.remove('hidden')}
+    c.innerHTML=`
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="stat-card bg-navy-800 rounded-2xl p-6 border border-navy-700/30 hover:border-gold-500/30 transition-colors"><div class="flex items-center justify-between mb-4"><div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-400"><iconify-icon icon="lucide:images" width="20"></iconify-icon></div><span class="text-xs text-stone-500">Total</span></div><div class="text-3xl font-serif text-white">${DB.portfolios.length}</div><div class="text-xs text-stone-500 mt-1">Item Portfolio</div></div>
+            <div class="stat-card bg-navy-800 rounded-2xl p-6 border border-navy-700/30 hover:border-gold-500/30 transition-colors"><div class="flex items-center justify-between mb-4"><div class="w-11 h-11 rounded-xl bg-gold-500/15 flex items-center justify-center text-gold-400"><iconify-icon icon="lucide:tags" width="20"></iconify-icon></div><span class="text-xs text-stone-500">Kategori</span></div><div class="text-3xl font-serif gradient-text">${categories.length}</div><div class="text-xs text-stone-500 mt-1">Jenis Karya</div></div>
+            <div class="stat-card bg-navy-800 rounded-2xl p-6 border border-navy-700/30 hover:border-emerald-500/30 transition-colors"><div class="flex items-center justify-between mb-4"><div class="w-11 h-11 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400"><iconify-icon icon="lucide:users" width="20"></iconify-icon></div><span class="text-xs text-stone-500">Data</span></div><div class="text-3xl font-serif text-white">${DB.clients.length}</div><div class="text-xs text-stone-500 mt-1">Klien Terdaftar</div></div>
+            <div class="stat-card bg-navy-800 rounded-2xl p-6 border border-navy-700/30 hover:border-blue-500/30 transition-colors"><div class="flex items-center justify-between mb-4"><div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-400"><iconify-icon icon="lucide:history" width="20"></iconify-icon></div><span class="text-xs text-stone-500">Terbaru</span></div><div class="text-lg font-serif text-white mt-2">${escapeHtml(latestUpdate)}</div><div class="text-xs text-stone-500 mt-2">Update Portfolio</div></div>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-navy-800 rounded-2xl p-6 border border-navy-700/30 reveal"><h3 class="text-sm font-medium text-white mb-4 flex items-center gap-2"><iconify-icon icon="lucide:calendar-clock" width="16" class="text-gold-400"></iconify-icon> Janji Temu Mendatang</h3><div class="space-y-3">${DB.appointments.filter(function(a){return a.status==='pending'}).slice(0,4).map(function(a){return '<div class="flex items-center gap-3 p-3 bg-navy-900/50 rounded-xl"><div class="w-9 h-9 rounded-lg bg-gold-500/15 flex items-center justify-center text-gold-400 flex-shrink-0"><iconify-icon icon="lucide:user" width="14"></iconify-icon></div><div class="flex-1 min-w-0"><div class="text-sm text-white font-medium truncate">'+a.name+'</div><div class="text-[11px] text-stone-500">'+a.type+' · '+a.date+' '+a.time+'</div></div></div>';}).join('')||'<p class="text-sm text-stone-600 py-8 text-center">Tidak ada janji menunggu.</p>'}</div></div>
+            <div class="bg-navy-800 rounded-2xl p-6 border border-navy-700/30 reveal" style="transition-delay:.1s"><h3 class="text-sm font-medium text-white mb-4 flex items-center gap-2"><iconify-icon icon="lucide:mail" width="16" class="text-gold-400"></iconify-icon> Pesan Terbaru</h3><div class="space-y-3">${DB.messages.slice(0,3).map(function(m){return '<div class="flex items-start gap-3 p-3 bg-navy-900/50 rounded-xl'+(m.read?' opacity-50':'')+'"><div class="w-9 h-9 rounded-lg '+(m.read?'bg-stone-700/50':'bg-red-500/15 text-red-400')+' flex items-center justify-center flex-shrink-0 mt-0.5"><iconify-icon icon="lucide:mail" width="14"></iconify-icon></div><div class="flex-1 min-w-0"><div class="text-sm text-white font-medium truncate">'+m.name+'</div><div class="text-[11px] text-stone-500 truncate">'+m.subject+'</div></div></div>';}).join('')}</div></div>
+            <div class="bg-navy-800 rounded-2xl p-6 border border-navy-700/30 reveal" style="transition-delay:.2s"><div class="flex items-center justify-between mb-4"><h3 class="text-sm font-medium text-white flex items-center gap-2"><iconify-icon icon="lucide:images" width="16" class="text-gold-400"></iconify-icon> Portfolio Terbaru</h3><button onclick="goPage('portfolio')" class="text-[10px] text-gold-400 hover:text-gold-300">Kelola</button></div><div class="space-y-3">${DB.portfolios.slice(0,4).map(function(p){return '<div class="flex items-center gap-3 p-3 bg-navy-900/50 rounded-xl"><img src="'+safeAttr(p.image)+'" alt="" class="w-11 h-11 rounded-lg object-cover flex-shrink-0"><div class="flex-1 min-w-0"><div class="text-sm text-white font-medium truncate">'+escapeHtml(p.title)+'</div><div class="text-[11px] text-stone-500">'+escapeHtml(p.category)+' · '+escapeHtml(p.updated)+'</div></div><button onclick="previewPortfolio('+p.id+')" class="text-blue-400 hover:text-blue-300 p-1" title="Pratinjau"><iconify-icon icon="lucide:eye" width="15"></iconify-icon></button></div>';}).join('')}</div></div>
+        </div>`;
+}
+
+function pgPortfolio(c){
+  c.innerHTML=`
+  <div class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-6 border border-navy-600/40 mb-6 reveal">
+    <div class="flex items-center gap-2 text-gold-400 text-xs font-semibold tracking-[.18em] uppercase"><iconify-icon icon="lucide:database" width="15"></iconify-icon> Manajemen Portfolio</div>
+    <h3 class="font-serif text-2xl text-white mt-2">Kelola data portfolio perusahaan</h3>
+    <p class="text-sm text-stone-400 mt-2 max-w-2xl">Tambahkan, perbarui, pratinjau, dan hapus data portfolio langsung dari admin panel.</p>
+  </div>
+  <div class="flex flex-wrap gap-2 mb-6 reveal"><div class="flex-1 min-w-[240px] flex items-center gap-2"><iconify-icon icon="lucide:search" width="16" class="text-stone-500"></iconify-icon><input type="text" id="portfolio-search" placeholder="Cari judul, klien, atau kategori..." oninput="filterPortfolioTable()" class="flex-1 bg-navy-800 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-stone-600"></div><button onclick="openPortfolioModal()" class="px-5 py-2.5 bg-gold-500 text-navy-900 text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5 flex items-center gap-2 whitespace-nowrap"><iconify-icon icon="lucide:plus" width="14"></iconify-icon> Tambah Portfolio</button></div>
+  <div class="overflow-x-auto reveal" style="transition-delay:.1s"><table class="w-full text-sm"><thead><tr class="border-b border-navy-700/50"><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Portfolio</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Kategori</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Lokasi / Tahun</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Terakhir Update</th><th class="text-right py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Aksi</th></tr></thead><tbody id="portfolio-tbody"></tbody></table></div>`;
+  filterPortfolioTable();
+}
+
+function filterPortfolioTable(){
+  var q=(document.getElementById('portfolio-search')||{}).value||'';
+  var ql=q.toLowerCase();
+  var h='';
+  DB.portfolios.forEach(function(p){
+    var haystack=(p.title+' '+p.client+' '+p.category+' '+p.location).toLowerCase();
+    if(ql && haystack.indexOf(ql)<0) return;
+    h += '<tr class="table-row border-b border-navy-700/20"><td class="py-3 px-4"><div class="flex items-center gap-3"><img src="'+safeAttr(p.image)+'" alt="" class="w-14 h-12 rounded-xl object-cover flex-shrink-0"><div class="min-w-0"><div class="text-white font-medium truncate max-w-[250px]">'+escapeHtml(p.title)+'</div><div class="text-[11px] text-stone-500 line-clamp-2 max-w-[300px]">'+escapeHtml(p.description)+'</div></div></div></td><td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full bg-navy-700/50 text-[10px] text-stone-400">'+escapeHtml(p.category)+'</span></td><td class="py-3 px-4 text-stone-400"><div>'+escapeHtml(p.location)+'</div><div class="text-[10px] text-stone-600">'+escapeHtml(p.year)+'</div></td><td class="py-3 px-4 text-stone-400">'+escapeHtml(p.updated)+'</td><td class="py-3 px-4 text-right whitespace-nowrap"><button onclick="previewPortfolio('+p.id+')" class="text-blue-400 hover:text-blue-300 transition-colors p-1" title="Pratinjau"><iconify-icon icon="lucide:eye" width="16"></iconify-icon></button><button onclick="openPortfolioModal('+p.id+')" class="text-gold-400 hover:text-gold-300 transition-colors p-1 ml-1" title="Edit"><iconify-icon icon="lucide:pencil" width="16"></iconify-icon></button><button onclick="deletePortfolio('+p.id+')" class="text-red-400 hover:text-red-300 transition-colors p-1 ml-1" title="Hapus"><iconify-icon icon="lucide:trash-2" width="16"></iconify-icon></button></td></tr>';
+  });
+  document.getElementById('portfolio-tbody').innerHTML = h || '<tr><td colspan="5" class="py-10 text-center text-stone-600">Tidak ada data portfolio.</td></tr>';
+}
+
+function openPortfolioModal(id){
+  var p = id ? DB.portfolios.find(function(x){return x.id===id}) : null;
+  var isEdit = !!p;
+  var h = '<div class="p-6"><div class="flex items-center justify-between mb-6"><h3 class="font-serif text-xl text-white">'+(isEdit?'Edit':'Tambah')+' Portfolio</h3><button onclick="closeModal()" class="text-stone-500 hover:text-white transition-colors p-1"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button></div><form onsubmit="savePortfolio(event,'+(id||0)+')" class="space-y-4">' +
+    '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Judul Portfolio *</label><input name="title" value="'+safeAttr(isEdit?p.title:'')+'" required placeholder="Contoh: Rumah Modern Minimalis" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div>' +
+    '<div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Klien</label><input name="client" value="'+safeAttr(isEdit?p.client:'')+'" placeholder="Nama perusahaan / klien" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Kategori *</label><input name="category" value="'+safeAttr(isEdit?p.category:'')+'" required placeholder="Gedung, Interior, Landscape..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div></div>' +
+    '<div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Lokasi</label><input name="location" value="'+safeAttr(isEdit?p.location:'')+'" placeholder="Jakarta" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Tahun</label><input name="year" type="number" min="1900" max="2100" value="'+safeAttr(isEdit?p.year:new Date().getFullYear())+'" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div></div>' +
+    '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">URL Gambar *</label><input name="image" type="url" value="'+safeAttr(isEdit?p.image:'')+'" required placeholder="https://alamat-gambar.jpg" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"><p class="text-[10px] text-stone-600 mt-1">Masukkan URL gambar portfolio yang valid.</p></div>' +
+    '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi *</label><textarea name="description" rows="4" required placeholder="Jelaskan konsep, hasil pekerjaan, dan keunggulan portfolio..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 resize-none">'+escapeHtml(isEdit?p.description:'')+'</textarea></div>' +
+    '<button type="submit" class="w-full py-3 bg-gold-500 text-navy-900 text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5">'+(isEdit?'Simpan Perubahan':'Tambah Portfolio')+'</button></form></div>';
+  showModal(h);
+}
+
+async function savePortfolio(e,id){
+  e.preventDefault();
+  var f=e.target;
+  var d={title:f.title.value.trim(),client:f.client.value.trim(),category:f.category.value.trim(),location:f.location.value.trim(),year:String(f.year.value),image:f.image.value.trim(),description:f.description.value.trim()};
+  try{
+    await apiRequest(id?'/admin/portfolios/'+id:'/admin/portfolios',{method:id?'PUT':'POST',body:JSON.stringify(d)});
+    await loadAdminData();
+    toast(id?'✅ Portfolio berhasil diperbarui':'✅ Portfolio berhasil ditambahkan');
+    closeModal();
+    goPage('portfolio');
+  }catch(err){toast('❌ '+err.message);}
+}
+
+
+async function deletePortfolio(id){
+  if(!confirm('Hapus portfolio ini?'))return;
+  try{
+    await apiRequest('/admin/portfolios/'+id,{method:'DELETE'});
+    await loadAdminData();
+    toast('🗑️ Portfolio dihapus');
+    goPage('portfolio');
+  }catch(err){toast('❌ '+err.message);}
+}
+
+function previewPortfolio(id){
+  var p=DB.portfolios.find(function(x){return x.id===id});
+  if(!p)return;
+  var h='<div class="overflow-hidden"><div class="relative h-64"><img src="'+safeAttr(p.image)+'" alt="'+safeAttr(p.title)+'" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div><button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-navy-900/70 text-white flex items-center justify-center hover:bg-navy-900"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button><div class="absolute bottom-5 left-6 right-6"><div class="text-[10px] text-gold-400 uppercase tracking-[.18em] font-semibold">Pratinjau Admin</div><h3 class="font-serif text-3xl text-white mt-2">'+escapeHtml(p.title)+'</h3></div></div><div class="p-6"><div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-stone-400 mb-5"><span class="flex items-center gap-1"><iconify-icon icon="lucide:tag" width="13"></iconify-icon>'+escapeHtml(p.category)+'</span><span class="flex items-center gap-1"><iconify-icon icon="lucide:map-pin" width="13"></iconify-icon>'+escapeHtml(p.location)+'</span><span class="flex items-center gap-1"><iconify-icon icon="lucide:calendar" width="13"></iconify-icon>'+escapeHtml(p.year)+'</span></div><p class="text-sm text-stone-300 leading-relaxed">'+escapeHtml(p.description)+'</p>'+(p.client?'<div class="mt-5 pt-5 border-t border-navy-700/50"><div class="text-[10px] text-stone-500 uppercase tracking-wider">Klien</div><div class="text-sm text-white mt-1">'+escapeHtml(p.client)+'</div></div>':'')+'</div></div>';
+  showModal(h);
+}
+
+function persistPortfolios(){}
+function loadPortfolios(){}
+function escapeHtml(value){
+  return String(value==null?'':value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]});
+}
+function safeAttr(value){return escapeHtml(value);}
+
+function pgAppointments(c){
+  var counts = {confirmed:0, pending:0, done:0, cancelled:0};
+  DB.appointments.forEach(function(a){counts[a.status]++});
+  c.innerHTML = `
+    <div class="grid sm:grid-cols-4 gap-4 mb-6 reveal">
+      <div class="stat-card bg-navy-800 rounded-2xl p-5 border border-navy-700/30"><div class="text-2xl font-serif text-gold-400">${DB.appointments.length}</div><div class="text-xs text-stone-500">Total</div></div>
+      <div class="stat-card bg-navy-800 rounded-2xl p-5 border border-blue-500/30"><div class="text-2xl font-serif text-blue-400">${counts.pending}</div><div class="text-xs text-stone-500">Menunggu</div></div>
+      <div class="stat-card bg-navy-800 rounded-2xl p-5 border border-emerald-500/30"><div class="text-2xl font-serif text-emerald-400">${counts.confirmed}</div><div class="text-xs text-stone-500">Dikonfirmasi</div></div>
+      <div class="stat-card bg-navy-800 rounded-2xl p-5 border border-gold-500/30"><div class="text-2xl font-serif text-gold-400">${counts.done}</div><div class="text-xs text-stone-500">Selesai</div></div>
+    </div>
+    <div class="overflow-x-auto reveal" style="transition-delay:.1s"><table class="w-full text-sm"><thead><tr class="border-b border-navy-700/50"><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Nama</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Jenis</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Tanggal</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Waktu</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Status</th><th class="text-right py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Aksi</th></tr></thead><tbody>${DB.appointments.map(function(a){var sc = a.status==='confirmed' ? 'active' : a.status==='done' ? 'done' : 'pending'; return '<tr class="table-row border-b border-navy-700/20"><td class="py-3 px-4 text-white">' + a.name + '</td><td class="py-3 px-4 text-stone-400">' + a.type + '</td><td class="py-3 px-4 text-stone-400">' + a.date + '</td><td class="py-3 px-4 text-stone-400">' + a.time + ' WIB</td><td class="py-3 px-4"><span class="badge badge-' + sc + '">' + (a.status==='confirmed' ? 'Dikonfirmasi' : a.status==='done' ? 'Selesai' : a.status==='pending' ? 'Menunggu' : 'Dibatalkan') + '</span></td><td class="py-3 px-4 text-right">' +
+        (a.status==='pending' ? '<button onclick="updApp(' + a.id + ',\'confirmed\')" class="text-emerald-400 hover:text-emerald-300 transition-colors p-1" title="Konfirmasi"><iconify-icon icon="lucide:check" width="16"></iconify-icon></button><button onclick="updApp(' + a.id + ',\'cancelled\')" class="text-red-400 hover:text-red-300 transition-colors p-1 ml-1" title="Batalkan"><iconify-icon icon="lucide:x" width="16"></iconify-icon></button>' :
+        a.status==='confirmed' ? '<button onclick="updApp(' + a.id + ',\'done\')" class="text-blue-400 hover:text-blue-300 transition-colors p-1" title="Selesai"><iconify-icon icon="lucide:check-circle-2" width="16"></iconify-icon></button>' : '<span class="text-stone-600 text-xs">-</span>') +
+      '</td></tr>';
+  }).join('')}</tbody></table></div>`;
+}
+
+async function updApp(id, status){
+  try{
+    await apiRequest('/admin/appointments/'+id+'/status',{method:'PATCH',body:JSON.stringify({status:status})});
+    await loadAdminData();
+    toast('✅ Status diubah ke: ' + status);
+    goPage('appointments');
+  }catch(err){toast('❌ '+err.message);}
+}
+
+function pgClients(c){
+  c.innerHTML = `<div class="overflow-x-auto reveal"><table class="w-full text-sm"><thead><tr class="border-b border-navy-700/50"><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Perusahaan</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">PIC</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Telepon</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Portfolio</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Total Nilai</th></tr></thead><tbody>${DB.clients.map(function(cl){return '<tr class="table-row border-b border-navy-700/20"><td class="py-3 px-4 text-white font-medium">' + cl.name + '</td><td class="py-3 px-4 text-stone-400">' + cl.pic + '</td><td class="py-3 px-4 text-stone-400">' + cl.phone + '</td><td class="py-3 px-4"><span class="badge bg-navy-700/50 text-stone-300">' + cl.projects + ' portfolio</span></td><td class="py-3 px-4 text-gold-400 font-medium">' + cl.total + '</td></tr>';}).join('')}</tbody></table></div>`;
+}
+
+function pgMessages(c){
+  c.innerHTML = '<div class="space-y-3">' + DB.messages.map(function(m, i) {
+    return '<div class="bg-navy-800 rounded-2xl p-6 border border-navy-500/30 reveal ' + (m.read ? 'opacity-60' : '') + '" style="transition-delay:' + (i*0.05) + 's"><div class="flex items-start justify-between gap-4"><div class="w-10 h-10 rounded-full ' + (m.read ? 'bg-stone-700/50' : 'bg-gold-500/20') + ' flex items-center justify-center flex-shrink-0 ' + (m.read ? 'text-stone-500' : 'text-gold-400') + '"><iconify-icon icon="lucide:mail" width="16"></iconify-icon></div><div class="flex-1 min-w-0"><div class="flex items-center justify-between gap-2"><div><span class="text-white font-medium text-sm">' + m.name + '</span><span class="text-[10px] text-stone-500">' + m.email + '</span></div><span class="text-[10px] text-stone-600 whitespace-nowrap">' + m.date + '</span></div>' +
+      '<div class="text-sm text-stone-400 mt-1">' + m.subject + '</div>' +
+      '<p class="text-stone-500 text-xs mt-2 leading-relaxed">' + m.msg + '</p>' +
+      (m.read ? '<span class="text-[10px] text-stone-600 mt-3 inline-block">Sudah dibaca</span>' : '<button onclick="markRead(' + m.id + ')" class="mt-3 text-gold-500 text-xs font-medium hover:text-gold-400 transition-colors flex items-center gap-1">Tandai dibaca <iconify-icon icon="lucide:check" width="12"></iconify-icon></button>') +
+    '</div></div></div>';
+  }).join('') + (DB.messages.length === 0 ? '<div class="text-center py-16 text-stone-600 reveal">Tidak ada pesan.</div>' : '') + '</div>';
+}
+
+async function markRead(id){
+  try{
+    await apiRequest('/admin/messages/'+id+'/read',{method:'PATCH'});
+    await loadAdminData();
+    var b=document.getElementById('msg-badge');
+    var uc=DB.messages.filter(function(x){return !x.read}).length;
+    if(uc>0){b.textContent=uc;b.classList.remove('hidden');}else{b.classList.add('hidden');}
+    toast('✅ Ditandai dibaca');
+    goPage('messages');
+  }catch(err){toast('❌ '+err.message);}
+}
+
+function pgTeam(c){
+  c.innerHTML = '<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">' + DB.team.map(function(t, i){
+    return '<div class="tilt-card bg-navy-800 rounded-2xl overflow-hidden border border-navy-700/30 reveal" style="transition-delay:' + i * .08 + 's"><div class="h-40 overflow-hidden relative"><img src="' + t.img + '" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent"></div></div><div class="p-5"><h4 class="text-white font-medium">' + t.name + '</h4><p class="text-gold-400 text-xs mt-1">' + t.role + '</p><div class="flex items-center gap-4 mt-3 text-[11px] text-stone-500"><span class="flex items-center gap-1"><iconify-icon icon="lucide:mail" width="12"></iconify-icon>' + t.email + '</span><span class="flex items-center gap-1"><iconify-icon icon="lucide:phone" width="12"></iconify-icon>' + t.phone + '</span></div></div></div></div></div>';
+  }).join('') + '</div>';
+}
+
+function pgSettings(c){
+  var s = DB.settings;
+  c.innerHTML = `
+  <div class="max-w-3xl">
+    <div class="bg-navy-800 rounded-2xl p-8 border border-navy-700/30 reveal">
+      <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:building-2" width="20" class="text-gold-400"></iconify-icon> Informasi Perusahaan</h3>
+      <form onsubmit="saveSettings(event)" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Nama Perusahaan</label><input name="company" value="${s.company}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
+          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email Resmi</label><input name="email" value="${s.email}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
+        </div>
+        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Telepon</label><input name="phone" value="${s.phone}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
+        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">WhatsApp</label><input name="whatsapp" value="${s.whatsapp}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
+        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Alamat</label><textarea name="address" rows="3" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-none">${s.address}</textarea></div>
+        <button type="submit" class="w-full py-3 bg-gold-500 text-navy-900 text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5">Simpan Perubahan</button>
+      </form>
+    </div>
+  </div>`;
+}
+
+async function saveSettings(e){
+  e.preventDefault();
+  var f=e.target;
+  var payload={company:f.company.value,email:f.email.value,phone:f.phone.value,whatsapp:f.whatsapp.value,address:f.address.value};
+  try{
+    await apiRequest('/admin/settings',{method:'PUT',body:JSON.stringify(payload)});
+    await loadAdminData();
+    toast('✅ Pengaturan berhasil disimpan');
+    goPage('settings');
+  }catch(err){toast('❌ '+err.message);}
+}
+
+// ===== MODAL & TOAST =====
+function showModal(h){document.getElementById('modal-box').innerHTML = h; document.getElementById('modal-ov').classList.add('show'); document.getElementById('modal-box').classList.add('show')}
+function closeModal(){document.getElementById('modal-ov').classList.remove('show'); document.getElementById('modal-box').classList.remove('show')}
+function toast(msg){var t = document.getElementById('toast-c'); t.textContent = msg; t.classList.add('show'); setTimeout(function(){t.classList.remove('show')}, 3500)}
+
+// ===== BACKEND / API =====
+function csrfToken(){var el=document.querySelector('meta[name="csrf-token"]');return el?el.getAttribute('content'):'';}
+async function apiRequest(url,options){
+  options=options||{};
+  options.headers=Object.assign({'Accept':'application/json','Content-Type':'application/json','X-CSRF-TOKEN':csrfToken()},options.headers||{});
+  options.credentials='same-origin';
+  var res=await fetch(url,options);
+  var data={};
+  try{data=await res.json();}catch(e){}
+  if(!res.ok){
+    var msg=data.message||'Permintaan gagal.';
+    if(data.errors){var first=Object.keys(data.errors)[0];if(first&&data.errors[first]&&data.errors[first][0])msg=data.errors[first][0];}
+    throw new Error(msg);
+  }
+  return data;
+}
+async function loadAdminData(){DB=await apiRequest('/admin/data');return DB;}
+async function bootAdmin(){
+  if(!ADMIN_AUTHENTICATED)return;
+  try{
+    await loadAdminData();
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('admin-layout').classList.remove('hidden');
+    goPage('dashboard');
+  }catch(e){ADMIN_AUTHENTICATED=false;}
+}
+bootAdmin();
+</script></body>
+</html>

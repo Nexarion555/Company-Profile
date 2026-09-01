@@ -57,3 +57,7 @@ File HTML asli disimpan di folder `originals/` sebagai pembanding. `resources/vi
 
 ## Email konfirmasi jadwal
 Controller sudah memanggil Laravel Mail. Pada `.env.example`, `MAIL_MAILER=log` agar aman untuk lokal; email akan dicatat di log. Untuk pengiriman email sungguhan, isi konfigurasi SMTP/mail provider Anda di `.env` lalu ubah mailer sesuai provider.
+
+## Validasi Jadwal & Email Gmail
+
+Jadwal dari user masuk dengan status `pending`. Admin dapat ACC atau membatalkan jadwal dari menu **Jadwal Temu**. Keputusan disimpan ke database dan sistem mengirim email status ke user. Untuk Gmail SMTP, lihat `README-EMAIL-JADWAL.txt` dan jalankan migration terbaru dengan `php artisan migrate`.

@@ -4,27 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TeamMember extends Model
+class Certification extends Model
 {
-    protected $table = 'team_members';
-
     protected $fillable = [
         'name',
-        'role',
-        'email',
-        'phone',
-        'img',
-        'bio',
-        'linkedin_url',
+        'issuer',
+        'certificate_number',
+        'issued_year',
         'display_order',
-        'is_active',
+        'description',
+        'file_path',
+        'file_type',
+        'file_name',
     ];
 
     protected function casts(): array
     {
         return [
+            'issued_year' => 'integer',
             'display_order' => 'integer',
-            'is_active' => 'boolean',
         ];
     }
 }

@@ -1038,15 +1038,15 @@ footer a:hover{color:#ffb3b3!important}
           <p class="text-stone-500 text-sm font-light mb-8">Isi formulir di bawah dan tim kami akan menghubungi Anda dalam 1x24 jam.</p>
           <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
             <div class="grid sm:grid-cols-2 gap-5">
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Nama Lengkap *</label><input type="text" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="John Doe"></div>
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Email *</label><input type="email" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="john@email.com"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Nama Lengkap *</label><input type="text" name="name" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="John Doe"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Email *</label><input type="email" name="email" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="john@email.com"></div>
             </div>
             <div class="grid sm:grid-cols-2 gap-5">
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">No. Telepon *</label><input type="tel" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="+62 812-xxxx-xxxx"></div>
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Layanan</label><select class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">Pilih layanan...</option><option>Desain Interior</option><option>Desain Gedung / Arsitektur</option><option>Renovasi & Restorasi</option><option>Konstruksi Bangunan Baru</option><option>Desain Landscape</option><option>Manajemen Proyek</option><option>Lainnya</option></select></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">No. Telepon *</label><input type="tel" name="phone" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="+62 812-xxxx-xxxx"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Layanan</label><select name="service" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">Pilih layanan...</option><option>Desain Interior</option><option>Desain Gedung / Arsitektur</option><option>Renovasi & Restorasi</option><option>Konstruksi Bangunan Baru</option><option>Desain Landscape</option><option>Manajemen Proyek</option><option>Lainnya</option></select></div>
             </div>
-            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Estimasi Anggaran</label><select class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">Pilih range anggaran...</option><option>< Rp 500 Juta</option><option>Rp 500 Juta - 1 Miliar</option><option>Rp 1 - 5 Miliar</option><option>Rp 5 - 20 Miliar</option><option>> Rp 20 Miliar</option></select></div>
-            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Detail Proyek *</label><textarea required rows="5" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all resize-none" placeholder="Ceritakan tentang proyek Anda, lokasi, luas bangunan, timeline yang diharapkan, dll."></textarea></div>
+            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Estimasi Anggaran</label><select name="budget" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">Pilih range anggaran...</option><option>< Rp 500 Juta</option><option>Rp 500 Juta - 1 Miliar</option><option>Rp 1 - 5 Miliar</option><option>Rp 5 - 20 Miliar</option><option>> Rp 20 Miliar</option></select></div>
+            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Detail Proyek *</label><textarea name="detail" required rows="5" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all resize-none" placeholder="Ceritakan tentang proyek Anda, lokasi, luas bangunan, timeline yang diharapkan, dll."></textarea></div>
             <button type="submit" class="w-full py-3.5 bg-navy-700 text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-navy-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2">Kirim Pesan <iconify-icon icon="lucide:send" width="14"></iconify-icon></button>
           </form>
         </div>
@@ -1614,16 +1614,13 @@ function closeProjectModal() {
 async function handleFormSubmit(e) {
   e.preventDefault();
   var form=e.target;
-  var inputs=form.querySelectorAll('input');
-  var selects=form.querySelectorAll('select');
-  var textarea=form.querySelector('textarea');
   var payload={
-    name:inputs[0].value.trim(),
-    email:inputs[1].value.trim(),
-    phone:inputs[2].value.trim(),
-    service:selects[0].value,
-    budget:selects[1].value,
-    detail:textarea.value.trim()
+    name:form.elements.name.value.trim(),
+    email:form.elements.email.value.trim(),
+    phone:form.elements.phone.value.trim(),
+    service:form.elements.service.value,
+    budget:form.elements.budget.value,
+    detail:form.elements.detail.value.trim()
   };
   try{
     await publicApi('/messages',payload);

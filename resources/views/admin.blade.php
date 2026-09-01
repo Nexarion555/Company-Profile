@@ -350,6 +350,455 @@ body{
   .appointment-calendar-grid{gap:4px}.appointment-cal-day{min-height:54px;padding:6px}.appointment-status-dots{left:6px;bottom:6px}.appointment-day-count{top:5px;right:5px}.appointment-calendar-card{border-radius:16px}
 }
 
+
+/* ===== ADMIN HIGH-CONTRAST FIELDS & COLUMNS ===== */
+/* Form fields: light neutral background + dark text, consistent in every page/modal */
+#pages input[type="text"],
+#pages input[type="email"],
+#pages input[type="password"],
+#pages input[type="tel"],
+#pages input[type="url"],
+#pages input[type="number"],
+#pages input[type="date"],
+#pages input[type="time"],
+#pages input[type="search"],
+#pages input[type="file"],
+#pages select,
+#pages textarea,
+.modal-box input[type="text"],
+.modal-box input[type="email"],
+.modal-box input[type="password"],
+.modal-box input[type="tel"],
+.modal-box input[type="url"],
+.modal-box input[type="number"],
+.modal-box input[type="date"],
+.modal-box input[type="time"],
+.modal-box input[type="search"],
+.modal-box input[type="file"],
+.modal-box select,
+.modal-box textarea{
+  background:#f8fafc!important;
+  color:#0f172a!important;
+  border-color:#cbd5e1!important;
+  caret-color:#0f172a!important;
+  -webkit-text-fill-color:#0f172a!important;
+  opacity:1!important;
+  color-scheme:light!important;
+}
+
+#pages input[type="text"]:hover,
+#pages input[type="email"]:hover,
+#pages input[type="password"]:hover,
+#pages input[type="tel"]:hover,
+#pages input[type="url"]:hover,
+#pages input[type="number"]:hover,
+#pages input[type="date"]:hover,
+#pages input[type="time"]:hover,
+#pages input[type="search"]:hover,
+#pages input[type="file"]:hover,
+#pages select:hover,
+#pages textarea:hover,
+.modal-box input:hover,
+.modal-box select:hover,
+.modal-box textarea:hover{
+  background:#ffffff!important;
+  border-color:#94a3b8!important;
+}
+
+#pages input::placeholder,
+#pages textarea::placeholder,
+.modal-box input::placeholder,
+.modal-box textarea::placeholder{
+  color:#64748b!important;
+  -webkit-text-fill-color:#64748b!important;
+  opacity:1!important;
+}
+
+#pages select option,
+#pages select optgroup,
+.modal-box select option,
+.modal-box select optgroup{
+  background:#ffffff!important;
+  color:#0f172a!important;
+}
+
+/* Disabled/read-only still readable */
+#pages input:disabled,
+#pages select:disabled,
+#pages textarea:disabled,
+#pages input[readonly],
+#pages textarea[readonly],
+.modal-box input:disabled,
+.modal-box select:disabled,
+.modal-box textarea:disabled,
+.modal-box input[readonly],
+.modal-box textarea[readonly]{
+  background:#eef2f7!important;
+  color:#475569!important;
+  -webkit-text-fill-color:#475569!important;
+  border-color:#d8e0ea!important;
+  opacity:1!important;
+}
+
+/* Autofill must not turn text/background into low contrast */
+#pages input:-webkit-autofill,
+#pages input:-webkit-autofill:hover,
+#pages input:-webkit-autofill:focus,
+.modal-box input:-webkit-autofill,
+.modal-box input:-webkit-autofill:hover,
+.modal-box input:-webkit-autofill:focus{
+  -webkit-text-fill-color:#0f172a!important;
+  -webkit-box-shadow:0 0 0 1000px #f8fafc inset!important;
+  box-shadow:0 0 0 1000px #f8fafc inset!important;
+}
+
+/* Labels / helper text */
+#pages label,
+.modal-box label{color:#334155!important}
+#pages label .text-stone-500,
+#pages label .text-stone-600,
+.modal-box label .text-stone-500,
+.modal-box label .text-stone-600{color:#64748b!important}
+
+/* Checkbox/radio remain compact and visible */
+#pages input[type="checkbox"],
+#pages input[type="radio"],
+.modal-box input[type="checkbox"],
+.modal-box input[type="radio"]{
+  accent-color:#0b5fdc!important;
+  background:#ffffff!important;
+  border-color:#94a3b8!important;
+}
+
+/* File upload button has its own clear contrast */
+#pages input[type="file"]::file-selector-button,
+.modal-box input[type="file"]::file-selector-button{
+  background:#eaf2ff!important;
+  color:#0b5fdc!important;
+  border:1px solid #bfd3f4!important;
+  border-radius:8px!important;
+  font-weight:700!important;
+}
+#pages input[type="file"]::file-selector-button:hover,
+.modal-box input[type="file"]::file-selector-button:hover{
+  background:#dbeafe!important;
+  color:#084cae!important;
+}
+
+/* Tables: separate header, rows and text so columns never blend together */
+#pages table{
+  background:#ffffff!important;
+  color:#334155!important;
+}
+#pages table thead,
+#pages table thead tr{
+  background:#eef2f7!important;
+}
+#pages table thead th{
+  color:#334155!important;
+  border-color:#dbe2ea!important;
+  font-weight:700!important;
+}
+#pages table tbody tr{
+  background:#ffffff!important;
+  border-color:#e5e7eb!important;
+}
+#pages table tbody tr:nth-child(even){background:#fbfcfe!important}
+#pages table tbody tr:hover{background:#f1f5f9!important}
+#pages table tbody td{
+  color:#475569!important;
+  border-color:#e5e7eb!important;
+}
+#pages table tbody td .text-white{color:#0f172a!important}
+#pages table tbody td .text-stone-300,
+#pages table tbody td .text-stone-400{color:#475569!important}
+#pages table tbody td .text-stone-500{color:#64748b!important}
+#pages table tbody td .text-stone-600{color:#7c8798!important}
+
+/* Preserve strong text contrast inside light cards/panels */
+#pages .bg-navy-900\/50,
+#pages .bg-navy-900\/60,
+#pages .bg-navy-700\/50,
+#pages .bg-navy-700\/30,
+.modal-box .bg-navy-900\/50,
+.modal-box .bg-navy-900\/60,
+.modal-box .bg-navy-700\/50{
+  color:#334155!important;
+}
+
+/* Login fields follow the same accessible contrast */
+#login-screen input[type="email"],
+#login-screen input[type="password"]{
+  background:#f8fafc!important;
+  color:#0f172a!important;
+  -webkit-text-fill-color:#0f172a!important;
+  border-color:#cbd5e1!important;
+}
+#login-screen input::placeholder{
+  color:#64748b!important;
+  -webkit-text-fill-color:#64748b!important;
+  opacity:1!important;
+}
+
+/* ===== WHITE INPUTS: PESAN & PENGATURAN ===== */
+/* Pesan dan Pengaturan memakai bidang putih murni agar tulisan tidak menyatu. */
+#message-search,
+#message-filter,
+#settings-form input[type="text"],
+#settings-form input[type="email"],
+#settings-form input[type="password"],
+#settings-form input[type="tel"],
+#settings-form input[type="url"],
+#settings-form input[type="number"],
+#settings-form input[type="date"],
+#settings-form input[type="time"],
+#settings-form input[type="search"],
+#settings-form input[type="file"],
+#settings-form select,
+#settings-form textarea{
+  background:#ffffff!important;
+  color:#000000!important;
+  -webkit-text-fill-color:#000000!important;
+  border-color:#cbd5e1!important;
+  caret-color:#000000!important;
+  opacity:1!important;
+  box-shadow:0 1px 2px rgba(15,23,42,.03)!important;
+}
+#message-search::placeholder,
+#settings-form input::placeholder,
+#settings-form textarea::placeholder{
+  color:#64748b!important;
+  -webkit-text-fill-color:#64748b!important;
+  opacity:1!important;
+}
+#message-search:hover,
+#message-filter:hover,
+#settings-form input:hover,
+#settings-form select:hover,
+#settings-form textarea:hover{
+  background:#ffffff!important;
+  border-color:#94a3b8!important;
+}
+#message-search:focus,
+#message-filter:focus,
+#settings-form input:focus,
+#settings-form select:focus,
+#settings-form textarea:focus{
+  background:#ffffff!important;
+  color:#000000!important;
+  -webkit-text-fill-color:#000000!important;
+  border-color:#2563eb!important;
+  box-shadow:0 0 0 3px rgba(37,99,235,.12)!important;
+}
+#message-filter option,
+#settings-form select option,
+#settings-form select optgroup{
+  background:#ffffff!important;
+  color:#000000!important;
+}
+
+/* Detail pesan/modal: kotak informasi juga putih agar teks hitam tetap jelas. */
+#modal-box .bg-navy-900\/40{
+  background:#ffffff!important;
+  border-color:#e2e8f0!important;
+  color:#000000!important;
+  box-shadow:0 5px 16px rgba(15,23,42,.06)!important;
+}
+#modal-box .bg-navy-900\/40 .text-white{color:#000000!important}
+#modal-box .bg-navy-900\/40 .text-stone-300{color:#334155!important}
+#modal-box .bg-navy-900\/40 .text-stone-500{color:#64748b!important}
+
+/* Kotak media/upload pada Pengaturan: putih, bukan gelap, dengan shadow lembut. */
+#settings-form .settings-media-card{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 10px 30px rgba(15,23,42,.08)!important;
+}
+#settings-form .settings-media-card:hover{
+  border-color:#cbd5e1!important;
+  box-shadow:0 14px 36px rgba(15,23,42,.11)!important;
+}
+#settings-form .settings-media-preview{
+  background:#ffffff!important;
+  border:1px solid #e5e7eb!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.08)!important;
+}
+#settings-form .settings-media-preview img{
+  filter:none!important;
+  opacity:1!important;
+}
+#settings-form .settings-media-card input[type="file"]{
+  background:#ffffff!important;
+  color:#000000!important;
+  -webkit-text-fill-color:#000000!important;
+}
+#settings-form .settings-media-card input[type="file"]::file-selector-button{
+  background:#eff6ff!important;
+  color:#1d4ed8!important;
+  border:1px solid #bfdbfe!important;
+  box-shadow:0 2px 6px rgba(37,99,235,.08)!important;
+}
+#settings-form .settings-media-card input[type="file"]::file-selector-button:hover{
+  background:#dbeafe!important;
+  color:#1e40af!important;
+}
+
+
+/* ===== PENGATURAN: HOVER/FOKUS SERAGAM SEPERTI "KIRIM TES KE" ===== */
+/* Semua field tetap putih pada normal, hover, active dan focus. Tidak ada efek
+   background gelap / terbalik dari utility class atau browser native control. */
+#settings-form input:not([type="checkbox"]):not([type="radio"]),
+#settings-form select,
+#settings-form textarea,
+#settings-form input:not([type="checkbox"]):not([type="radio"]):hover,
+#settings-form select:hover,
+#settings-form textarea:hover,
+#settings-form input:not([type="checkbox"]):not([type="radio"]):active,
+#settings-form select:active,
+#settings-form textarea:active,
+#settings-form input:not([type="checkbox"]):not([type="radio"]):focus,
+#settings-form select:focus,
+#settings-form textarea:focus,
+#settings-form input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+#settings-form select:focus-visible,
+#settings-form textarea:focus-visible{
+  background-color:#ffffff!important;
+  background-image:none!important;
+  color:#000000!important;
+  -webkit-text-fill-color:#000000!important;
+  caret-color:#000000!important;
+  border-color:#cbd5e1!important;
+  opacity:1!important;
+  color-scheme:light!important;
+}
+
+/* Hover sama persis: hanya border sedikit lebih jelas, tanpa menggelapkan bidang. */
+#settings-form input:not([type="checkbox"]):not([type="radio"]):hover,
+#settings-form select:hover,
+#settings-form textarea:hover{
+  background-color:#ffffff!important;
+  color:#000000!important;
+  border-color:#94a3b8!important;
+  box-shadow:0 1px 2px rgba(15,23,42,.04)!important;
+}
+
+/* Focus memakai gaya kolom Kirim Tes Ke: putih + ring biru halus. */
+#settings-form input:not([type="checkbox"]):not([type="radio"]):focus,
+#settings-form select:focus,
+#settings-form textarea:focus,
+#settings-form input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+#settings-form select:focus-visible,
+#settings-form textarea:focus-visible{
+  background-color:#ffffff!important;
+  color:#000000!important;
+  border-color:#2563eb!important;
+  outline:none!important;
+  box-shadow:0 0 0 3px rgba(37,99,235,.12)!important;
+}
+
+/* Browser autofill juga tidak boleh mengubah bidang menjadi kuning/gelap. */
+#settings-form input:-webkit-autofill,
+#settings-form input:-webkit-autofill:hover,
+#settings-form input:-webkit-autofill:focus,
+#settings-form input:-webkit-autofill:active{
+  -webkit-text-fill-color:#000000!important;
+  caret-color:#000000!important;
+  -webkit-box-shadow:0 0 0 1000px #ffffff inset!important;
+  box-shadow:0 0 0 1000px #ffffff inset!important;
+  transition:background-color 9999s ease-out 0s!important;
+}
+
+/* Option dropdown tetap mode terang. */
+#settings-form select option,
+#settings-form select optgroup{
+  background:#ffffff!important;
+  color:#000000!important;
+}
+
+/* File input tetap putih ketika hover; yang berubah hanya tombol pilih file. */
+#settings-form input[type="file"],
+#settings-form input[type="file"]:hover,
+#settings-form input[type="file"]:focus{
+  background:#ffffff!important;
+  color:#000000!important;
+  -webkit-text-fill-color:#000000!important;
+}
+
+
+/* ===== PENGATURAN: TANPA EFEK HOVER PADA FIELD ===== */
+/* Input/select/textarea tidak berubah ketika pointer melewati kolom. */
+#settings-form input:not([type="checkbox"]):not([type="radio"]):hover,
+#settings-form select:hover,
+#settings-form textarea:hover,
+#settings-form input[type="file"]:hover{
+  background-color:#ffffff!important;
+  background-image:none!important;
+  color:#000000!important;
+  -webkit-text-fill-color:#000000!important;
+  border-color:#cbd5e1!important;
+  box-shadow:0 1px 2px rgba(15,23,42,.03)!important;
+  transform:none!important;
+  filter:none!important;
+}
+
+/* Kotak upload juga tetap diam saat hover. */
+#settings-form .settings-media-card:hover{
+  background:#ffffff!important;
+  border-color:#e2e8f0!important;
+  box-shadow:0 10px 30px rgba(15,23,42,.08)!important;
+  transform:none!important;
+}
+
+/* ===== TEMPLATE EMAIL: PUTIH + SHADOW ===== */
+#settings-form .settings-email-template-section{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 12px 34px rgba(15,23,42,.08)!important;
+  color:#0f172a!important;
+}
+#settings-form .settings-email-template-section h3,
+#settings-form .settings-email-template-section h4,
+#settings-form .settings-email-template-section .text-white{
+  color:#0f172a!important;
+}
+#settings-form .settings-email-template-section .text-stone-400{
+  color:#475569!important;
+}
+#settings-form .settings-email-template-section .text-stone-500{
+  color:#64748b!important;
+}
+#settings-form .settings-email-template-placeholder{
+  background:#ffffff!important;
+  border:1px solid #bfdbfe!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+}
+#settings-form .settings-email-template-placeholder code{
+  background:#f8fafc!important;
+  color:#334155!important;
+  border:1px solid #e2e8f0!important;
+}
+#settings-form .settings-email-template-card{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 10px 26px rgba(15,23,42,.08)!important;
+  color:#0f172a!important;
+}
+#settings-form .settings-email-template-card:hover{
+  background:#ffffff!important;
+  border-color:#e2e8f0!important;
+  box-shadow:0 10px 26px rgba(15,23,42,.08)!important;
+  transform:none!important;
+}
+#settings-form .settings-email-template-card input,
+#settings-form .settings-email-template-card textarea,
+#settings-form .settings-email-template-card input:hover,
+#settings-form .settings-email-template-card textarea:hover{
+  background:#ffffff!important;
+  color:#000000!important;
+  -webkit-text-fill-color:#000000!important;
+  border-color:#cbd5e1!important;
+}
+
 </style>
 </head>
 <body class="font-sans bg-navy-900 text-stone-300 min-h-screen">
@@ -1123,13 +1572,167 @@ async function updApp(id, status){
 }
 
 function pgMessages(c){
-  c.innerHTML = '<div class="space-y-3">' + DB.messages.map(function(m, i) {
-    return '<div class="bg-navy-800 rounded-2xl p-6 border border-navy-500/30 reveal ' + (m.read ? 'opacity-60' : '') + '" style="transition-delay:' + (i*0.05) + 's"><div class="flex items-start justify-between gap-4"><div class="w-10 h-10 rounded-full ' + (m.read ? 'bg-stone-700/50' : 'bg-gold-500/20') + ' flex items-center justify-center flex-shrink-0 ' + (m.read ? 'text-stone-500' : 'text-gold-400') + '"><iconify-icon icon="lucide:mail" width="16"></iconify-icon></div><div class="flex-1 min-w-0"><div class="flex items-center justify-between gap-2"><div><span class="text-white font-medium text-sm">' + m.name + '</span><span class="text-[10px] text-stone-500">' + m.email + '</span></div><span class="text-[10px] text-stone-600 whitespace-nowrap">' + m.date + '</span></div>' +
-      '<div class="text-sm text-stone-400 mt-1">' + m.subject + '</div>' +
-      '<p class="text-stone-500 text-xs mt-2 leading-relaxed">' + m.msg + '</p>' +
-      (m.read ? '<span class="text-[10px] text-stone-600 mt-3 inline-block">Sudah dibaca</span>' : '<button onclick="markRead(' + m.id + ')" class="mt-3 text-gold-500 text-xs font-medium hover:text-gold-400 transition-colors flex items-center gap-1">Tandai dibaca <iconify-icon icon="lucide:check" width="12"></iconify-icon></button>') +
-    '</div></div></div>';
-  }).join('') + (DB.messages.length === 0 ? '<div class="text-center py-16 text-stone-600 reveal">Tidak ada pesan.</div>' : '') + '</div>';
+  var unread=DB.messages.filter(function(m){return !m.read}).length;
+  c.innerHTML = `
+    <div class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-6 border border-navy-600/40 mb-6 reveal">
+      <div class="flex items-center gap-2 text-gold-400 text-xs font-semibold tracking-[.18em] uppercase"><iconify-icon icon="lucide:messages-square" width="15"></iconify-icon> Pesan & Konsultasi</div>
+      <h3 class="font-serif text-2xl text-white mt-2">Pesan masuk dari website</h3>
+      <p class="text-sm text-stone-400 mt-2 max-w-3xl">Pesan dari formulir Hubungi Kami akan tampil di sini. Buka detail pesan lalu lanjutkan konsultasi melalui Gmail, aplikasi email, atau WhatsApp.</p>
+      <div class="flex flex-wrap gap-3 mt-5 text-xs">
+        <span class="px-3 py-1.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">${unread} Belum Dibaca</span>
+        <span class="px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">${DB.messages.length} Total Pesan</span>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2 mb-6 reveal">
+      <div class="flex-1 min-w-[240px] flex items-center gap-2">
+        <iconify-icon icon="lucide:search" width="16" class="text-stone-500"></iconify-icon>
+        <input type="text" id="message-search" placeholder="Cari nama, email, telepon, layanan..." oninput="filterMessages()" class="flex-1 bg-navy-800 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-stone-600">
+      </div>
+      <select id="message-filter" onchange="filterMessages()" class="bg-navy-800 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-stone-300">
+        <option value="all">Semua Pesan</option>
+        <option value="unread">Belum Dibaca</option>
+        <option value="read">Sudah Dibaca</option>
+      </select>
+    </div>
+    <div id="message-list" class="space-y-3"></div>`;
+  filterMessages();
+}
+
+function filterMessages(){
+  var target=document.getElementById('message-list');
+  if(!target)return;
+  var q=((document.getElementById('message-search')||{}).value||'').toLowerCase();
+  var status=((document.getElementById('message-filter')||{}).value||'all');
+  var rows=DB.messages.filter(function(m){
+    if(status==='unread' && m.read)return false;
+    if(status==='read' && !m.read)return false;
+    var hay=[m.name,m.email,m.phone,m.service,m.budget,m.subject,m.detail].join(' ').toLowerCase();
+    return !q || hay.indexOf(q)>-1;
+  });
+
+  target.innerHTML=rows.map(function(m,i){
+    var service=m.service||'Konsultasi';
+    var preview=(m.detail||m.msg||'').replace(/\s+/g,' ').trim();
+    if(preview.length>180)preview=preview.slice(0,180)+'…';
+    return '<div class="bg-navy-800 rounded-2xl p-5 md:p-6 border '+(m.read?'border-navy-700/30':'border-gold-500/35')+' reveal" style="transition-delay:'+(i*.04)+'s">'+
+      '<div class="flex flex-col md:flex-row md:items-start gap-4">'+
+        '<div class="w-11 h-11 rounded-xl '+(m.read?'bg-stone-700/40 text-stone-400':'bg-gold-500/15 text-gold-400')+' flex items-center justify-center flex-shrink-0"><iconify-icon icon="'+(m.read?'lucide:mail-open':'lucide:mail')+'" width="18"></iconify-icon></div>'+
+        '<div class="flex-1 min-w-0">'+
+          '<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">'+
+            '<div><div class="flex flex-wrap items-center gap-2"><span class="text-white font-semibold text-sm">'+escapeHtml(m.name)+'</span>'+(!m.read?'<span class="badge bg-red-500/15 text-red-400">Baru</span>':'<span class="badge bg-stone-500/10 text-stone-500">Dibaca</span>')+'</div><div class="text-[11px] text-stone-500 mt-1">'+escapeHtml(m.email)+(m.phone?' · '+escapeHtml(m.phone):'')+'</div></div>'+
+            '<span class="text-[10px] text-stone-600 whitespace-nowrap">'+escapeHtml(m.date)+'</span>'+
+          '</div>'+
+          '<div class="flex flex-wrap gap-2 mt-3"><span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px]">'+escapeHtml(service)+'</span>'+(m.budget?'<span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px]">'+escapeHtml(m.budget)+'</span>':'')+'</div>'+
+          '<div class="text-sm text-stone-300 mt-3 font-medium">'+escapeHtml(m.subject||'Pesan Konsultasi')+'</div>'+
+          '<p class="text-stone-500 text-xs mt-2 leading-relaxed">'+escapeHtml(preview)+'</p>'+
+          '<div class="flex flex-wrap gap-2 mt-4">'+
+            '<button onclick="openMessageDetail('+m.id+')" class="px-3.5 py-2 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:eye" width="13"></iconify-icon> Buka Detail</button>'+
+            '<button onclick="replyMessageGmail('+m.id+')" class="px-3.5 py-2 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:mail" width="13"></iconify-icon> Gmail</button>'+
+            '<button onclick="replyMessageEmail('+m.id+')" class="px-3.5 py-2 rounded-lg bg-violet-500/10 text-violet-400 hover:bg-violet-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:send" width="13"></iconify-icon> Email</button>'+
+            (m.phone?'<button onclick="replyMessageWhatsApp('+m.id+')" class="px-3.5 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:message-circle" width="13"></iconify-icon> WhatsApp</button>':'')+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('') || '<div class="text-center py-16 text-stone-600 reveal"><iconify-icon icon="lucide:inbox" width="34"></iconify-icon><p class="mt-3 text-sm">Tidak ada pesan yang sesuai.</p></div>';
+
+  setTimeout(function(){target.querySelectorAll('.reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('rv')},i*35)})},30);
+}
+
+function getMessageById(id){
+  return DB.messages.find(function(x){return Number(x.id)===Number(id)});
+}
+
+function messageReplyBody(m){
+  var company=(DB.settings&&DB.settings.company)?DB.settings.company:'Tim Kami';
+  var service=m.service||'konsultasi Anda';
+  return 'Halo '+m.name+',\n\nTerima kasih telah menghubungi '+company+'. Kami ingin menindaklanjuti '+service+'.\n\nSilakan sampaikan informasi tambahan atau pertanyaan yang ingin didiskusikan.\n\nTerima kasih,\n'+company;
+}
+
+function messageReplySubject(m){
+  return 'Re: '+(m.subject||'Konsultasi');
+}
+
+function normalizeWhatsappNumber(phone){
+  var n=String(phone||'').replace(/[^0-9]/g,'');
+  if(!n)return '';
+  if(n.indexOf('00')===0)n=n.slice(2);
+  if(n.indexOf('0')===0)n='62'+n.slice(1);
+  return n;
+}
+
+async function openMessageDetail(id){
+  var m=getMessageById(id);
+  if(!m)return;
+  if(!m.read){
+    try{
+      await apiRequest('/admin/messages/'+id+'/read',{method:'PATCH'});
+      m.read=true;
+      var badge=document.getElementById('msg-badge');
+      var left=DB.messages.filter(function(x){return !x.read}).length;
+      if(badge){if(left>0){badge.textContent=left;badge.classList.remove('hidden')}else{badge.classList.add('hidden')}}
+    }catch(e){}
+  }
+
+  var phone=m.phone||'-';
+  var service=m.service||'Konsultasi';
+  var budget=m.budget||'-';
+  var h=`
+    <div class="p-6 md:p-7">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <div class="text-[10px] text-gold-400 uppercase tracking-[.18em] font-semibold">Detail Pesan Masuk</div>
+          <h3 class="font-serif text-2xl text-white mt-2">${escapeHtml(m.name)}</h3>
+          <p class="text-xs text-stone-500 mt-1">${escapeHtml(m.date)}</p>
+        </div>
+        <button onclick="closeModal()" class="w-9 h-9 rounded-lg bg-navy-900/50 text-stone-400 hover:text-white flex items-center justify-center"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3 mb-5">
+        <div class="rounded-xl bg-navy-900/40 border border-navy-700/40 p-4"><div class="text-[10px] text-stone-500 uppercase tracking-wider">Email</div><div class="text-sm text-white mt-1 break-all">${escapeHtml(m.email)}</div></div>
+        <div class="rounded-xl bg-navy-900/40 border border-navy-700/40 p-4"><div class="text-[10px] text-stone-500 uppercase tracking-wider">WhatsApp / Telepon</div><div class="text-sm text-white mt-1">${escapeHtml(phone)}</div></div>
+        <div class="rounded-xl bg-navy-900/40 border border-navy-700/40 p-4"><div class="text-[10px] text-stone-500 uppercase tracking-wider">Layanan</div><div class="text-sm text-white mt-1">${escapeHtml(service)}</div></div>
+        <div class="rounded-xl bg-navy-900/40 border border-navy-700/40 p-4"><div class="text-[10px] text-stone-500 uppercase tracking-wider">Estimasi Anggaran</div><div class="text-sm text-white mt-1">${escapeHtml(budget)}</div></div>
+      </div>
+
+      <div class="rounded-xl bg-navy-900/40 border border-navy-700/40 p-5">
+        <div class="text-[10px] text-stone-500 uppercase tracking-wider">Detail Proyek / Pesan</div>
+        <div class="text-sm text-stone-300 leading-relaxed mt-3 whitespace-pre-line">${escapeHtml(m.detail||m.msg||'-')}</div>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-navy-700/50">
+        <div class="text-xs text-stone-500 mb-3">Lanjutkan konsultasi melalui:</div>
+        <div class="grid sm:grid-cols-3 gap-2">
+          <button onclick="replyMessageGmail(${m.id})" class="py-3 rounded-xl bg-red-500 text-white text-xs font-semibold hover:bg-red-400 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:mail" width="14"></iconify-icon> Gmail</button>
+          <button onclick="replyMessageEmail(${m.id})" class="py-3 rounded-xl bg-blue-500 text-white text-xs font-semibold hover:bg-blue-400 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:send" width="14"></iconify-icon> Email</button>
+          ${m.phone?'<button onclick="replyMessageWhatsApp('+m.id+')" class="py-3 rounded-xl bg-emerald-500 text-white text-xs font-semibold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:message-circle" width="14"></iconify-icon> WhatsApp</button>':'<button disabled class="py-3 rounded-xl bg-stone-700/40 text-stone-600 text-xs font-semibold cursor-not-allowed">WhatsApp tidak tersedia</button>'}
+        </div>
+      </div>
+    </div>`;
+  showModal(h);
+  filterMessages();
+}
+
+function replyMessageGmail(id){
+  var m=getMessageById(id);if(!m)return;
+  var url='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(m.email)+'&su='+encodeURIComponent(messageReplySubject(m))+'&body='+encodeURIComponent(messageReplyBody(m));
+  window.open(url,'_blank','noopener');
+}
+
+function replyMessageEmail(id){
+  var m=getMessageById(id);if(!m)return;
+  window.location.href='mailto:'+encodeURIComponent(m.email)+'?subject='+encodeURIComponent(messageReplySubject(m))+'&body='+encodeURIComponent(messageReplyBody(m));
+}
+
+function replyMessageWhatsApp(id){
+  var m=getMessageById(id);if(!m)return;
+  var number=normalizeWhatsappNumber(m.phone);
+  if(!number){toast('❌ Nomor WhatsApp tidak tersedia.');return;}
+  var company=(DB.settings&&DB.settings.company)?DB.settings.company:'Tim Kami';
+  var service=m.service||'konsultasi Anda';
+  var text='Halo '+m.name+', terima kasih telah menghubungi '+company+'. Kami ingin menindaklanjuti '+service+'.';
+  window.open('https://wa.me/'+number+'?text='+encodeURIComponent(text),'_blank','noopener');
 }
 
 async function markRead(id){
@@ -1138,7 +1741,7 @@ async function markRead(id){
     await loadAdminData();
     var b=document.getElementById('msg-badge');
     var uc=DB.messages.filter(function(x){return !x.read}).length;
-    if(uc>0){b.textContent=uc;b.classList.remove('hidden');}else{b.classList.add('hidden');}
+    if(b){if(uc>0){b.textContent=uc;b.classList.remove('hidden');}else{b.classList.add('hidden');}}
     toast('✅ Ditandai dibaca');
     goPage('messages');
   }catch(err){toast('❌ '+err.message);}
@@ -1212,7 +1815,7 @@ function openTeamModal(id){
       '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Nama Lengkap *</label><input name="name" required value="'+safeAttr(edit?t.name:'')+'" placeholder="Contoh: Ir. Budi Santoso, M.T." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div>'+
       '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Jabatan *</label><input name="role" required value="'+safeAttr(edit?t.role:'')+'" placeholder="Contoh: Direktur Utama" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div>'+
       '<div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email</label><input type="email" name="email" value="'+safeAttr(edit?(t.email||''):'')+'" placeholder="nama@perusahaan.com" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">No. Telepon</label><input name="phone" value="'+safeAttr(edit?(t.phone||''):'')+'" placeholder="+62 812..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div></div>'+
-      '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">LinkedIn</label><input type="url" name="linkedin_url" value="'+safeAttr(edit?(t.linkedin_url||''):'')+'" placeholder="https://linkedin.com/in/..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"></div>'+
+      '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">LinkedIn <span class="normal-case tracking-normal text-stone-500">(Opsional)</span></label><input type="url" name="linkedin_url" value="'+safeAttr(edit?(t.linkedin_url||''):'')+'" placeholder="https://linkedin.com/in/..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600"><p class="text-[10px] text-stone-500 mt-1">Kosongkan jika anggota tim tidak memiliki LinkedIn.</p></div>'+
       '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi / Profil Singkat</label><textarea name="bio" rows="4" placeholder="Pengalaman, keahlian, pendidikan, atau profil singkat anggota tim..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 resize-none">'+escapeHtml(edit?(t.bio||''):'')+'</textarea></div>'+
       '<div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Urutan Tampil</label><input type="number" name="display_order" min="0" max="9999" value="'+safeAttr(edit?String(t.display_order??0):String(DB.team.length+1))+'" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div><div class="flex items-end"><label class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-sm text-stone-300"><input type="checkbox" name="is_active" value="1" '+(!edit||t.is_active?'checked':'')+'> Tampilkan di website</label></div></div>'+
       '<div class="flex justify-end gap-3 pt-2"><button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-navy-600 text-stone-400 hover:text-white transition-colors text-xs">Batal</button><button type="submit" class="px-5 py-2.5 rounded-xl bg-gold-500 text-white font-semibold text-xs hover:bg-gold-400 transition-colors flex items-center gap-2"><iconify-icon icon="lucide:save" width="14"></iconify-icon> '+(edit?'Simpan Perubahan':'Tambah Anggota')+'</button></div>'+
@@ -1290,22 +1893,22 @@ function pgSettings(c){
       <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:image" width="20" class="text-gold-400"></iconify-icon> Logo & Media Website</h3>
         <div class="grid lg:grid-cols-3 gap-5">
-          <div class="rounded-2xl border border-navy-700/40 bg-navy-900/40 p-5">
-            <div class="bg-white/5 rounded-xl p-3 mb-4">${logoPreview}</div>
+          <div class="settings-media-card rounded-2xl border border-navy-700/40 bg-navy-900/40 p-5">
+            <div class="settings-media-preview bg-white/5 rounded-xl p-3 mb-4">${logoPreview}</div>
             <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Logo</label>
             <input type="file" name="logo_file" accept=".jpg,.jpeg,.png,.webp" class="w-full mt-2 text-xs text-stone-400 file:mr-3 file:px-3 file:py-2 file:rounded-lg file:border-0 file:bg-gold-500 file:text-white file:font-semibold">
             <p class="text-[10px] text-stone-600 mt-2">JPG, PNG, WebP. Maks. 5 MB.</p>
             ${s.logo_url?'<label class="mt-3 flex items-center gap-2 text-xs text-red-300"><input type="checkbox" name="remove_logo" value="1"> Hapus logo saat disimpan</label>':''}
           </div>
-          <div class="rounded-2xl border border-navy-700/40 bg-navy-900/40 p-5">
-            <div class="bg-white/5 rounded-xl p-3 mb-4">${faviconPreview}</div>
+          <div class="settings-media-card rounded-2xl border border-navy-700/40 bg-navy-900/40 p-5">
+            <div class="settings-media-preview bg-white/5 rounded-xl p-3 mb-4">${faviconPreview}</div>
             <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Favicon</label>
             <input type="file" name="favicon_file" accept=".ico,.jpg,.jpeg,.png,.webp" class="w-full mt-2 text-xs text-stone-400 file:mr-3 file:px-3 file:py-2 file:rounded-lg file:border-0 file:bg-gold-500 file:text-white file:font-semibold"><p class="text-[10px] text-stone-500 mt-2">Opsional. Jika tidak diisi, icon tab browser otomatis menggunakan logo website.</p>
             <p class="text-[10px] text-stone-600 mt-2">ICO/PNG/JPG/WebP. Disarankan persegi.</p>
             ${s.favicon_url?'<label class="mt-3 flex items-center gap-2 text-xs text-red-300"><input type="checkbox" name="remove_favicon" value="1"> Hapus favicon saat disimpan</label>':''}
           </div>
-          <div class="rounded-2xl border border-navy-700/40 bg-navy-900/40 p-5">
-            <div class="mb-4">${heroPreview}</div>
+          <div class="settings-media-card rounded-2xl border border-navy-700/40 bg-navy-900/40 p-5">
+            <div class="settings-media-preview rounded-xl p-3 mb-4">${heroPreview}</div>
             <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Background Hero</label>
             <input type="file" name="hero_image_file" accept=".jpg,.jpeg,.png,.webp" class="w-full mt-2 text-xs text-stone-400 file:mr-3 file:px-3 file:py-2 file:rounded-lg file:border-0 file:bg-gold-500 file:text-white file:font-semibold">
             <p class="text-[10px] text-stone-600 mt-2">Disarankan 1920×1080. Maks. 10 MB.</p>
@@ -1374,7 +1977,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div class="settings-email-template-section bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
           <div>
             <h3 class="font-serif text-xl text-white flex items-center gap-2"><iconify-icon icon="lucide:mail-open" width="20" class="text-gold-400"></iconify-icon> Template Kalimat Email</h3>
@@ -1383,7 +1986,7 @@ function pgSettings(c){
           <button type="button" onclick="resetEmailTemplates()" class="px-4 py-2.5 border border-navy-700 text-stone-400 text-[10px] font-semibold tracking-wider uppercase rounded-xl hover:border-blue-500 hover:text-blue-500 transition-all whitespace-nowrap"><iconify-icon icon="lucide:rotate-ccw" width="13"></iconify-icon> Template Default</button>
         </div>
 
-        <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 mb-6">
+        <div class="settings-email-template-placeholder p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 mb-6">
           <div class="text-[10px] font-semibold tracking-wider uppercase text-blue-500 mb-3">Placeholder yang tersedia</div>
           <div class="flex flex-wrap gap-2 text-[10px]">
             <code class="px-2 py-1 rounded bg-white/5 text-stone-400">{nama}</code>
@@ -1407,7 +2010,7 @@ function pgSettings(c){
         </div>
 
         <div class="grid lg:grid-cols-2 gap-5">
-          <div class="rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
+          <div class="settings-email-template-card rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
             <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center"><iconify-icon icon="lucide:clock-3" width="16"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Jadwal Diterima</h4><p class="text-[10px] text-stone-500">Dikirim setelah user mengisi form.</p></div></div>
             <div class="space-y-4">
               <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Subjek Email *</label><input name="mail_received_subject" required maxlength="255" value="${safeAttr(s.mail_received_subject||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -1415,7 +2018,7 @@ function pgSettings(c){
             </div>
           </div>
 
-          <div class="rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
+          <div class="settings-email-template-card rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
             <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center"><iconify-icon icon="lucide:circle-check-big" width="16"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Jadwal Di-ACC</h4><p class="text-[10px] text-stone-500">Dikirim saat admin mengonfirmasi jadwal.</p></div></div>
             <div class="space-y-4">
               <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Subjek Email *</label><input name="mail_confirmed_subject" required maxlength="255" value="${safeAttr(s.mail_confirmed_subject||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -1423,7 +2026,7 @@ function pgSettings(c){
             </div>
           </div>
 
-          <div class="rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
+          <div class="settings-email-template-card rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
             <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center"><iconify-icon icon="lucide:circle-x" width="16"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Jadwal Dibatalkan</h4><p class="text-[10px] text-stone-500">Dikirim saat admin membatalkan jadwal.</p></div></div>
             <div class="space-y-4">
               <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Subjek Email *</label><input name="mail_cancelled_subject" required maxlength="255" value="${safeAttr(s.mail_cancelled_subject||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -1431,7 +2034,7 @@ function pgSettings(c){
             </div>
           </div>
 
-          <div class="rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
+          <div class="settings-email-template-card rounded-2xl border border-navy-700/40 bg-navy-900/30 p-5">
             <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center"><iconify-icon icon="lucide:send" width="16"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Email Tes SMTP</h4><p class="text-[10px] text-stone-500">Dipakai tombol Simpan & Tes Email.</p></div></div>
             <div class="space-y-4">
               <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Subjek Email *</label><input name="mail_test_subject" required maxlength="255" value="${safeAttr(s.mail_test_subject||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>

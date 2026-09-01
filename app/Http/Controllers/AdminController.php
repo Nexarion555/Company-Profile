@@ -124,15 +124,39 @@ class AdminController extends Controller
                 'email_notified' => $a->notification_sent_at !== null && $a->notified_status === $a->status,
             ]);
 
-        $messages = Message::latest()->get()->map(fn ($m) => [
-            'id' => $m->id,
-            'name' => $m->name,
-            'email' => $m->email,
-            'subject' => $m->subject,
-            'msg' => $m->msg,
-            'date' => $m->created_at->format('Y-m-d H:i'),
-            'read' => (bool) $m->is_read,
-        ]);
+        $messages = Message::latest()->get()->map(function ($m) {
+            $legacyPhone = null;
+            $legacyService = null;
+            $legacyBudget = null;
+            $legacyDetail = null;
+
+            if (!$m->phone && preg_match('/^Telepon:\s*(.+)$/mi', (string) $m->msg, $match)) {
+                $legacyPhone = trim($match[1]);
+            }
+            if (!$m->service && preg_match('/^Layanan:\s*(.+)$/mi', (string) $m->msg, $match)) {
+                $legacyService = trim($match[1]);
+            }
+            if (!$m->budget && preg_match('/^Anggaran:\s*(.+)$/mi', (string) $m->msg, $match)) {
+                $legacyBudget = trim($match[1]);
+            }
+            if (!$m->detail && preg_match('/^Detail:\s*(.+)$/mis', (string) $m->msg, $match)) {
+                $legacyDetail = trim($match[1]);
+            }
+
+            return [
+                'id' => $m->id,
+                'name' => $m->name,
+                'email' => $m->email,
+                'phone' => $m->phone ?: $legacyPhone,
+                'service' => $m->service ?: $legacyService,
+                'budget' => $m->budget ?: $legacyBudget,
+                'detail' => $m->detail ?: $legacyDetail ?: $m->msg,
+                'subject' => $m->subject,
+                'msg' => $m->msg,
+                'date' => $m->created_at->format('Y-m-d H:i'),
+                'read' => (bool) $m->is_read,
+            ];
+        });
 
         $team = TeamMember::query()
             ->orderBy('display_order')

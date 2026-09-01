@@ -40,6 +40,10 @@ class PublicController extends Controller
         $message = Message::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
+            'service' => $data['service'] ?: null,
+            'budget' => $data['budget'] ?: null,
+            'detail' => $data['detail'],
             'subject' => $subject,
             'msg' => implode("\n", $parts),
             'is_read' => false,

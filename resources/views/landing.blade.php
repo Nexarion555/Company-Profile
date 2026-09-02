@@ -333,7 +333,6 @@ footer a:hover{color:#ffb3b3!important}
       <a href="#" onclick="navigateTo('home');return false" class="nav-link text-sm font-medium text-stone-300 hover:text-gold-500 transition-colors duration-300" data-page="home">Beranda</a>
       <a href="#" onclick="navigateTo('about');return false" class="nav-link text-sm font-medium text-stone-300 hover:text-gold-500 transition-colors duration-300" data-page="about">Tentang</a>
       <a href="#" onclick="navigateTo('services');return false" class="nav-link text-sm font-medium text-stone-300 hover:text-gold-500 transition-colors duration-300" data-page="services">Layanan</a>
-      <a href="#" onclick="navigateTo('categories');return false" class="nav-link text-sm font-medium text-stone-300 hover:text-gold-500 transition-colors duration-300" data-page="categories">Kategori</a>
       <a href="#" onclick="navigateTo('portfolio');return false" class="nav-link text-sm font-medium text-stone-300 hover:text-gold-500 transition-colors duration-300" data-page="portfolio">Portofolio</a>
       <!-- <a href="#" onclick="navigateTo('tracking');return false" class="nav-link text-sm font-medium text-stone-300 hover:text-gold-500 transition-colors duration-300" data-page="tracking">Tracking</a> -->
       <a href="#" onclick="navigateTo('contact');return false" class="px-5 py-2.5 bg-gold-500 text-white text-xs font-semibold tracking-wider uppercase rounded-lg hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20 hover:-translate-y-0.5">Hubungi Kami</a>
@@ -360,7 +359,6 @@ footer a:hover{color:#ffb3b3!important}
     <a href="#" onclick="navigateTo('home');toggleMobile();return false" class="text-2xl font-light text-white hover:text-gold-500 transition-colors">Beranda</a>
     <a href="#" onclick="navigateTo('about');toggleMobile();return false" class="text-2xl font-light text-white hover:text-gold-500 transition-colors">Tentang</a>
     <a href="#" onclick="navigateTo('services');toggleMobile();return false" class="text-2xl font-light text-white hover:text-gold-500 transition-colors">Layanan</a>
-    <a href="#" onclick="navigateTo('categories');toggleMobile();return false" class="text-2xl font-light text-white hover:text-gold-500 transition-colors">Kategori</a>
     <a href="#" onclick="navigateTo('portfolio');toggleMobile();return false" class="text-2xl font-light text-white hover:text-gold-500 transition-colors">Portofolio</a>
     <!-- <a href="#" onclick="navigateTo('tracking');toggleMobile();return false" class="text-2xl font-light text-white hover:text-gold-500 transition-colors">Tracking</a> -->
     <a href="#" onclick="navigateTo('contact');toggleMobile();return false" class="mt-4 px-8 py-3 bg-gold-500 text-white text-sm font-semibold tracking-wider uppercase rounded-lg">Hubungi Kami</a>
@@ -429,54 +427,26 @@ footer a:hover{color:#ffb3b3!important}
         <p class="text-stone-500 mt-4 max-w-2xl mx-auto font-light reveal" style="transition-delay:.2s">Dari konsep hingga realisasi, kami menangani setiap tahap dengan presisi dan dedikasi tinggi.</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-500 reveal" style="transition-delay:.1s">
+        @forelse($services->take(3) as $service)
+        <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-500 reveal" style="transition-delay:.{{ $loop->iteration }}s">
           <div class="relative h-56 overflow-hidden">
-            <img src="https://picsum.photos/seed/interior-luxury/800/600" alt="Desain Interior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <img src="{{ $service->imageUrl() }}" alt="{{ $service->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
             <div class="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-gold-500/90 flex items-center justify-center text-white">
-              <iconify-icon icon="lucide:sofa" width="22"></iconify-icon>
+              <iconify-icon icon="lucide:{{ $service->icon ?: 'hard-hat' }}" width="22"></iconify-icon>
             </div>
           </div>
           <div class="p-6">
-            <h3 class="font-serif text-xl font-medium">Desain Interior</h3>
-            <p class="text-stone-500 text-sm font-light mt-2 leading-relaxed">Merancang ruang hidup dan kerja yang fungsional, estetis, dan mencerminkan identitas pemiliknya.</p>
+            <h3 class="font-serif text-xl font-medium">{{ $service->title }}</h3>
+            <p class="text-stone-500 text-sm font-light mt-2 leading-relaxed">{{ \Illuminate\Support\Str::limit($service->description, 145) }}</p>
             <a href="#" onclick="navigateTo('services');return false" class="inline-flex items-center gap-1 text-gold-600 text-sm font-medium mt-4 group/link">
               Selengkapnya <iconify-icon icon="lucide:arrow-right" width="14" class="group-hover/link:translate-x-1 transition-transform"></iconify-icon>
             </a>
           </div>
         </div>
-        <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-500 reveal" style="transition-delay:.2s">
-          <div class="relative h-56 overflow-hidden">
-            <img src="https://picsum.photos/seed/building-arch/800/600" alt="Desain Gedung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
-            <div class="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-gold-500/90 flex items-center justify-center text-white">
-              <iconify-icon icon="lucide:building-2" width="22"></iconify-icon>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-serif text-xl font-medium">Desain Gedung</h3>
-            <p class="text-stone-500 text-sm font-light mt-2 leading-relaxed">Arsitektur inovatif untuk gedung komersial, residensial, dan publik dengan standar internasional.</p>
-            <a href="#" onclick="navigateTo('services');return false" class="inline-flex items-center gap-1 text-gold-600 text-sm font-medium mt-4 group/link">
-              Selengkapnya <iconify-icon icon="lucide:arrow-right" width="14" class="group-hover/link:translate-x-1 transition-transform"></iconify-icon>
-            </a>
-          </div>
-        </div>
-        <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-500 reveal" style="transition-delay:.3s">
-          <div class="relative h-56 overflow-hidden">
-            <img src="https://picsum.photos/seed/construction-crane/800/600" alt="Konstruksi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
-            <div class="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-gold-500/90 flex items-center justify-center text-white">
-              <iconify-icon icon="lucide:hard-hat" width="22"></iconify-icon>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-serif text-xl font-medium">Konstruksi Bangunan</h3>
-            <p class="text-stone-500 text-sm font-light mt-2 leading-relaxed">Pelaksanaan pembangunan dari pondasi hingga finishing dengan kualitas dan ketepatan waktu terjamin.</p>
-            <a href="#" onclick="navigateTo('services');return false" class="inline-flex items-center gap-1 text-gold-600 text-sm font-medium mt-4 group/link">
-              Selengkapnya <iconify-icon icon="lucide:arrow-right" width="14" class="group-hover/link:translate-x-1 transition-transform"></iconify-icon>
-            </a>
-          </div>
-        </div>
+        @empty
+          <div class="md:col-span-2 lg:col-span-3 text-center py-12 text-stone-400">Data layanan belum tersedia.</div>
+        @endforelse
       </div>
     </div>
   </section>
@@ -524,40 +494,82 @@ footer a:hover{color:#ffb3b3!important}
 
   <section class="py-24 px-6 bg-stone-100">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">Testimoni</span>
-        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">Apa Kata <em class="text-navy-600">Klien Kami</em></h2>
+      <div class="text-center mb-14">
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">{{ $settings['testimonial_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['testimonial_title_primary'] }} <em class="text-navy-600">{{ $settings['testimonial_title_highlight'] }}</em></h2>
+        @if(!empty($settings['testimonial_description']))
+          <p class="text-stone-500 mt-4 max-w-2xl mx-auto font-light reveal" style="transition-delay:.2s">{{ $settings['testimonial_description'] }}</p>
+        @endif
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="tilt-card bg-white rounded-2xl p-8 shadow-md reveal" style="transition-delay:.1s">
-          <div class="flex gap-1 text-gold-500 mb-4">
-            <iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @forelse($testimonials as $testimonial)
+          @php
+            $initials = collect(preg_split('/\s+/', trim($testimonial->name)) ?: [])
+                ->filter()
+                ->take(2)
+                ->map(fn($part) => mb_strtoupper(mb_substr($part, 0, 1)))
+                ->implode('');
+            $identityParts = array_filter([$testimonial->position, $testimonial->company]);
+          @endphp
+          <div class="tilt-card bg-white rounded-2xl p-8 shadow-md reveal" style="transition-delay:.{{ min($loop->iteration, 9) }}s">
+            <div class="flex gap-1 mb-4">
+              @for($star = 1; $star <= 5; $star++)
+                <iconify-icon icon="lucide:star" width="16" class="{{ $star <= $testimonial->rating ? 'text-gold-500' : 'text-stone-300' }}"></iconify-icon>
+              @endfor
+            </div>
+            <p class="text-stone-600 text-sm font-light leading-relaxed italic">“{{ $testimonial->testimonial }}”</p>
+            <div class="flex items-center gap-3 mt-6">
+              <div class="w-10 h-10 rounded-full bg-navy-700 text-white flex items-center justify-center text-xs font-semibold">{{ $initials ?: 'K' }}</div>
+              <div class="min-w-0">
+                <div class="text-sm font-medium truncate">{{ $testimonial->name }}</div>
+                @if(count($identityParts))
+                  <div class="text-xs text-stone-400 truncate">{{ implode(', ', $identityParts) }}</div>
+                @elseif($testimonial->service)
+                  <div class="text-xs text-stone-400 truncate">{{ $testimonial->service->title }}</div>
+                @endif
+              </div>
+            </div>
           </div>
-          <p class="text-stone-600 text-sm font-light leading-relaxed italic">"{{ $settings['short_name'] }} berhasil mewujudkan visi kami untuk kantor pusat yang modern dan efisien. Prosesnya profesional dari awal hingga akhir."</p>
-          <div class="flex items-center gap-3 mt-6">
-            <img src="https://picsum.photos/seed/ceo-man/100/100" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div><div class="text-sm font-medium">Hendra Wijaya</div><div class="text-xs text-stone-400">CEO, PT Maju Bersama</div></div>
+        @empty
+          <div class="md:col-span-2 lg:col-span-3 bg-white rounded-2xl p-10 text-center shadow-sm">
+            <iconify-icon icon="lucide:message-square-heart" width="34" class="text-stone-300"></iconify-icon>
+            <p class="text-stone-500 text-sm mt-3">{{ $settings['testimonial_empty_text'] }}</p>
           </div>
-        </div>
-        <div class="tilt-card bg-white rounded-2xl p-8 shadow-md reveal" style="transition-delay:.2s">
-          <div class="flex gap-1 text-gold-500 mb-4">
-            <iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon>
+        @endforelse
+      </div>
+
+      <div class="mt-14 bg-white rounded-2xl shadow-md p-7 md:p-9 reveal">
+        <div class="grid lg:grid-cols-[.9fr_1.4fr] gap-8 items-start">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-50 text-gold-600 flex items-center justify-center mb-5">
+              <iconify-icon icon="lucide:message-square-plus" width="22"></iconify-icon>
+            </div>
+            <h3 class="font-serif text-2xl">{{ $settings['testimonial_form_title'] }}</h3>
+            <p class="text-stone-500 text-sm font-light leading-relaxed mt-3">{{ $settings['testimonial_form_description'] }}</p>
+            <div class="mt-5 p-4 rounded-xl bg-blue-50 border border-blue-100 text-xs text-blue-800 leading-relaxed">
+              {{ $settings['testimonial_review_notice'] }}
+            </div>
           </div>
-          <p class="text-stone-600 text-sm font-light leading-relaxed italic">"Desain interior rumah kami luar biasa. Tim {{ $settings['short_name'] }} sangat mendengarkan kebutuhan dan menghasilkan sesuatu yang melebihi ekspektasi."</p>
-          <div class="flex items-center gap-3 mt-6">
-            <img src="https://picsum.photos/seed/woman-elegant/100/100" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div><div class="text-sm font-medium">Diana Kusuma</div><div class="text-xs text-stone-400">Pemilik, Residensi Permata</div></div>
-          </div>
-        </div>
-        <div class="tilt-card bg-white rounded-2xl p-8 shadow-md reveal" style="transition-delay:.3s">
-          <div class="flex gap-1 text-gold-500 mb-4">
-            <iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon><iconify-icon icon="lucide:star" width="16"></iconify-icon>
-          </div>
-          <p class="text-stone-600 text-sm font-light leading-relaxed italic">"Renovasi hotel kami selesai 2 minggu lebih cepat dari jadwal dengan kualitas yang sangat memuaskan. Sangat merekomendasikan {{ $settings['short_name'] }}."</p>
-          <div class="flex items-center gap-3 mt-6">
-            <img src="https://picsum.photos/seed/hotel-manager/100/100" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div><div class="text-sm font-medium">Rizal Pratama</div><div class="text-xs text-stone-400">GM, Hotel Grand Nusantara</div></div>
-          </div>
+          <form id="testimonial-form" onsubmit="handleTestimonialSubmit(event)" class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_name_label'] }} *</label><input type="text" name="name" required maxlength="160" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['testimonial_name_placeholder'] }}"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_email_label'] }} *</label><input type="email" name="email" required maxlength="180" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['testimonial_email_placeholder'] }}"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_company_label'] }}</label><input type="text" name="company" maxlength="180" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['testimonial_company_placeholder'] }}"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_position_label'] }}</label><input type="text" name="position" maxlength="180" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['testimonial_position_placeholder'] }}"></div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_phone_label'] }}</label><input type="tel" name="phone" maxlength="60" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['testimonial_phone_placeholder'] }}"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_service_label'] }}</label><select name="service_id" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">{{ $settings['testimonial_service_placeholder'] }}</option>@foreach($services as $service)<option value="{{ $service->id }}">{{ $service->title }}</option>@endforeach</select></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_rating_label'] }} *</label><select name="rating" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="5">{{ $settings['testimonial_rating_5_label'] }}</option><option value="4">{{ $settings['testimonial_rating_4_label'] }}</option><option value="3">{{ $settings['testimonial_rating_3_label'] }}</option><option value="2">{{ $settings['testimonial_rating_2_label'] }}</option><option value="1">{{ $settings['testimonial_rating_1_label'] }}</option></select></div>
+            </div>
+            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['testimonial_content_label'] }} *</label><textarea name="testimonial" required minlength="20" maxlength="3000" rows="5" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all resize-y" placeholder="{{ $settings['testimonial_content_placeholder'] }}"></textarea></div>
+            <button type="submit" class="px-7 py-3.5 bg-navy-700 text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-navy-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              <iconify-icon icon="lucide:send" width="14"></iconify-icon> {{ $settings['testimonial_submit_label'] }}
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -580,32 +592,34 @@ footer a:hover{color:#ffb3b3!important}
 <!-- ==================== PAGE: ABOUT ==================== -->
 <div id="page-about" class="page">
   <section class="parallax-hero grain" style="min-height:60vh">
-    <div class="bg-layer" style="background-image:url('https://picsum.photos/seed/team-meeting/1920/900')"></div>
+    <div class="bg-layer" style="background-image:url('{{ $settings['about_hero_image_url'] }}')"></div>
     <div class="overlay"></div>
     <div class="content w-full max-w-7xl mx-auto px-6 pt-32 pb-20">
-      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">Tentang Kami</span>
-      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">Membangun Kepercayaan,<br><em class="gradient-text">Mewujudkan Visi</em></h1>
-      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">Mengenal lebih dekat {{ $settings['company'] }} — mitra terpercaya Anda dalam dunia konstruksi dan desain.</p>
+      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">{{ $settings['about_hero_eyebrow'] }}</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['about_hero_title_primary'] }}<br><em class="gradient-text">{{ $settings['about_hero_title_highlight'] }}</em></h1>
+      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">{{ $settings['about_hero_description'] }}</p>
     </div>
   </section>
   <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
       <div class="reveal-left">
-        <img src="https://picsum.photos/seed/architect-plan/800/600" alt="Company" class="w-full h-[400px] object-cover rounded-2xl shadow-xl">
+        <img src="{{ $settings['about_story_image_url'] }}" alt="{{ $settings['about_story_eyebrow'] }}" class="w-full h-[400px] object-cover rounded-2xl shadow-xl">
       </div>
       <div class="reveal-right">
-        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600">Cerita Kami</span>
-        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4">Dari Visi Menjadi <em class="text-navy-600">Realitas</em></h2>
-        <p class="text-stone-600 font-light leading-relaxed mt-6">{{ $settings['company'] }} didirikan pada tahun {{ $settings['founded_year'] }} oleh Ir. Budi Santoso dengan visi sederhana namun ambisius: menciptakan ruang dan bangunan yang tidak hanya indah secara visual, tetapi juga fungsional, berkelanjutan, dan bernilai tinggi.</p>
-        <p class="text-stone-600 font-light leading-relaxed mt-4">Berawal dari sebuah studio kecil di Jakarta Selatan dengan 5 orang tim, kini {{ $settings['short_name'] }} telah berkembang menjadi perusahaan konstruksi terintegrasi dengan lebih dari {{ $settings['stat_team'] }} profesional yang telah menyelesaikan {{ $settings['stat_projects'] }}+ proyek di seluruh Indonesia.</p>
-        <div class="grid grid-cols-2 gap-6 mt-8">
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600">{{ $settings['about_story_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4">{{ $settings['about_story_title_primary'] }} <em class="text-navy-600">{{ $settings['about_story_title_highlight'] }}</em></h2>
+        <p class="text-stone-600 font-light leading-relaxed mt-6">{{ $settings['about_story_paragraph_1'] }}</p>
+        @if(!empty($settings['about_story_paragraph_2']))
+          <p class="text-stone-600 font-light leading-relaxed mt-4">{{ $settings['about_story_paragraph_2'] }}</p>
+        @endif
+        <div class="grid sm:grid-cols-2 gap-6 mt-8">
           <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:target" width="18"></iconify-icon></div>
-            <div><div class="text-sm font-medium">Bersertifikasi</div><div class="text-xs text-stone-400">ISO 9001, ISO 14001, OHSAS</div></div>
+            <div class="w-10 h-10 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:briefcase-business" width="18"></iconify-icon></div>
+            <div><div class="text-sm font-medium">{{ $settings['about_feature_1_title'] }}</div><div class="text-xs text-stone-500 leading-relaxed mt-1">{{ $settings['about_feature_1_description'] }}</div></div>
           </div>
           <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:map-pin" width="18"></iconify-icon></div>
-            <div><div class="text-sm font-medium">Nasional</div><div class="text-xs text-stone-400">Proyek di 15+ kota</div></div>
+            <div class="w-10 h-10 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:hard-hat" width="18"></iconify-icon></div>
+            <div><div class="text-sm font-medium">{{ $settings['about_feature_2_title'] }}</div><div class="text-xs text-stone-500 leading-relaxed mt-1">{{ $settings['about_feature_2_description'] }}</div></div>
           </div>
         </div>
       </div>
@@ -615,17 +629,16 @@ footer a:hover{color:#ffb3b3!important}
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
       <div class="tilt-card bg-white rounded-2xl p-10 shadow-md reveal" style="transition-delay:.1s">
         <div class="w-14 h-14 rounded-xl bg-navy-700 flex items-center justify-center text-gold-400 mb-6"><iconify-icon icon="lucide:eye" width="24"></iconify-icon></div>
-        <h3 class="font-serif text-2xl mb-4">Visi</h3>
-        <p class="text-stone-600 font-light leading-relaxed">Menjadi perusahaan konstruksi dan desain terdepan di Indonesia yang dikenal karena inovasi, kualitas, dan keberlanjutan, serta menjadi pilihan utama dalam mewujudkan bangunan dan ruang yang menginspirasi.</p>
+        <h3 class="font-serif text-2xl mb-4">{{ $settings['about_vision_title'] }}</h3>
+        <p class="text-stone-600 font-light leading-relaxed">{{ $settings['about_vision'] }}</p>
       </div>
       <div class="tilt-card bg-white rounded-2xl p-10 shadow-md reveal" style="transition-delay:.2s">
         <div class="w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white mb-6"><iconify-icon icon="lucide:compass" width="24"></iconify-icon></div>
-        <h3 class="font-serif text-2xl mb-4">Misi</h3>
+        <h3 class="font-serif text-2xl mb-4">{{ $settings['about_mission_title'] }}</h3>
         <ul class="text-stone-600 font-light leading-relaxed space-y-3">
-          <li class="flex items-start gap-2"><iconify-icon icon="lucide:check-circle-2" width="16" class="text-gold-500 mt-1 flex-shrink-0"></iconify-icon>Menyediakan layanan konstruksi dan desain berkualitas internasional</li>
-          <li class="flex items-start gap-2"><iconify-icon icon="lucide:check-circle-2" width="16" class="text-gold-500 mt-1 flex-shrink-0"></iconify-icon>Mengadopsi teknologi terkini dalam setiap proses kerja</li>
-          <li class="flex items-start gap-2"><iconify-icon icon="lucide:check-circle-2" width="16" class="text-gold-500 mt-1 flex-shrink-0"></iconify-icon>Membangun tim profesional yang terus berkembang</li>
-          <li class="flex items-start gap-2"><iconify-icon icon="lucide:check-circle-2" width="16" class="text-gold-500 mt-1 flex-shrink-0"></iconify-icon>Berkontribusi pada pembangunan berkelanjutan Indonesia</li>
+          @foreach($settings['about_mission_items'] as $mission)
+            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check-circle-2" width="16" class="text-gold-500 mt-1 flex-shrink-0"></iconify-icon><span>{{ $mission }}</span></li>
+          @endforeach
         </ul>
       </div>
     </div>
@@ -633,23 +646,44 @@ footer a:hover{color:#ffb3b3!important}
   <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">Nilai-Nilai Kami</span>
-        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">Prinsip yang <em class="text-navy-600">Kami Pegang</em></h2>
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">{{ $settings['about_values_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['about_values_title_primary'] }} <em class="text-navy-600">{{ $settings['about_values_title_highlight'] }}</em></h2>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-        <div class="tilt-card text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.05s"><div class="text-3xl mb-3">🏆</div><h4 class="font-medium text-sm">Integritas</h4><p class="text-xs text-stone-400 mt-2 font-light">Jujur dan transparan dalam setiap aspek pekerjaan</p></div>
-        <div class="tilt-card text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.1s"><div class="text-3xl mb-3">💡</div><h4 class="font-medium text-sm">Inovasi</h4><p class="text-xs text-stone-400 mt-2 font-light">Selalu mencari solusi kreatif dan terkini</p></div>
-        <div class="tilt-card text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.15s"><div class="text-3xl mb-3">🤝</div><h4 class="font-medium text-sm">Kolaborasi</h4><p class="text-xs text-stone-400 mt-2 font-light">Bekerja sama sebagai satu tim dengan klien</p></div>
-        <div class="tilt-card text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.2s"><div class="text-3xl mb-3">📐</div><h4 class="font-medium text-sm">Presisi</h4><p class="text-xs text-stone-400 mt-2 font-light">Perhatian mendalam terhadap setiap detail</p></div>
-        <div class="tilt-card text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.25s"><div class="text-3xl mb-3">🌱</div><h4 class="font-medium text-sm">Keberlanjutan</h4><p class="text-xs text-stone-400 mt-2 font-light">Bertanggung jawab terhadap lingkungan</p></div>
+        @foreach($settings['about_values'] as $value)
+          <div class="tilt-card text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:{{ number_format(($loop->index + 1) * 0.05, 2) }}s">
+            @if(!empty($value['icon']))<div class="text-3xl mb-3">{{ $value['icon'] }}</div>@endif
+            <h4 class="font-medium text-sm">{{ $value['title'] ?? '' }}</h4>
+            @if(!empty($value['description']))<p class="text-xs text-stone-400 mt-2 font-light">{{ $value['description'] }}</p>@endif
+          </div>
+        @endforeach
       </div>
     </div>
   </section>
+
+  @if(!empty($settings['organization_chart_url']))
+  <section class="py-24 px-6 bg-stone-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">{{ $settings['organization_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['organization_title_primary'] }} <em class="text-navy-600">{{ $settings['organization_title_highlight'] }}</em></h2>
+        @if(!empty($settings['organization_description']))
+          <p class="text-stone-500 mt-4 max-w-2xl mx-auto font-light reveal" style="transition-delay:.2s">{{ $settings['organization_description'] }}</p>
+        @endif
+      </div>
+      <div class="bg-white rounded-3xl p-4 sm:p-8 shadow-xl border border-stone-100 reveal">
+        <a href="{{ $settings['organization_chart_url'] }}" target="_blank" rel="noopener" class="block">
+          <img src="{{ $settings['organization_chart_url'] }}" alt="{{ $settings['organization_title_primary'] }} {{ $settings['organization_title_highlight'] }}" class="w-full max-h-[900px] object-contain rounded-2xl bg-white" loading="lazy">
+        </a>
+      </div>
+    </div>
+  </section>
+  @endif
   <section class="py-24 px-6 bg-navy-800">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">Tim Kami</span>
-        <h2 class="font-serif text-3xl sm:text-4xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">Para <em class="gradient-text">Ahli</em> di Balik {{ $settings['short_name'] }}</h2>
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">{{ $settings['about_team_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['about_team_title_primary'] }} <em class="gradient-text">{{ str_replace('{short_name}', $settings['short_name'], $settings['about_team_title_highlight']) }}</em></h2>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         @forelse($team as $member)
@@ -714,9 +748,9 @@ footer a:hover{color:#ffb3b3!important}
   <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">Standar & Legalitas</span>
-        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">Certification <em class="text-navy-600">Perusahaan</em></h2>
-        <p class="text-stone-500 mt-4 max-w-2xl mx-auto font-light reveal" style="transition-delay:.2s">Sertifikasi dan legalitas yang mendukung standar mutu, keselamatan, serta profesionalisme perusahaan.</p>
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">{{ $settings['about_cert_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['about_cert_title_primary'] }} <em class="text-navy-600">{{ $settings['about_cert_title_highlight'] }}</em></h2>
+        <p class="text-stone-500 mt-4 max-w-2xl mx-auto font-light reveal" style="transition-delay:.2s">{{ $settings['about_cert_description'] }}</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -813,77 +847,61 @@ footer a:hover{color:#ffb3b3!important}
 <!-- ==================== PAGE: SERVICES ==================== -->
 <div id="page-services" class="page">
   <section class="parallax-hero grain" style="min-height:60vh">
-    <div class="bg-layer" style="background-image:url('https://picsum.photos/seed/blueprint-plan/1920/900')"></div>
+    <div class="bg-layer" style="background-image:url('{{ $settings['service_hero_image_url'] }}')"></div>
     <div class="overlay"></div>
     <div class="content w-full max-w-7xl mx-auto px-6 pt-32 pb-20">
-      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">Layanan</span>
-      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">Layanan <em class="gradient-text">Komprehensif</em></h1>
-      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">Solusi end-to-end untuk setiap kebutuhan konstruksi, arsitektur, dan desain Anda.</p>
+      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">{{ $settings['service_hero_eyebrow'] }}</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['service_hero_title_primary'] }} <em class="gradient-text">{{ $settings['service_hero_title_highlight'] }}</em></h1>
+      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">{{ $settings['service_hero_description'] }}</p>
     </div>
   </section>
+
   <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto space-y-20">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal-left"><div class="relative rounded-2xl overflow-hidden group"><img src="https://picsum.photos/seed/interior-modern-room/800/600" alt="Desain Interior" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"><div class="absolute top-4 left-4 w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white"><iconify-icon icon="lucide:sofa" width="24"></iconify-icon></div></div></div>
-        <div class="reveal-right"><span class="text-gold-600 font-semibold text-sm">01</span><h2 class="font-serif text-3xl tracking-tight mt-2">Desain Interior</h2><p class="text-stone-600 font-light leading-relaxed mt-4">Kami merancang interior yang menggabungkan estetika, kenyamanan, dan fungsionalitas. Dari ruang tamu minimalis hingga lobi hotel mewah, setiap detail dirancang dengan presisi tinggi menggunakan software 3D rendering terkini.</p><ul class="mt-6 space-y-3"><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Desain ruang residensial & komersial</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>3D visualisasi & rendering fotorealistik</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Pemilihan material & furniture custom</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Lighting design & penataan warna</li></ul></div>
-      </div>
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1 reveal-left"><span class="text-gold-600 font-semibold text-sm">02</span><h2 class="font-serif text-3xl tracking-tight mt-2">Desain Gedung & Arsitektur</h2><p class="text-stone-600 font-light leading-relaxed mt-4">Layanan arsitektur lengkap dari konsep hingga dokumen gambar kerja (DED). Kami mengintegrasikan prinsip sustainable design, efisiensi energi, dan kepatuhan terhadap regulasi bangunan Indonesia.</p><ul class="mt-6 space-y-3"><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Perencanaan arsitektur & master plan</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Desain gedung tinggi & kompleks</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>BIM (Building Information Modeling)</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Pengurusan IMB/PBG & sertifikasi</li></ul></div>
-        <div class="order-1 lg:order-2 reveal-right"><div class="relative rounded-2xl overflow-hidden group"><img src="https://picsum.photos/seed/tall-building-design/800/600" alt="Desain Gedung" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"><div class="absolute top-4 right-4 w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white"><iconify-icon icon="lucide:building-2" width="24"></iconify-icon></div></div></div>
-      </div>
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal-left"><div class="relative rounded-2xl overflow-hidden group"><img src="https://picsum.photos/seed/renovation-work/800/600" alt="Renovasi" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"><div class="absolute top-4 left-4 w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white"><iconify-icon icon="lucide:wrench" width="24"></iconify-icon></div></div></div>
-        <div class="reveal-right"><span class="text-gold-600 font-semibold text-sm">03</span><h2 class="font-serif text-3xl tracking-tight mt-2">Renovasi & Restorasi</h2><p class="text-stone-600 font-light leading-relaxed mt-4">Memberikan kehidupan baru pada bangunan yang sudah ada. Kami menangani renovasi skala kecil hingga restorasi bangunan heritage dengan menjaga karakter asli sekaligus memodernisasi fasilitas.</p><ul class="mt-6 space-y-3"><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Assessment struktural & visual</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Renovasi interior & eksterior</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Restorasi bangunan cagar budaya</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Perkuatan struktur & retrofit</li></ul></div>
-      </div>
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1 reveal-left"><span class="text-gold-600 font-semibold text-sm">04</span><h2 class="font-serif text-3xl tracking-tight mt-2">Konstruksi Bangunan Baru</h2><p class="text-stone-600 font-light leading-relaxed mt-4">Pelaksanaan proyek konstruksi dari ground-breaking hingga serah terima. Didukung oleh tim site manager berpengalaman dan supply chain yang terintegrasi untuk memastikan kualitas dan ketepatan waktu.</p><ul class="mt-6 space-y-3"><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Konstruksi residensial, komersial & industri</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Manajemen proyek & quality control</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Health, Safety & Environment (HSE)</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Commissioning & serah terima</li></ul></div>
-        <div class="order-1 lg:order-2 reveal-right"><div class="relative rounded-2xl overflow-hidden group"><img src="https://picsum.photos/seed/new-construction/800/600" alt="Konstruksi" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"><div class="absolute top-4 right-4 w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white"><iconify-icon icon="lucide:hard-hat" width="24"></iconify-icon></div></div></div>
-      </div>
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal-left"><div class="relative rounded-2xl overflow-hidden group"><img src="https://picsum.photos/seed/garden-landscape/800/600" alt="Landscape" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" style="height:400px"><div class="absolute top-4 left-4 w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white"><iconify-icon icon="lucide:trees" width="24"></iconify-icon></div></div></div>
-        <div class="reveal-right"><span class="text-gold-600 font-semibold text-sm">05</span><h2 class="font-serif text-3xl tracking-tight mt-2">Desain Landscape</h2><p class="text-stone-600 font-light leading-relaxed mt-4">Menciptakan ruang terbuka hijau yang harmonis dengan bangunan dan lingkungan sekitar. Mulai dari taman pribadi, rooftop garden, hingga masterplan landscape kawasan.</p><ul class="mt-6 space-y-3"><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Taman & garden design</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Rooftop & vertical garden</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Hardscape & softscape planning</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Irigasi & pencahayaan taman</li></ul></div>
-      </div>
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1 reveal-left"><span class="text-gold-600 font-semibold text-sm">06</span><h2 class="font-serif text-3xl tracking-tight mt-2">Manajemen Proyek & Konsultansi</h2><p class="text-stone-600 font-light leading-relaxed mt-4">Layanan pengelolaan proyek profesional untuk memastikan setiap aspek konstruksi berjalan sesuai rencana, anggaran, dan jadwal. Termasuk pengawasan independen dan manajemen risiko.</p><ul class="mt-6 space-y-3"><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Project management & scheduling</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Cost estimation & budget control</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Pengawasan & quality assurance</li><li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>Laporan progres & dokumentasi</li></ul></div>
-        <div class="order-1 lg:order-2 reveal-right"><div class="relative rounded-2xl overflow-hidden group"><img src="https://picsum.photos/seed/project-meeting/800/600" alt="Manajemen Proyek" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"><div class="absolute top-4 right-4 w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white"><iconify-icon icon="lucide:clipboard-list" width="24"></iconify-icon></div></div></div>
-      </div>
+      @forelse($services as $service)
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="{{ $loop->even ? 'order-1 lg:order-2 reveal-right' : 'reveal-left' }}">
+            <div class="relative rounded-2xl overflow-hidden group">
+              <img src="{{ $service->imageUrl() }}" alt="{{ $service->title }}" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute top-4 {{ $loop->even ? 'right-4' : 'left-4' }} w-14 h-14 rounded-xl bg-gold-500 flex items-center justify-center text-white">
+                <iconify-icon icon="lucide:{{ $service->icon ?: 'hard-hat' }}" width="24"></iconify-icon>
+              </div>
+            </div>
+          </div>
+          <div class="{{ $loop->even ? 'order-2 lg:order-1 reveal-left' : 'reveal-right' }}">
+            <span class="text-gold-600 font-semibold text-sm">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+            <h2 class="font-serif text-3xl tracking-tight mt-2">{{ $service->title }}</h2>
+            <p class="text-stone-600 font-light leading-relaxed mt-4">{{ $service->description }}</p>
+            @if(!empty($service->features))
+              <ul class="mt-6 space-y-3">
+                @foreach($service->features as $feature)
+                  <li class="flex items-center gap-3 text-sm text-stone-600"><iconify-icon icon="lucide:check" width="16" class="text-gold-500"></iconify-icon>{{ $feature }}</li>
+                @endforeach
+              </ul>
+            @endif
+          </div>
+        </div>
+      @empty
+        <div class="text-center py-16 text-stone-400 reveal">Data layanan belum tersedia. Silakan tambahkan layanan melalui Admin Panel.</div>
+      @endforelse
     </div>
   </section>
+
   <section class="py-24 px-6 bg-stone-100">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">Proses Kerja</span>
-        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">Bagaimana Kami <em class="text-navy-600">Bekerja</em></h2>
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600 reveal">{{ $settings['service_process_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['service_process_title_primary'] }} <em class="text-navy-600">{{ $settings['service_process_title_highlight'] }}</em></h2>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="tilt-card bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.1s"><div class="w-12 h-12 mx-auto rounded-full bg-navy-700 text-gold-400 flex items-center justify-center text-lg font-serif mb-4">1</div><h4 class="font-medium">Konsultasi</h4><p class="text-stone-500 text-sm font-light mt-2">Diskusi kebutuhan, visi, anggaran, dan timeline proyek Anda.</p></div>
-        <div class="tilt-card bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.2s"><div class="w-12 h-12 mx-auto rounded-full bg-navy-700 text-gold-400 flex items-center justify-center text-lg font-serif mb-4">2</div><h4 class="font-medium">Perencanaan</h4><p class="text-stone-500 text-sm font-light mt-2">Studi kelayakan, desain konseptual, dan penyusunan RAB.</p></div>
-        <div class="tilt-card bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.3s"><div class="w-12 h-12 mx-auto rounded-full bg-navy-700 text-gold-400 flex items-center justify-center text-lg font-serif mb-4">3</div><h4 class="font-medium">Eksekusi</h4><p class="text-stone-500 text-sm font-light mt-2">Pelaksanaan proyek dengan pengawasan ketat dan laporan berkala.</p></div>
-        <div class="tilt-card bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.4s"><div class="w-12 h-12 mx-auto rounded-full bg-gold-500 text-white flex items-center justify-center text-lg font-serif mb-4">4</div><h4 class="font-medium">Serah Terima</h4><p class="text-stone-500 text-sm font-light mt-2">Final inspection, dokumentasi, dan garansi pemeliharaan.</p></div>
+        @foreach($settings['service_process_steps'] as $step)
+          <div class="tilt-card bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow duration-500 reveal" style="transition-delay:.{{ min($loop->iteration, 9) }}s">
+            <div class="w-12 h-12 mx-auto rounded-full {{ $loop->last ? 'bg-gold-500 text-white' : 'bg-navy-700 text-gold-400' }} flex items-center justify-center text-lg font-serif mb-4">{{ $loop->iteration }}</div>
+            <h4 class="font-medium">{{ $step['title'] ?? '' }}</h4>
+            <p class="text-stone-500 text-sm font-light mt-2">{{ $step['description'] ?? '' }}</p>
+          </div>
+        @endforeach
       </div>
-    </div>
-  </section>
-</div>
-
-<!-- ==================== PAGE: CATEGORIES ==================== -->
-<div id="page-categories" class="page">
-  <section class="parallax-hero grain" style="min-height:60vh">
-    <div class="bg-layer" style="background-image:url('https://picsum.photos/seed/design-styles/1920/900')"></div>
-    <div class="overlay"></div>
-    <div class="content w-full max-w-7xl mx-auto px-6 pt-32 pb-20">
-      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">Kategori Desain</span>
-      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">Temukan Gaya <em class="gradient-text">Desain</em> Anda</h1>
-      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">Berbagai kategori tema desain dari interior hingga arsitektur gedung yang bisa kami wujudkan.</p>
-    </div>
-  </section>
-  <section class="py-24 px-6">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 reveal" style="transition-delay:.05s"><div class="relative h-64 overflow-hidden"><img src="https://picsum.photos/seed/minimalist-white/800/600" alt="Minimalis Modern" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent"></div><div class="absolute bottom-4 left-4 right-4"><span class="text-[10px] tracking-[.15em] uppercase text-gold-400 font-semibold">Interior • Arsitektur</span><h3 class="text-white font-serif text-xl mt-1">Minimalis Modern</h3></div></div><div class="p-6"><p class="text-stone-500 text-sm font-light leading-relaxed">Gaya yang menekankan kesederhanaan, garis bersih, dan ruang terbuka. Menggunakan palet warna netral dengan aksen material alami seperti kayu dan batu.</p><div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Clean Lines</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Netral</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Fungsional</span></div></div></div>
-      <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 reveal" style="transition-delay:.1s"><div class="relative h-64 overflow-hidden"><img src="https://picsum.photos/seed/industrial-loft/800/600" alt="Industrial" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent"></div><div class="absolute bottom-4 left-4 right-4"><span class="text-[10px] tracking-[.15em] uppercase text-gold-400 font-semibold">Interior • Gedung</span><h3 class="text-white font-serif text-xl mt-1">Industrial</h3></div></div><div class="p-6"><p class="text-stone-500 text-sm font-light leading-relaxed">Terinspirasi dari pabrik dan gudang, menampilkan material mentah seperti beton ekspos, baja, dan pipa. Kesan maskulin, tegas, dan autentik.</p><div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Beton Ekspos</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Baja</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Brutalis</span></div></div></div>
-      <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 reveal" style="transition-delay:.15s"><div class="relative h-64 overflow-hidden"><img src="https://picsum.photos/seed/scandi-bright/800/600" alt="Skandinavia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent"></div><div class="absolute bottom-4 left-4 right-4"><span class="text-[10px] tracking-[.15em] uppercase text-gold-400 font-semibold">Interior</span><h3 class="text-white font-serif text-xl mt-1">Skandinavia</h3></div></div><div class="p-6"><p class="text-stone-500 text-sm font-light leading-relaxed">Desain khas Nordik yang mengutamakan cahaya alami, kenyamanan (hygge), dan koneksi dengan alam. Material kayu terang dan warna pastel dominan.</p><div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Terang</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Kayu</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Cozy</span></div></div></div>
-      <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 reveal" style="transition-delay:.2s"><div class="relative h-64 overflow-hidden"><img src="https://picsum.photos/seed/tropical-villa/800/600" alt="Tropical" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent"></div><div class="absolute bottom-4 left-4 right-4"><span class="text-[10px] tracking-[.15em] uppercase text-gold-400 font-semibold">Arsitektur • Landscape</span><h3 class="text-white font-serif text-xl mt-1">Tropical Nusantara</h3></div></div><div class="p-6"><p class="text-stone-500 text-sm font-light leading-relaxed">Gaya yang mengadaptasi kekayaan arsitektur nusantara dengan sentuhan modern. Atap limasan, material lokal, dan ventilasi silang menjadi ciri khas.</p><div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Lokal</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Hijau</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Tradisional</span></div></div></div>
-      <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 reveal" style="transition-delay:.25s"><div class="relative h-64 overflow-hidden"><img src="https://picsum.photos/seed/luxury-classic-room/800/600" alt="Luxury Classic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent"></div><div class="absolute bottom-4 left-4 right-4"><span class="text-[10px] tracking-[.15em] uppercase text-gold-400 font-semibold">Interior • Eksterior</span><h3 class="text-white font-serif text-xl mt-1">Luxury Classic</h3></div></div><div class="p-6"><p class="text-stone-500 text-sm font-light leading-relaxed">Kemewahan abadi dengan ornamen detail, marmer, crystal, dan furnitur ukir. Gaya ini cocok untuk hunian mewah, hotel bintang lima, dan ruang premium.</p><div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Marmer</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Ornamen</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Mewah</span></div></div></div>
-      <div class="tilt-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 reveal" style="transition-delay:.3s"><div class="relative h-64 overflow-hidden"><img src="https://picsum.photos/seed/green-sustainable/800/600" alt="Eco-Friendly" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent"></div><div class="absolute bottom-4 left-4 right-4"><span class="text-[10px] tracking-[.15em] uppercase text-gold-400 font-semibold">Arsitektur • Interior • Landscape</span><h3 class="text-white font-serif text-xl mt-1">Eco-Friendly / Green Building</h3></div></div><div class="p-6"><p class="text-stone-500 text-sm font-light leading-relaxed">Desain berkelanjutan yang meminimalkan dampak lingkungan. Menggunakan material daur ulang, energi terbarukan, dan teknologi efisiensi air serta energi.</p><div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Sustainable</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Solar</span><span class="px-3 py-1 bg-stone-100 text-stone-600 text-[10px] tracking-wider uppercase rounded-full">Recycled</span></div></div></div>
     </div>
   </section>
 </div>
@@ -891,27 +909,31 @@ footer a:hover{color:#ffb3b3!important}
 <!-- ==================== PAGE: PORTFOLIO ==================== -->
 <div id="page-portfolio" class="page">
   <section class="parallax-hero grain" style="min-height:60vh">
-    <div class="bg-layer" style="background-image:url('https://picsum.photos/seed/skyline-night/1920/900')"></div>
+    <div class="bg-layer" style="background-image:url('{{ $settings['portfolio_hero_image_url'] }}')"></div>
     <div class="overlay"></div>
     <div class="content w-full max-w-7xl mx-auto px-6 pt-32 pb-20">
-      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">Portofolio</span>
-      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">Karya <em class="gradient-text">Terbaik</em> Kami</h1>
-      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">Setiap proyek adalah bukti komitmen kami terhadap kualitas dan inovasi.</p>
+      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">{{ $settings['portfolio_hero_eyebrow'] }}</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['portfolio_hero_title_primary'] }} <em class="gradient-text">{{ $settings['portfolio_hero_title_highlight'] }}</em></h1>
+      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">{{ $settings['portfolio_hero_description'] }}</p>
     </div>
   </section>
   <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
-        <button onclick="filterPortfolio('all')" class="filter-btn active px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border border-stone-300 transition-all duration-300" data-filter="all">Semua</button>
-        <button onclick="filterPortfolio('interior')" class="filter-btn px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border border-stone-300 transition-all duration-300" data-filter="interior">Interior</button>
-        <button onclick="filterPortfolio('gedung')" class="filter-btn px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border border-stone-300 transition-all duration-300" data-filter="gedung">Gedung</button>
-        <button onclick="filterPortfolio('renovasi')" class="filter-btn px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border border-stone-300 transition-all duration-300" data-filter="renovasi">Renovasi</button>
-        <button onclick="filterPortfolio('landscape')" class="filter-btn px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border border-stone-300 transition-all duration-300" data-filter="landscape">Landscape</button>
+      <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" id="portfolio-filters">
+        <button onclick="filterPortfolio('all')" class="filter-btn active px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border border-stone-300 transition-all duration-300" data-filter="all">{{ $settings['portfolio_all_label'] }}</button>
+@foreach($portfolioCategories as $category)
+        <button onclick="filterPortfolio('{{ $category['filter'] }}')" class="filter-btn px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border border-stone-300 transition-all duration-300" data-filter="{{ $category['filter'] }}">{{ $category['title'] }}</button>
+@endforeach
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
 @foreach($portfolios as $i => $p)
-        <div class="portfolio-item show-item group cursor-pointer" data-cat="{{ $p['filter'] }}" onclick="openProjectModal({{ $i }})"><div class="relative rounded-2xl overflow-hidden h-72"><img src="{{ $p['img'] }}" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/70 transition-all duration-500 flex items-end p-6"><div class="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"><span class="text-gold-400 text-[10px] tracking-wider uppercase">{{ $p['cat'] }}</span><h3 class="text-white font-serif text-lg">{{ $p['title'] }}</h3><p class="text-stone-400 text-sm font-light mt-1">{{ $p['loc'] }}, {{ $p['year'] }}</p></div></div></div></div>
+        <div class="portfolio-item show-item group cursor-pointer" data-cat="{{ $p['filter'] }}" onclick="openProjectModal({{ $i }})"><div class="relative rounded-2xl overflow-hidden h-72"><img src="{{ $p['img'] }}" alt="{{ $p['title'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/70 transition-all duration-500 flex items-end p-6"><div class="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"><span class="text-gold-400 text-[10px] tracking-wider uppercase">{{ $p['cat'] }}</span><h3 class="text-white font-serif text-lg">{{ $p['title'] }}</h3><p class="text-stone-400 text-sm font-light mt-1">{{ $p['loc'] }}, {{ $p['year'] }}</p></div></div></div></div>
 @endforeach
+      </div>
+      <div id="portfolio-empty" class="{{ empty($portfolios) ? '' : 'hidden' }} max-w-xl mx-auto text-center py-16">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-stone-100 flex items-center justify-center text-stone-400"><iconify-icon icon="lucide:images" width="28"></iconify-icon></div>
+        <h3 class="font-serif text-2xl text-navy-900 mt-5">{{ $settings['portfolio_empty_title'] }}</h3>
+        <p class="text-stone-500 text-sm font-light leading-relaxed mt-3">{{ $settings['portfolio_empty_description'] }}</p>
       </div>
     </div>
   </section>
@@ -1010,21 +1032,21 @@ footer a:hover{color:#ffb3b3!important}
 <!-- ==================== PAGE: CONTACT ==================== -->
 <div id="page-contact" class="page">
   <section class="parallax-hero grain" style="min-height:60vh">
-    <div class="bg-layer" style="background-image:url('https://picsum.photos/seed/city-aerial/1920/900')"></div>
+    <div class="bg-layer" style="background-image:url('{{ $settings['contact_hero_image_url'] }}')"></div>
     <div class="overlay"></div>
     <div class="content w-full max-w-7xl mx-auto px-6 pt-32 pb-20">
-      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">Kontak</span>
-      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">Mari <em class="gradient-text">Berdiskusi</em></h1>
-      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">Hubungi kami untuk konsultasi gratis mengenai proyek konstruksi dan desain Anda.</p>
+      <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-400 reveal">{{ $settings['contact_hero_eyebrow'] }}</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mt-4 reveal" style="transition-delay:.1s">{{ $settings['contact_hero_title_primary'] }} <em class="gradient-text">{{ $settings['contact_hero_title_highlight'] }}</em></h1>
+      <p class="text-stone-300 font-light mt-6 max-w-xl reveal" style="transition-delay:.2s">{{ $settings['contact_hero_description'] }}</p>
     </div>
   </section>
   <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-5 gap-12">
       <div class="lg:col-span-2 space-y-8">
-        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.1s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:map-pin" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">Kantor Pusat</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['address'] }}</p></div></div></div>
-        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.15s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:phone" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">Telepon</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['phone'] }}<br>{{ $settings['whatsapp'] }} (WhatsApp)</p></div></div></div>
-        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.2s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:mail" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">Email</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['email'] }}@if(!empty($settings['marketing_email']))<br>{{ $settings['marketing_email'] }}@endif</p></div></div></div>
-        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.25s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:clock" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">Jam Operasional</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['office_hours_weekday'] }}@if(!empty($settings['office_hours_saturday']))<br>{{ $settings['office_hours_saturday'] }}@endif</p></div></div></div>
+        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.1s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:map-pin" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">{{ $settings['contact_office_label'] }}</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['address'] }}</p></div></div></div>
+        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.15s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:phone" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">{{ $settings['contact_phone_label'] }}</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['phone'] }}<br>{{ $settings['whatsapp'] }} (WhatsApp)</p></div></div></div>
+        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.2s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:mail" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">{{ $settings['contact_email_label'] }}</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['email'] }}@if(!empty($settings['marketing_email']))<br>{{ $settings['marketing_email'] }}@endif</p></div></div></div>
+        <div class="tilt-card bg-white rounded-2xl p-6 shadow-md reveal" style="transition-delay:.25s"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-xl bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:clock" width="20"></iconify-icon></div><div><h4 class="font-medium text-sm">{{ $settings['contact_hours_label'] }}</h4><p class="text-stone-500 text-sm font-light mt-1">{{ $settings['office_hours_weekday'] }}@if(!empty($settings['office_hours_saturday']))<br>{{ $settings['office_hours_saturday'] }}@endif</p></div></div></div>
         <div class="flex gap-3 reveal" style="transition-delay:.3s">
           @if(!empty($settings['instagram_url']))<a href="{{ $settings['instagram_url'] }}" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl bg-navy-700 flex items-center justify-center text-white hover:bg-gold-500 hover:text-white transition-all duration-300 hover:-translate-y-1"><iconify-icon icon="lucide:instagram" width="18"></iconify-icon></a>@endif
           @if(!empty($settings['facebook_url']))<a href="{{ $settings['facebook_url'] }}" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl bg-navy-700 flex items-center justify-center text-white hover:bg-gold-500 hover:text-white transition-all duration-300 hover:-translate-y-1"><iconify-icon icon="lucide:facebook" width="18"></iconify-icon></a>@endif
@@ -1034,20 +1056,20 @@ footer a:hover{color:#ffb3b3!important}
       </div>
       <div class="lg:col-span-3 reveal-right">
         <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg">
-          <h3 class="font-serif text-2xl mb-2">Kirim Pesan</h3>
-          <p class="text-stone-500 text-sm font-light mb-8">Isi formulir di bawah dan tim kami akan menghubungi Anda dalam 1x24 jam.</p>
+          <h3 class="font-serif text-2xl mb-2">{{ $settings['contact_form_title'] }}</h3>
+          <p class="text-stone-500 text-sm font-light mb-8">{{ $settings['contact_form_description'] }}</p>
           <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
             <div class="grid sm:grid-cols-2 gap-5">
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Nama Lengkap *</label><input type="text" name="name" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="John Doe"></div>
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Email *</label><input type="email" name="email" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="john@email.com"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_form_name_label'] }} *</label><input type="text" name="name" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['contact_form_name_placeholder'] }}"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_form_email_label'] }} *</label><input type="email" name="email" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['contact_form_email_placeholder'] }}"></div>
             </div>
             <div class="grid sm:grid-cols-2 gap-5">
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">No. Telepon *</label><input type="tel" name="phone" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="+62 812-xxxx-xxxx"></div>
-              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Layanan</label><select name="service" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">Pilih layanan...</option><option>Desain Interior</option><option>Desain Gedung / Arsitektur</option><option>Renovasi & Restorasi</option><option>Konstruksi Bangunan Baru</option><option>Desain Landscape</option><option>Manajemen Proyek</option><option>Lainnya</option></select></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase" >{{ $settings['contact_form_phone_label'] }} *</label><input type="tel" name="phone" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['contact_form_phone_placeholder'] }}"></div>
+              <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_form_service_label'] }}</label><select name="service" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">{{ $settings['contact_form_service_placeholder'] }}</option>@foreach($services as $service)<option>{{ $service->title }}</option>@endforeach<option>{{ $settings['contact_form_other_service_label'] }}</option></select></div>
             </div>
-            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Estimasi Anggaran</label><select name="budget" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">Pilih range anggaran...</option><option>< Rp 500 Juta</option><option>Rp 500 Juta - 1 Miliar</option><option>Rp 1 - 5 Miliar</option><option>Rp 5 - 20 Miliar</option><option>> Rp 20 Miliar</option></select></div>
-            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Detail Proyek *</label><textarea name="detail" required rows="5" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all resize-none" placeholder="Ceritakan tentang proyek Anda, lokasi, luas bangunan, timeline yang diharapkan, dll."></textarea></div>
-            <button type="submit" class="w-full py-3.5 bg-navy-700 text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-navy-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2">Kirim Pesan <iconify-icon icon="lucide:send" width="14"></iconify-icon></button>
+            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_form_budget_label'] }}</label><select name="budget" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600"><option value="">{{ $settings['contact_form_budget_placeholder'] }}</option>@foreach($settings['contact_budget_options'] as $budgetOption)<option>{{ $budgetOption }}</option>@endforeach</select></div>
+            <div><label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_form_detail_label'] }} *</label><textarea name="detail" required rows="5" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all resize-none" placeholder="{{ $settings['contact_form_detail_placeholder'] }}"></textarea></div>
+            <button type="submit" class="w-full py-3.5 bg-navy-700 text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-navy-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2">{{ $settings['contact_form_submit_label'] }} <iconify-icon icon="lucide:send" width="14"></iconify-icon></button>
           </form>
         </div>
       </div>
@@ -1058,9 +1080,9 @@ footer a:hover{color:#ffb3b3!important}
   <section class="py-24 px-6 bg-stone-50">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-14 reveal">
-        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600">Penjadwalan</span>
-        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4">Jadwalkan <em class="text-navy-600">Pertemuan</em> Anda</h2>
-        <p class="text-stone-500 mt-4 max-w-2xl mx-auto font-light">Pilih tanggal dan waktu yang nyaman untuk konsultasi langsung dengan tim ahli kami, baik secara tatap muka maupun virtual.</p>
+        <span class="text-xs font-semibold tracking-[.2em] uppercase text-gold-600">{{ $settings['contact_schedule_eyebrow'] }}</span>
+        <h2 class="font-serif text-3xl sm:text-4xl tracking-tight mt-4">{{ $settings['contact_schedule_title_primary'] }} <em class="text-navy-600">{{ $settings['contact_schedule_title_highlight'] }}</em></h2>
+        <p class="text-stone-500 mt-4 max-w-2xl mx-auto font-light">{{ $settings['contact_schedule_description'] }}</p>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-8">
@@ -1094,17 +1116,17 @@ footer a:hover{color:#ffb3b3!important}
           <!-- Time Slots -->
           <div id="time-section" class="bg-white rounded-2xl shadow-md p-6 md:p-8 reveal-left" style="transition-delay:.2s;opacity:.5;pointer-events:none;transition:opacity .3s ease, transform .3s ease">
             <h3 class="font-medium text-sm tracking-wider uppercase text-stone-500 mb-1 flex items-center gap-2">
-              <iconify-icon icon="lucide:clock" width="16" class="text-navy-600"></iconify-icon> Pilih Waktu
+              <iconify-icon icon="lucide:clock" width="16" class="text-navy-600"></iconify-icon> {{ $settings['contact_schedule_time_picker_title'] }}
             </h3>
-            <p id="time-subtitle" class="text-xs text-stone-400 mb-5">Pilih tanggal terlebih dahulu</p>
+            <p id="time-subtitle" class="text-xs text-stone-400 mb-5">{{ $settings['contact_schedule_time_picker_hint'] }}</p>
             <!-- Morning -->
             <div class="mb-4">
-              <div class="text-[10px] font-semibold tracking-wider uppercase text-stone-400 mb-2">Pagi</div>
+              <div class="text-[10px] font-semibold tracking-wider uppercase text-stone-400 mb-2">{{ $settings['contact_schedule_morning_label'] }}</div>
               <div id="time-morning" class="grid grid-cols-4 gap-2"></div>
             </div>
             <!-- Afternoon -->
             <div>
-              <div class="text-[10px] font-semibold tracking-wider uppercase text-stone-400 mb-2">Siang</div>
+              <div class="text-[10px] font-semibold tracking-wider uppercase text-stone-400 mb-2">{{ $settings['contact_schedule_afternoon_label'] }}</div>
               <div id="time-afternoon" class="grid grid-cols-4 gap-2"></div>
             </div>
           </div>
@@ -1115,38 +1137,33 @@ footer a:hover{color:#ffb3b3!important}
           <!-- Booking Form -->
           <div id="booking-form-card" class="bg-white rounded-2xl shadow-md p-6 md:p-8 reveal-right" style="transition-delay:.15s">
             <h3 class="font-serif text-lg mb-6 flex items-center gap-2">
-              <iconify-icon icon="lucide:user-check" width="20" class="text-navy-600"></iconify-icon> Detail Pertemuan
+              <iconify-icon icon="lucide:user-check" width="20" class="text-navy-600"></iconify-icon> {{ $settings['contact_schedule_detail_title'] }}
             </h3>
             <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-5">
               <div>
-                <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Jenis Pertemuan *</label>
+                <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_schedule_type_label'] }} *</label>
                 <select id="bk-type" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all text-stone-600">
-                  <option value="">Pilih jenis pertemuan...</option>
-                  <option>Konsultasi Proyek Baru</option>
-                  <option>Review Desain</option>
-                  <option>Serah Terima Proyek</option>
-                  <option>Site Visit / Inspeksi</option>
-                  <option>Meeting Virtual (Zoom/Google Meet)</option>
-                  <option>Lainnya</option>
+                  <option value="">{{ $settings['contact_schedule_type_placeholder'] }}</option>
+                  @foreach($settings['contact_schedule_types'] as $meetingType)<option>{{ $meetingType }}</option>@endforeach
                 </select>
               </div>
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Nama Lengkap *</label>
-                  <input type="text" id="bk-name" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="Nama Anda">
+                  <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_schedule_name_label'] }} *</label>
+                  <input type="text" id="bk-name" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['contact_schedule_name_placeholder'] }}">
                 </div>
                 <div>
-                  <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">No. Telepon *</label>
-                  <input type="tel" id="bk-phone" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="+62 812-xxxx-xxxx">
+                  <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_schedule_phone_label'] }} *</label>
+                  <input type="tel" id="bk-phone" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['contact_schedule_phone_placeholder'] }}">
                 </div>
               </div>
               <div>
-                <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Email *</label>
-                <input type="email" id="bk-email" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="email@anda.com">
+                <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_schedule_email_label'] }} *</label>
+                <input type="email" id="bk-email" required class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all" placeholder="{{ $settings['contact_schedule_email_placeholder'] }}">
               </div>
               <div>
-                <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">Agenda / Catatan</label>
-                <textarea id="bk-notes" rows="3" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all resize-none" placeholder="Topik yang ingin dibahas, pertanyaan, dll. (opsional)"></textarea>
+                <label class="text-xs font-medium text-stone-600 tracking-wider uppercase">{{ $settings['contact_schedule_notes_label'] }}</label>
+                <textarea id="bk-notes" rows="3" class="w-full mt-2 px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-100 transition-all resize-none" placeholder="{{ $settings['contact_schedule_notes_placeholder'] }}"></textarea>
               </div>
             </form>
           </div>
@@ -1154,30 +1171,30 @@ footer a:hover{color:#ffb3b3!important}
           <!-- Summary Card -->
           <div id="booking-summary" class="summary-pulse bg-navy-800 rounded-2xl p-6 md:p-8 text-white reveal-right" style="transition-delay:.25s">
             <h4 class="text-xs font-semibold tracking-[.15em] uppercase text-gold-400 mb-4 flex items-center gap-2">
-              <iconify-icon icon="lucide:calendar-check" width="14"></iconify-icon> Ringkasan Jadwal
+              <iconify-icon icon="lucide:calendar-check" width="14"></iconify-icon> {{ $settings['contact_schedule_summary_title'] }}
             </h4>
             <div class="space-y-3">
               <div class="flex items-center justify-between py-2 border-b border-navy-700">
-                <span class="text-stone-400 text-sm">Tanggal</span>
+                <span class="text-stone-400 text-sm">{{ $settings['contact_schedule_date_label'] }}</span>
                 <span id="sum-date" class="text-sm font-medium text-stone-500">—</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-navy-700">
-                <span class="text-stone-400 text-sm">Waktu</span>
+                <span class="text-stone-400 text-sm">{{ $settings['contact_schedule_time_label'] }}</span>
                 <span id="sum-time" class="text-sm font-medium text-stone-500">—</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-navy-700">
-                <span class="text-stone-400 text-sm">Jenis</span>
+                <span class="text-stone-400 text-sm">{{ $settings['contact_schedule_type_label'] }}</span>
                 <span id="sum-type" class="text-sm font-medium text-stone-500">—</span>
               </div>
               <div class="flex items-center justify-between py-2">
-                <span class="text-stone-400 text-sm">Lokasi</span>
-                <span class="text-sm font-medium">Kantor Pusat {{ $settings['short_name'] }}</span>
+                <span class="text-stone-400 text-sm">{{ $settings['contact_schedule_location_label'] }}</span>
+                <span class="text-sm font-medium text-right max-w-[65%]">{{ $settings['address'] }}</span>
               </div>
             </div>
             <button onclick="handleBooking(null)" id="bk-submit-btn" class="w-full mt-6 py-3.5 bg-gold-500 text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20 hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:transform-none disabled:hover:shadow-none" disabled>
-              <iconify-icon icon="lucide:send" width="14"></iconify-icon> Konfirmasi Jadwal
+              <iconify-icon icon="lucide:send" width="14"></iconify-icon> {{ $settings['contact_schedule_submit_label'] }}
             </button>
-            <p class="text-[10px] text-stone-500 text-center mt-3">Konfirmasi akan dikirim ke email Anda</p>
+            <p class="text-[10px] text-stone-500 text-center mt-3">{{ $settings['contact_schedule_submit_note'] }}</p>
           </div>
 
           <!-- Booking Success State (hidden) -->
@@ -1187,15 +1204,6 @@ footer a:hover{color:#ffb3b3!important}
     </div>
   </section>
 
-  <section class="h-80 bg-stone-200 relative">
-    <div class="absolute inset-0 flex items-center justify-center bg-navy-900/5">
-      <div class="text-center">
-        <iconify-icon icon="lucide:map" width="48" class="text-stone-400"></iconify-icon>
-        <p class="text-stone-500 text-sm mt-3">{{ $settings['address'] }}</p>
-        <a href="{{ $settings['map_url'] }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-navy-600 text-sm font-medium mt-2 hover:text-gold-600 transition-colors">Buka di Google Maps <iconify-icon icon="lucide:external-link" width="14"></iconify-icon></a>
-      </div>
-    </div>
-  </section>
 </div>
 
 <!-- ==================== FOOTER ==================== -->
@@ -1222,12 +1230,11 @@ footer a:hover{color:#ffb3b3!important}
       <div>
         <h4 class="text-white font-medium text-sm tracking-wider uppercase mb-6">Layanan</h4>
         <ul class="space-y-3 text-sm font-light">
-          <li><a href="#" onclick="navigateTo('services');return false" class="hover:text-gold-500 transition-colors">Desain Interior</a></li>
-          <li><a href="#" onclick="navigateTo('services');return false" class="hover:text-gold-500 transition-colors">Desain Gedung</a></li>
-          <li><a href="#" onclick="navigateTo('services');return false" class="hover:text-gold-500 transition-colors">Renovasi & Restorasi</a></li>
-          <li><a href="#" onclick="navigateTo('services');return false" class="hover:text-gold-500 transition-colors">Konstruksi Bangunan</a></li>
-          <li><a href="#" onclick="navigateTo('services');return false" class="hover:text-gold-500 transition-colors">Desain Landscape</a></li>
-          <li><a href="#" onclick="navigateTo('services');return false" class="hover:text-gold-500 transition-colors">Manajemen Proyek</a></li>
+          @forelse($services->take(6) as $service)
+            <li><a href="#" onclick="navigateTo('services');return false" class="hover:text-gold-500 transition-colors">{{ $service->title }}</a></li>
+          @empty
+            <li class="text-stone-500">Belum ada layanan.</li>
+          @endforelse
         </ul>
       </div>
       <div>
@@ -1235,7 +1242,6 @@ footer a:hover{color:#ffb3b3!important}
         <ul class="space-y-3 text-sm font-light">
           <li><a href="#" onclick="navigateTo('about');return false" class="hover:text-gold-500 transition-colors">Tentang Kami</a></li>
           <li><a href="#" onclick="navigateTo('portfolio');return false" class="hover:text-gold-500 transition-colors">Portofolio</a></li>
-          <li><a href="#" onclick="navigateTo('categories');return false" class="hover:text-gold-500 transition-colors">Kategori Desain</a></li>
           <li><a href="#" onclick="navigateTo('tracking');return false" class="hover:text-gold-500 transition-colors">Tracking Proyek</a></li>
           <li><a href="#" onclick="navigateTo('contact');return false" class="hover:text-gold-500 transition-colors">Karir</a></li>
           <li><a href="#" class="hover:text-gold-500 transition-colors">Blog & Berita</a></li>
@@ -1260,6 +1266,23 @@ footer a:hover{color:#ffb3b3!important}
         </div>
       </div>
     </div>
+
+    <div class="py-10 border-b border-stone-800">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
+        <div>
+          <div class="text-[10px] tracking-[.18em] uppercase text-gold-500 font-semibold">Maps</div>
+          <h4 class="text-white font-serif text-xl mt-1">{{ $settings['footer_map_title'] }}</h4>
+          <p class="text-xs text-stone-500 mt-2 max-w-2xl">{{ $settings['address'] }}</p>
+        </div>
+        @if(!empty($settings['map_url']))
+          <a href="{{ $settings['map_url'] }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-medium text-gold-400 hover:text-gold-300 transition-colors">{{ $settings['footer_map_open_label'] }} <iconify-icon icon="lucide:external-link" width="14"></iconify-icon></a>
+        @endif
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-stone-800 bg-stone-800 shadow-xl">
+        <iframe src="{{ $settings['map_embed_url'] }}" title="{{ $settings['footer_map_title'] }}" class="w-full h-[320px] md:h-[380px]" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+
     <div class="flex flex-col md:flex-row justify-between items-center pt-8 gap-4">
       <p class="text-xs font-light">&copy; {{ date('Y') }} {{ $settings['company'] }}. {{ $settings['copyright_text'] }}</p>
       <div class="flex gap-6 text-xs font-light">
@@ -1276,6 +1299,27 @@ footer a:hover{color:#ffb3b3!important}
 <script>
 // ========== DATA ==========
 const projectData = @json($portfolios);
+const portfolioUi = {
+  modal_cta_label: @json($settings['portfolio_modal_cta_label']),
+};
+
+const contactUi = {
+  form_success_message: @json($settings['contact_form_success_message']),
+  schedule_success_title: @json($settings['contact_schedule_success_title']),
+  schedule_success_description: @json($settings['contact_schedule_success_description']),
+  schedule_reminder_text: @json($settings['contact_schedule_reminder_text']),
+  schedule_again_label: @json($settings['contact_schedule_again_label']),
+  schedule_date_label: @json($settings['contact_schedule_date_label']),
+  schedule_time_label: @json($settings['contact_schedule_time_label']),
+  schedule_type_label: @json($settings['contact_schedule_type_label']),
+  schedule_location_label: @json($settings['contact_schedule_location_label']),
+  schedule_name_label: @json($settings['contact_schedule_name_label']),
+  schedule_time_picker_hint: @json($settings['contact_schedule_time_picker_hint']),
+  schedule_select_datetime_warning: @json($settings['contact_schedule_select_datetime_warning']),
+};
+const testimonialUi = {
+  success_message: @json($settings['testimonial_success_message']),
+};
 
 const trackingData = {
   'KSN-2024-001': {
@@ -1556,23 +1600,30 @@ window.addEventListener('scroll', function() {
 
 // ========== PORTFOLIO FILTER ==========
 function filterPortfolio(cat) {
-  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  document.querySelectorAll('#portfolio-filters .filter-btn').forEach(function(btn) {
     btn.classList.remove('bg-navy-700', 'text-white', 'border-navy-700');
     if (btn.dataset.filter === cat) {
       btn.classList.add('bg-navy-700', 'text-white', 'border-navy-700');
     }
   });
-  document.querySelectorAll('.portfolio-item').forEach(function(item) {
+
+  var visible = 0;
+  document.querySelectorAll('#portfolio-grid .portfolio-item').forEach(function(item) {
     if (cat === 'all' || item.dataset.cat === cat) {
       item.classList.remove('hidden-item');
       item.classList.add('show-item');
+      visible++;
     } else {
       item.classList.remove('show-item');
       item.classList.add('hidden-item');
     }
   });
+
+  var empty = document.getElementById('portfolio-empty');
+  if (empty) empty.classList.toggle('hidden', visible > 0);
 }
-document.querySelector('.filter-btn[data-filter="all"]').classList.add('bg-navy-700', 'text-white', 'border-navy-700');
+var allPortfolioFilter = document.querySelector('#portfolio-filters .filter-btn[data-filter="all"]');
+if (allPortfolioFilter) allPortfolioFilter.classList.add('bg-navy-700', 'text-white', 'border-navy-700');
 
 // ========== PROJECT MODAL ==========
 function openProjectModal(idx) {
@@ -1591,7 +1642,7 @@ function openProjectModal(idx) {
         '<div class="bg-stone-50 rounded-xl p-3 text-center"><div class="text-xs text-stone-400 uppercase tracking-wider">Klien</div><div class="text-sm font-medium mt-1">' + p.client + '</div></div>' +
       '</div>' +
       '<p class="text-stone-600 font-light leading-relaxed mt-6">' + p.desc + '</p>' +
-      '<a href="#" onclick="closeProjectModal();navigateTo(\'contact\');return false" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-navy-700 text-white text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-navy-600 transition-all hover:-translate-y-0.5">Konsultasi Proyek Serupa <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon></a>' +
+      '<a href="#" onclick="closeProjectModal();navigateTo(\'contact\');return false" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-navy-700 text-white text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-navy-600 transition-all hover:-translate-y-0.5">' + portfolioUi.modal_cta_label + ' <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon></a>' +
     '</div>';
   modal.classList.remove('opacity-0', 'pointer-events-none');
   modal.classList.add('opacity-100', 'pointer-events-auto');
@@ -1624,7 +1675,27 @@ async function handleFormSubmit(e) {
   };
   try{
     await publicApi('/messages',payload);
-    showToast('✅ Pesan Anda berhasil terkirim! Tim kami akan menghubungi Anda dalam 1x24 jam.');
+    showToast('✅ '+contactUi.form_success_message);
+    form.reset();
+  }catch(err){showToast('❌ '+err.message);}
+}
+
+async function handleTestimonialSubmit(e) {
+  e.preventDefault();
+  var form=e.target;
+  var payload={
+    name:form.elements.name.value.trim(),
+    email:form.elements.email.value.trim(),
+    phone:form.elements.phone.value.trim(),
+    company:form.elements.company.value.trim(),
+    position:form.elements.position.value.trim(),
+    service_id:form.elements.service_id.value ? Number(form.elements.service_id.value) : null,
+    rating:Number(form.elements.rating.value||5),
+    testimonial:form.elements.testimonial.value.trim()
+  };
+  try{
+    await publicApi('/testimonials',payload);
+    showToast('✅ '+testimonialUi.success_message);
     form.reset();
   }catch(err){showToast('❌ '+err.message);}
 }
@@ -2069,7 +2140,7 @@ function updateTimeSection(enabled) {
   } else {
     section.style.opacity = '.5';
     section.style.pointerEvents = 'none';
-    if (subtitle) subtitle.textContent = 'Pilih tanggal terlebih dahulu';
+    if (subtitle) subtitle.textContent = contactUi.schedule_time_picker_hint;
   }
 }
 
@@ -2151,7 +2222,7 @@ async function handleBooking(e) {
   }
 
   if (!selectedDate || !selectedTime) {
-    showToast('⚠️ Silakan pilih tanggal dan waktu terlebih dahulu.');
+    showToast('⚠️ '+contactUi.schedule_select_datetime_warning);
     return;
   }
 
@@ -2180,28 +2251,29 @@ async function handleBooking(e) {
         '<div class="w-20 h-20 mx-auto rounded-full bg-emerald-50 flex items-center justify-center booking-success-anim mb-6">' +
           '<iconify-icon icon="lucide:calendar-check" width="36" class="text-emerald-500"></iconify-icon>' +
         '</div>' +
-        '<h3 class="font-serif text-2xl mb-2">Jadwal Berhasil Dikonfirmasi!</h3>' +
-        '<p class="text-stone-500 text-sm font-light mb-8">Detail konfirmasi telah dikirim ke <strong class="text-navy-600">' + email + '</strong></p>' +
+        '<h3 class="font-serif text-2xl mb-2">' + contactUi.schedule_success_title + '</h3>' +
+        '<p class="text-stone-500 text-sm font-light mb-3">' + contactUi.schedule_success_description + '</p>' +
+        '<p class="text-xs text-navy-600 font-medium mb-8">' + email + '</p>' +
         '<div class="bg-stone-50 rounded-2xl p-6 text-left max-w-sm mx-auto">' +
           '<div class="space-y-3">' +
-            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">Tanggal</div><div class="text-sm font-medium">' + dateStr + '</div></div></div>' +
-            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:clock" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">Waktu</div><div class="text-sm font-medium">' + selectedTime + ' WIB</div></div></div>' +
-            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:briefcase" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">Jenis</div><div class="text-sm font-medium">' + type + '</div></div></div>' +
-            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:map-pin" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">Lokasi</div><div class="text-sm font-medium">' + companyAddress + '</div></div></div>' +
-            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:user" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">Nama</div><div class="text-sm font-medium">' + name + '</div></div></div>' +
+            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:calendar" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">' + contactUi.schedule_date_label + '</div><div class="text-sm font-medium">' + dateStr + '</div></div></div>' +
+            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:clock" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">' + contactUi.schedule_time_label + '</div><div class="text-sm font-medium">' + selectedTime + ' WIB</div></div></div>' +
+            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:briefcase" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">' + contactUi.schedule_type_label + '</div><div class="text-sm font-medium">' + type + '</div></div></div>' +
+            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:map-pin" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">' + contactUi.schedule_location_label + '</div><div class="text-sm font-medium">' + companyAddress + '</div></div></div>' +
+            '<div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-navy-600 flex-shrink-0"><iconify-icon icon="lucide:user" width="14"></iconify-icon></div><div><div class="text-[10px] text-stone-400 uppercase tracking-wider">' + contactUi.schedule_name_label + '</div><div class="text-sm font-medium">' + name + '</div></div></div>' +
           '</div>' +
         '</div>' +
         '<div class="mt-6 p-4 bg-amber-50 rounded-xl flex items-start gap-3 max-w-sm mx-auto">' +
           '<iconify-icon icon="lucide:info" width="16" class="text-amber-600 mt-0.5 flex-shrink-0"></iconify-icon>' +
-          '<p class="text-xs text-amber-700 text-left font-light">Tim kami akan menghubungi Anda 1 jam sebelum jadwal pertemuan sebagai pengingat.</p>' +
+          '<p class="text-xs text-amber-700 text-left font-light">' + contactUi.schedule_reminder_text + '</p>' +
         '</div>' +
         '<button onclick="resetBooking()" class="mt-8 px-8 py-3 border-2 border-stone-300 text-stone-600 text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:border-navy-700 hover:text-navy-700 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2">' +
-          '<iconify-icon icon="lucide:plus" width="14"></iconify-icon> Jadwalkan Pertemuan Lain' +
+          '<iconify-icon icon="lucide:plus" width="14"></iconify-icon> ' + contactUi.schedule_again_label +
         '</button>' +
       '</div>';
   }
 
-  showToast('✅ Jadwal pertemuan berhasil dikonfirmasi! Cek email Anda.');
+  showToast('✅ '+contactUi.schedule_success_title);
 }
 
 function resetBooking() {

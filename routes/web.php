@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 Route::post('/messages', [PublicController::class, 'storeMessage'])->middleware('throttle:20,1');
 Route::post('/appointments', [PublicController::class, 'storeAppointment'])->middleware('throttle:20,1');
+Route::post('/testimonials', [PublicController::class, 'storeTestimonial'])->middleware('throttle:8,1');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::post('/admin/login', [AdminController::class, 'login'])->middleware('throttle:6,1');
@@ -27,6 +28,13 @@ Route::middleware('admin.session')->prefix('admin')->group(function () {
     Route::post('/team', [AdminController::class, 'storeTeamMember']);
     Route::put('/team/{teamMember}', [AdminController::class, 'updateTeamMember']);
     Route::delete('/team/{teamMember}', [AdminController::class, 'destroyTeamMember']);
+
+    Route::post('/services', [AdminController::class, 'storeService']);
+    Route::put('/services/{service}', [AdminController::class, 'updateService']);
+    Route::delete('/services/{service}', [AdminController::class, 'destroyService']);
+
+    Route::put('/testimonials/{testimonial}', [AdminController::class, 'updateTestimonial']);
+    Route::delete('/testimonials/{testimonial}', [AdminController::class, 'destroyTestimonial']);
 
     Route::patch('/appointments/{appointment}/status', [AdminController::class, 'updateAppointmentStatus']);
     Route::post('/appointments/{appointment}/notify', [AdminController::class, 'resendAppointmentEmail']);

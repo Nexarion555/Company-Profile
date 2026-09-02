@@ -9,7 +9,9 @@ use App\Models\Certification;
 use App\Models\CompanySetting;
 use App\Models\Message;
 use App\Models\Portfolio;
+use App\Models\Service;
 use App\Models\TeamMember;
+use App\Models\Testimonial;
 use App\Services\DynamicMailer;
 use App\Services\EmailTemplateService;
 use Illuminate\Http\JsonResponse;
@@ -72,18 +74,27 @@ class AdminController extends Controller
 
     public function data(): JsonResponse
     {
-        $portfolios = Portfolio::latest('updated_at')->get()->map(fn ($p) => [
-            'id' => $p->id,
-            'title' => $p->title,
-            'client' => $p->client,
-            'category' => $p->category,
-            'year' => (string) $p->year,
-            'location' => $p->location,
-            'area' => $p->area,
-            'description' => $p->description,
-            'image' => $p->image,
-            'updated' => $p->updated_at->format('d M Y'),
-        ]);
+        $portfolios = Portfolio::query()
+            ->with('service:id,title,is_active')
+            ->orderBy('display_order')
+            ->orderByDesc('updated_at')
+            ->get()
+            ->map(fn ($p) => [
+                'id' => $p->id,
+                'title' => $p->title,
+                'client' => $p->client,
+                'service_id' => $p->service_id,
+                'category' => $p->categoryLabel(),
+                'service_active' => $p->service ? (bool) $p->service->is_active : null,
+                'year' => $p->year ? (string) $p->year : '',
+                'location' => $p->location,
+                'area' => $p->area,
+                'description' => $p->description,
+                'image' => $p->image,
+                'display_order' => (int) $p->display_order,
+                'is_active' => (bool) $p->is_active,
+                'updated' => $p->updated_at->format('d M Y'),
+            ]);
 
         $certifications = Certification::query()
             ->orderBy('display_order')
@@ -175,6 +186,45 @@ class AdminController extends Controller
                 'is_active' => (bool) $t->is_active,
             ]);
 
+        $services = Service::query()
+            ->orderBy('display_order')
+            ->orderBy('id')
+            ->get()
+            ->map(fn ($service) => [
+                'id' => $service->id,
+                'title' => $service->title,
+                'description' => $service->description,
+                'icon' => $service->icon,
+                'image_path' => $service->image_path,
+                'image_url' => $service->imageUrl(),
+                'features' => array_values($service->features ?: []),
+                'display_order' => $service->display_order,
+                'is_active' => (bool) $service->is_active,
+            ]);
+
+
+        $testimonials = Testimonial::query()
+            ->with('service:id,title')
+            ->orderByRaw("CASE WHEN status = 'pending' THEN 0 WHEN status = 'published' THEN 1 ELSE 2 END")
+            ->orderBy('display_order')
+            ->orderByDesc('created_at')
+            ->get()
+            ->map(fn ($testimonial) => [
+                'id' => $testimonial->id,
+                'name' => $testimonial->name,
+                'email' => $testimonial->email,
+                'phone' => $testimonial->phone,
+                'company' => $testimonial->company,
+                'position' => $testimonial->position,
+                'service_id' => $testimonial->service_id,
+                'service' => $testimonial->service?->title,
+                'rating' => (int) $testimonial->rating,
+                'testimonial' => $testimonial->testimonial,
+                'status' => $testimonial->status,
+                'display_order' => (int) $testimonial->display_order,
+                'created_at' => $testimonial->created_at?->format('Y-m-d H:i'),
+            ]);
+
         $s = CompanySetting::current();
 
         return response()->json([
@@ -183,6 +233,8 @@ class AdminController extends Controller
             'appointments' => $appointments,
             'messages' => $messages,
             'team' => $team,
+            'services' => $services,
+            'testimonials' => $testimonials,
             'settings' => array_merge($s->publicData(), $s->mailAdminData()),
         ]);
     }
@@ -192,11 +244,13 @@ class AdminController extends Controller
         return $request->validate([
             'title' => 'required|string|max:180',
             'client' => 'nullable|string|max:180',
-            'category' => 'required|string|max:120',
+            'service_id' => 'required|integer|exists:services,id',
             'year' => 'nullable|integer|min:1900|max:2100',
             'location' => 'nullable|string|max:180',
             'area' => 'nullable|string|max:80',
             'description' => 'required|string|max:5000',
+            'display_order' => 'nullable|integer|min:0|max:9999',
+            'is_active' => 'required|boolean',
             'portfolio_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
         ]);
     }
@@ -248,6 +302,10 @@ class AdminController extends Controller
         $data = $this->portfolioValidated($request);
         unset($data['portfolio_image']);
 
+        $service = Service::findOrFail($data['service_id']);
+        $data['category'] = $service->title; // Disimpan juga untuk kompatibilitas data lama.
+        $data['display_order'] = $data['display_order'] ?? 0;
+        $data['is_active'] = (bool) $data['is_active'];
         $data['image'] = $this->portfolioImageUrl($request);
 
         $portfolio = Portfolio::create($data);
@@ -263,6 +321,10 @@ class AdminController extends Controller
         $data = $this->portfolioValidated($request);
         unset($data['portfolio_image']);
 
+        $service = Service::findOrFail($data['service_id']);
+        $data['category'] = $service->title; // Nama kategori selalu mengikuti layanan terpilih.
+        $data['display_order'] = $data['display_order'] ?? 0;
+        $data['is_active'] = (bool) $data['is_active'];
         $data['image'] = $this->portfolioImageUrl($request, $portfolio->image);
 
         $portfolio->update($data);
@@ -584,6 +646,116 @@ class AdminController extends Controller
         ]);
     }
 
+    private function serviceValidated(Request $request): array
+    {
+        return $request->validate([
+            'title' => 'required|string|max:180',
+            'description' => 'required|string|max:5000',
+            'icon' => 'required|string|max:120',
+            'features' => 'required|array|min:1|max:20',
+            'features.*' => 'required|string|max:500',
+            'display_order' => 'nullable|integer|min:0|max:9999',
+            'is_active' => 'required|boolean',
+            'service_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
+            'remove_image' => 'nullable|boolean',
+        ]);
+    }
+
+    public function storeService(Request $request): JsonResponse
+    {
+        $data = $this->serviceValidated($request);
+        unset($data['service_image'], $data['remove_image']);
+        $data['display_order'] = $data['display_order'] ?? 0;
+
+        if ($request->hasFile('service_image')) {
+            $data['image_path'] = $request->file('service_image')->store('services', 'public');
+        }
+
+        $service = Service::create($data);
+
+        return response()->json([
+            'message' => 'Layanan berhasil ditambahkan.',
+            'id' => $service->id,
+        ], 201);
+    }
+
+    public function updateService(Request $request, Service $service): JsonResponse
+    {
+        $data = $this->serviceValidated($request);
+        $removeImage = $request->boolean('remove_image');
+        unset($data['service_image'], $data['remove_image']);
+        $data['display_order'] = $data['display_order'] ?? 0;
+
+        if ($request->hasFile('service_image')) {
+            if ($service->image_path) {
+                Storage::disk('public')->delete($service->image_path);
+            }
+            $data['image_path'] = $request->file('service_image')->store('services', 'public');
+        } elseif ($removeImage) {
+            if ($service->image_path) {
+                Storage::disk('public')->delete($service->image_path);
+            }
+            $data['image_path'] = null;
+        }
+
+        $service->update($data);
+
+        return response()->json([
+            'message' => 'Layanan berhasil diperbarui.',
+        ]);
+    }
+
+    public function destroyService(Service $service): JsonResponse
+    {
+        if ($service->image_path) {
+            Storage::disk('public')->delete($service->image_path);
+        }
+
+        $service->delete();
+
+        return response()->json([
+            'message' => 'Layanan berhasil dihapus.',
+        ]);
+    }
+
+    private function testimonialValidated(Request $request): array
+    {
+        return $request->validate([
+            'name' => 'required|string|max:160',
+            'email' => 'required|email|max:180',
+            'phone' => 'nullable|string|max:60',
+            'company' => 'nullable|string|max:180',
+            'position' => 'nullable|string|max:180',
+            'service_id' => 'nullable|integer|exists:services,id',
+            'rating' => 'required|integer|min:1|max:5',
+            'testimonial' => 'required|string|min:20|max:3000',
+            'status' => ['required', Rule::in(['pending', 'published', 'hidden'])],
+            'display_order' => 'nullable|integer|min:0|max:9999',
+        ]);
+    }
+
+    public function updateTestimonial(Request $request, Testimonial $testimonial): JsonResponse
+    {
+        $data = $this->testimonialValidated($request);
+        $data['display_order'] = $data['display_order'] ?? 0;
+        $testimonial->update($data);
+
+        return response()->json([
+            'message' => $testimonial->status === 'published'
+                ? 'Testimoni berhasil diperbarui dan ditampilkan di website.'
+                : 'Testimoni berhasil diperbarui.',
+        ]);
+    }
+
+    public function destroyTestimonial(Testimonial $testimonial): JsonResponse
+    {
+        $testimonial->delete();
+
+        return response()->json([
+            'message' => 'Testimoni berhasil dihapus.',
+        ]);
+    }
+
     public function updateSettings(Request $request): JsonResponse
     {
         $data = $request->validate([
@@ -622,6 +794,175 @@ class AdminController extends Controller
             'seo_keywords' => 'nullable|string|max:1000',
             'footer_description' => 'required|string|max:1000',
             'copyright_text' => 'required|string|max:255',
+
+            // Halaman Tentang
+            'about_hero_eyebrow' => 'required|string|max:120',
+            'about_hero_title_primary' => 'required|string|max:180',
+            'about_hero_title_highlight' => 'required|string|max:180',
+            'about_hero_description' => 'required|string|max:1200',
+            'about_story_eyebrow' => 'required|string|max:120',
+            'about_story_title_primary' => 'required|string|max:180',
+            'about_story_title_highlight' => 'required|string|max:180',
+            'about_story_paragraph_1' => 'required|string|max:3000',
+            'about_story_paragraph_2' => 'nullable|string|max:3000',
+            'about_feature_1_title' => 'required|string|max:120',
+            'about_feature_1_description' => 'required|string|max:1200',
+            'about_feature_2_title' => 'required|string|max:120',
+            'about_feature_2_description' => 'required|string|max:1200',
+            'about_vision_title' => 'required|string|max:120',
+            'about_vision' => 'required|string|max:3000',
+            'about_mission_title' => 'required|string|max:120',
+            'about_mission_items' => 'required|array|min:1|max:20',
+            'about_mission_items.*' => 'required|string|max:1000',
+            'about_values_eyebrow' => 'required|string|max:120',
+            'about_values_title_primary' => 'required|string|max:180',
+            'about_values_title_highlight' => 'required|string|max:180',
+            'about_values' => 'required|array|min:1|max:12',
+            'about_values.*.icon' => 'nullable|string|max:30',
+            'about_values.*.title' => 'required|string|max:120',
+            'about_values.*.description' => 'nullable|string|max:500',
+            'organization_eyebrow' => 'required|string|max:120',
+            'organization_title_primary' => 'required|string|max:180',
+            'organization_title_highlight' => 'required|string|max:180',
+            'organization_description' => 'nullable|string|max:1200',
+            'about_team_eyebrow' => 'required|string|max:120',
+            'about_team_title_primary' => 'required|string|max:180',
+            'about_team_title_highlight' => 'required|string|max:180',
+            'about_cert_eyebrow' => 'required|string|max:120',
+            'about_cert_title_primary' => 'required|string|max:180',
+            'about_cert_title_highlight' => 'required|string|max:180',
+            'about_cert_description' => 'required|string|max:1200',
+            'about_hero_image_file' => 'nullable|file|mimes:jpg,jpeg,png,webp|max:10240',
+            'about_story_image_file' => 'nullable|file|mimes:jpg,jpeg,png,webp|max:10240',
+            'organization_chart_file' => 'nullable|file|mimes:jpg,jpeg,png,webp|max:15360',
+            'remove_about_hero_image' => 'nullable|boolean',
+            'remove_about_story_image' => 'nullable|boolean',
+            'remove_organization_chart' => 'nullable|boolean',
+
+            // Halaman Layanan
+            'service_hero_eyebrow' => 'required|string|max:120',
+            'service_hero_title_primary' => 'required|string|max:180',
+            'service_hero_title_highlight' => 'required|string|max:180',
+            'service_hero_description' => 'required|string|max:1200',
+            'service_process_eyebrow' => 'required|string|max:120',
+            'service_process_title_primary' => 'required|string|max:180',
+            'service_process_title_highlight' => 'required|string|max:180',
+            'service_process_steps' => 'required|array|min:1|max:12',
+            'service_process_steps.*.title' => 'required|string|max:180',
+            'service_process_steps.*.description' => 'required|string|max:1000',
+            'service_hero_image_file' => 'nullable|file|mimes:jpg,jpeg,png,webp|max:10240',
+            'remove_service_hero_image' => 'nullable|boolean',
+
+            // Halaman Portofolio
+            'portfolio_hero_eyebrow' => 'required|string|max:120',
+            'portfolio_hero_title_primary' => 'required|string|max:180',
+            'portfolio_hero_title_highlight' => 'required|string|max:180',
+            'portfolio_hero_description' => 'required|string|max:1200',
+            'portfolio_all_label' => 'required|string|max:80',
+            'portfolio_empty_title' => 'required|string|max:180',
+            'portfolio_empty_description' => 'required|string|max:1200',
+            'portfolio_modal_cta_label' => 'required|string|max:180',
+            'portfolio_hero_image_file' => 'nullable|file|mimes:jpg,jpeg,png,webp|max:10240',
+            'remove_portfolio_hero_image' => 'nullable|boolean',
+
+            // Halaman Hubungi Kami
+            'contact_hero_eyebrow' => 'required|string|max:120',
+            'contact_hero_title_primary' => 'required|string|max:180',
+            'contact_hero_title_highlight' => 'required|string|max:180',
+            'contact_hero_description' => 'required|string|max:1200',
+            'contact_office_label' => 'required|string|max:120',
+            'contact_phone_label' => 'required|string|max:120',
+            'contact_email_label' => 'required|string|max:120',
+            'contact_hours_label' => 'required|string|max:120',
+            'contact_form_title' => 'required|string|max:180',
+            'contact_form_description' => 'required|string|max:1200',
+            'contact_form_name_label' => 'required|string|max:120',
+            'contact_form_name_placeholder' => 'required|string|max:180',
+            'contact_form_email_label' => 'required|string|max:120',
+            'contact_form_email_placeholder' => 'required|string|max:180',
+            'contact_form_phone_label' => 'required|string|max:120',
+            'contact_form_phone_placeholder' => 'required|string|max:180',
+            'contact_form_service_label' => 'required|string|max:120',
+            'contact_form_service_placeholder' => 'required|string|max:180',
+            'contact_form_other_service_label' => 'required|string|max:180',
+            'contact_form_budget_label' => 'required|string|max:120',
+            'contact_form_budget_placeholder' => 'required|string|max:180',
+            'contact_budget_options' => 'required|array|min:1|max:20',
+            'contact_budget_options.*' => 'required|string|max:180',
+            'contact_form_detail_label' => 'required|string|max:120',
+            'contact_form_detail_placeholder' => 'required|string|max:1000',
+            'contact_form_submit_label' => 'required|string|max:120',
+            'contact_form_success_message' => 'required|string|max:1200',
+            'contact_schedule_eyebrow' => 'required|string|max:120',
+            'contact_schedule_title_primary' => 'required|string|max:180',
+            'contact_schedule_title_highlight' => 'required|string|max:180',
+            'contact_schedule_description' => 'required|string|max:1200',
+            'contact_schedule_detail_title' => 'required|string|max:180',
+            'contact_schedule_type_label' => 'required|string|max:120',
+            'contact_schedule_type_placeholder' => 'required|string|max:180',
+            'contact_schedule_types' => 'required|array|min:1|max:20',
+            'contact_schedule_types.*' => 'required|string|max:180',
+            'contact_schedule_name_label' => 'required|string|max:120',
+            'contact_schedule_name_placeholder' => 'required|string|max:180',
+            'contact_schedule_phone_label' => 'required|string|max:120',
+            'contact_schedule_phone_placeholder' => 'required|string|max:180',
+            'contact_schedule_email_label' => 'required|string|max:120',
+            'contact_schedule_email_placeholder' => 'required|string|max:180',
+            'contact_schedule_notes_label' => 'required|string|max:120',
+            'contact_schedule_notes_placeholder' => 'required|string|max:1000',
+            'contact_schedule_summary_title' => 'required|string|max:180',
+            'contact_schedule_date_label' => 'required|string|max:120',
+            'contact_schedule_time_label' => 'required|string|max:120',
+            'contact_schedule_location_label' => 'required|string|max:120',
+            'contact_schedule_submit_label' => 'required|string|max:180',
+            'contact_schedule_submit_note' => 'required|string|max:1000',
+            'contact_schedule_success_title' => 'required|string|max:180',
+            'contact_schedule_success_description' => 'required|string|max:1200',
+            'contact_schedule_reminder_text' => 'required|string|max:1200',
+            'contact_schedule_again_label' => 'required|string|max:180',
+            'contact_schedule_select_datetime_warning' => 'required|string|max:255',
+            'contact_schedule_time_picker_title' => 'required|string|max:180',
+            'contact_schedule_time_picker_hint' => 'required|string|max:255',
+            'contact_schedule_morning_label' => 'required|string|max:120',
+            'contact_schedule_afternoon_label' => 'required|string|max:120',
+            'map_embed_url' => 'nullable|url|max:2000',
+            'footer_map_title' => 'required|string|max:180',
+            'footer_map_open_label' => 'required|string|max:120',
+            'contact_hero_image_file' => 'nullable|file|mimes:jpg,jpeg,png,webp|max:10240',
+            'remove_contact_hero_image' => 'nullable|boolean',
+
+            // Testimoni
+            'testimonial_eyebrow' => 'required|string|max:120',
+            'testimonial_title_primary' => 'required|string|max:180',
+            'testimonial_title_highlight' => 'required|string|max:180',
+            'testimonial_description' => 'required|string|max:1200',
+            'testimonial_empty_text' => 'required|string|max:255',
+            'testimonial_form_title' => 'required|string|max:180',
+            'testimonial_form_description' => 'required|string|max:1200',
+            'testimonial_submit_label' => 'required|string|max:120',
+            'testimonial_success_message' => 'required|string|max:1200',
+            'testimonial_review_notice' => 'required|string|max:1200',
+            'testimonial_name_label' => 'required|string|max:120',
+            'testimonial_name_placeholder' => 'required|string|max:180',
+            'testimonial_email_label' => 'required|string|max:120',
+            'testimonial_email_placeholder' => 'required|string|max:180',
+            'testimonial_company_label' => 'required|string|max:120',
+            'testimonial_company_placeholder' => 'required|string|max:180',
+            'testimonial_position_label' => 'required|string|max:120',
+            'testimonial_position_placeholder' => 'required|string|max:180',
+            'testimonial_phone_label' => 'required|string|max:120',
+            'testimonial_phone_placeholder' => 'required|string|max:180',
+            'testimonial_service_label' => 'required|string|max:120',
+            'testimonial_service_placeholder' => 'required|string|max:180',
+            'testimonial_rating_label' => 'required|string|max:120',
+            'testimonial_rating_5_label' => 'required|string|max:180',
+            'testimonial_rating_4_label' => 'required|string|max:180',
+            'testimonial_rating_3_label' => 'required|string|max:180',
+            'testimonial_rating_2_label' => 'required|string|max:180',
+            'testimonial_rating_1_label' => 'required|string|max:180',
+            'testimonial_content_label' => 'required|string|max:120',
+            'testimonial_content_placeholder' => 'required|string|max:1200',
+
             'mail_enabled' => 'required|boolean',
             'mail_smtp_host' => 'required_if:mail_enabled,1|nullable|string|max:255',
             'mail_smtp_port' => 'required_if:mail_enabled,1|nullable|integer|min:1|max:65535',
@@ -671,9 +1012,21 @@ class AdminController extends Controller
             $data['logo_file'],
             $data['favicon_file'],
             $data['hero_image_file'],
+            $data['about_hero_image_file'],
+            $data['about_story_image_file'],
+            $data['organization_chart_file'],
+            $data['service_hero_image_file'],
+            $data['portfolio_hero_image_file'],
+            $data['contact_hero_image_file'],
             $data['remove_logo'],
             $data['remove_favicon'],
-            $data['remove_hero_image']
+            $data['remove_hero_image'],
+            $data['remove_about_hero_image'],
+            $data['remove_about_story_image'],
+            $data['remove_organization_chart'],
+            $data['remove_service_hero_image'],
+            $data['remove_portfolio_hero_image'],
+            $data['remove_contact_hero_image']
         );
 
         $logoChanged = $request->hasFile('logo_file') || $request->boolean('remove_logo');
@@ -718,6 +1071,66 @@ class AdminController extends Controller
             'hero_image_path',
             'branding',
             'remove_hero_image'
+        );
+
+        $this->handleSettingFile(
+            $request,
+            $settings,
+            $data,
+            'about_hero_image_file',
+            'about_hero_image_path',
+            'about',
+            'remove_about_hero_image'
+        );
+
+        $this->handleSettingFile(
+            $request,
+            $settings,
+            $data,
+            'about_story_image_file',
+            'about_story_image_path',
+            'about',
+            'remove_about_story_image'
+        );
+
+        $this->handleSettingFile(
+            $request,
+            $settings,
+            $data,
+            'organization_chart_file',
+            'organization_chart_path',
+            'about',
+            'remove_organization_chart'
+        );
+
+        $this->handleSettingFile(
+            $request,
+            $settings,
+            $data,
+            'service_hero_image_file',
+            'service_hero_image_path',
+            'services',
+            'remove_service_hero_image'
+        );
+
+        $this->handleSettingFile(
+            $request,
+            $settings,
+            $data,
+            'portfolio_hero_image_file',
+            'portfolio_hero_image_path',
+            'portfolio',
+            'remove_portfolio_hero_image'
+        );
+
+        $this->handleSettingFile(
+            $request,
+            $settings,
+            $data,
+            'contact_hero_image_file',
+            'contact_hero_image_path',
+            'contact',
+            'remove_contact_hero_image'
         );
 
         $settings->update($data);

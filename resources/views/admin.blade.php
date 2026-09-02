@@ -799,6 +799,178 @@ body{
   border-color:#cbd5e1!important;
 }
 
+/* ===== PENGATURAN HALAMAN TENTANG ===== */
+#settings-form .settings-about-section{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 12px 34px rgba(15,23,42,.08)!important;
+  color:#0f172a!important;
+}
+#settings-form .settings-about-section h3,
+#settings-form .settings-about-section h4,
+#settings-form .settings-about-section .text-white{color:#0f172a!important}
+#settings-form .settings-about-section .text-stone-400{color:#475569!important}
+#settings-form .settings-about-section .text-stone-500,
+#settings-form .settings-about-section .text-stone-600{color:#64748b!important}
+#settings-form .about-editor-card{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+}
+#settings-form .about-editor-card:hover{
+  background:#ffffff!important;
+  border-color:#e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+  transform:none!important;
+}
+
+/* ===== SUB PENGATURAN ===== */
+.settings-subnav{
+  background:#ffffff;
+  border:1px solid #e2e8f0;
+  box-shadow:0 10px 28px rgba(15,23,42,.07);
+}
+.settings-subnav-btn{
+  background:#ffffff;
+  color:#475569;
+  border:1px solid #e2e8f0;
+}
+.settings-subnav-btn:hover{
+  background:#ffffff;
+  color:#0f172a;
+  border-color:#cbd5e1;
+}
+.settings-subnav-btn.active{
+  background:#eff6ff;
+  color:#1d4ed8;
+  border-color:#bfdbfe;
+  box-shadow:0 4px 12px rgba(37,99,235,.08);
+}
+[data-settings-panel].settings-panel-hidden{display:none!important}
+
+/* ===== PENGATURAN HALAMAN LAYANAN ===== */
+#settings-form .settings-services-section{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 12px 34px rgba(15,23,42,.08)!important;
+  color:#0f172a!important;
+}
+#settings-form .settings-services-section h3,
+#settings-form .settings-services-section h4,
+#settings-form .settings-services-section .text-white{color:#0f172a!important}
+#settings-form .settings-services-section .text-stone-400{color:#475569!important}
+#settings-form .settings-services-section .text-stone-500,
+#settings-form .settings-services-section .text-stone-600{color:#64748b!important}
+#settings-form .service-editor-card{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+}
+#settings-form .service-editor-card:hover{
+  background:#ffffff!important;
+  border-color:#e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+  transform:none!important;
+}
+
+/* ===== PENGATURAN HALAMAN PORTOFOLIO ===== */
+#settings-form .settings-portfolio-section{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 12px 34px rgba(15,23,42,.08)!important;
+  color:#0f172a!important;
+}
+#settings-form .settings-portfolio-section h3,
+#settings-form .settings-portfolio-section h4,
+#settings-form .settings-portfolio-section .text-white{color:#0f172a!important}
+#settings-form .settings-portfolio-section .text-stone-400{color:#475569!important}
+#settings-form .settings-portfolio-section .text-stone-500,
+#settings-form .settings-portfolio-section .text-stone-600{color:#64748b!important}
+#settings-form .portfolio-editor-card{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+}
+#settings-form .portfolio-editor-card:hover{
+  background:#ffffff!important;
+  border-color:#e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+  transform:none!important;
+}
+
+
+/* ===== PENGATURAN HUBUNGI KAMI & TESTIMONI ===== */
+#settings-form .settings-contact-section,
+#settings-form .settings-testimonial-section{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 12px 34px rgba(15,23,42,.08)!important;
+  color:#0f172a!important;
+}
+#settings-form .settings-contact-section h3,
+#settings-form .settings-contact-section h4,
+#settings-form .settings-testimonial-section h3,
+#settings-form .settings-testimonial-section h4,
+#settings-form .settings-contact-section .text-white,
+#settings-form .settings-testimonial-section .text-white{color:#0f172a!important}
+#settings-form .settings-contact-section .text-stone-400,
+#settings-form .settings-testimonial-section .text-stone-400{color:#475569!important}
+#settings-form .settings-contact-section .text-stone-500,
+#settings-form .settings-contact-section .text-stone-600,
+#settings-form .settings-testimonial-section .text-stone-500,
+#settings-form .settings-testimonial-section .text-stone-600{color:#64748b!important}
+#settings-form .contact-editor-card,
+#settings-form .testimonial-editor-card{
+  background:#ffffff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+}
+#settings-form .contact-editor-card:hover,
+#settings-form .testimonial-editor-card:hover{
+  background:#ffffff!important;
+  border-color:#e2e8f0!important;
+  box-shadow:0 6px 18px rgba(15,23,42,.06)!important;
+  transform:none!important;
+}
+#settings-form .settings-contact-section input,
+#settings-form .settings-contact-section select,
+#settings-form .settings-contact-section textarea,
+#settings-form .settings-testimonial-section input,
+#settings-form .settings-testimonial-section select,
+#settings-form .settings-testimonial-section textarea{
+  background:#ffffff!important;
+  color:#000!important;
+  -webkit-text-fill-color:#000!important;
+  border-color:#cbd5e1!important;
+}
+#settings-form .settings-contact-section input:hover,
+#settings-form .settings-contact-section select:hover,
+#settings-form .settings-contact-section textarea:hover,
+#settings-form .settings-testimonial-section input:hover,
+#settings-form .settings-testimonial-section select:hover,
+#settings-form .settings-testimonial-section textarea:hover{
+  background:#ffffff!important;
+  color:#000!important;
+  border-color:#cbd5e1!important;
+}
+#settings-form .settings-contact-section input:focus,
+#settings-form .settings-contact-section select:focus,
+#settings-form .settings-contact-section textarea:focus,
+#settings-form .settings-testimonial-section input:focus,
+#settings-form .settings-testimonial-section select:focus,
+#settings-form .settings-testimonial-section textarea:focus{
+  background:#fff!important;
+  color:#000!important;
+  border-color:#3b82f6!important;
+  box-shadow:0 0 0 3px rgba(59,130,246,.12)!important;
+}
+.testimonial-admin-card{
+  background:#fff!important;
+  border:1px solid #e2e8f0!important;
+  box-shadow:0 8px 24px rgba(15,23,42,.06)!important;
+  color:#0f172a!important;
+}
+
 </style>
 </head>
 <body class="font-sans bg-navy-900 text-stone-300 min-h-screen">
@@ -851,6 +1023,7 @@ body{
       <div class="sidebar-link" onclick="goPage('certifications')" data-p="certifications"><iconify-icon icon="lucide:badge-check" width="18"></iconify-icon> Sertifikasi</div>
       <div class="sidebar-link" onclick="goPage('appointments')" data-p="appointments"><iconify-icon icon="lucide:calendar-check" width="18"></iconify-icon> Jadwal Temu</div>
       <div class="sidebar-link" onclick="goPage('messages')" data-p="messages"><iconify-icon icon="lucide:mail" width="18"></iconify-icon> Pesan <span id="msg-badge" class="ml-auto bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">3</span></div>
+      <div class="sidebar-link" onclick="goPage('testimonials')" data-p="testimonials"><iconify-icon icon="lucide:message-square-heart" width="18"></iconify-icon> Testimoni <span id="testimonial-badge" class="ml-auto bg-amber-500 text-white text-[10px] min-w-5 h-5 px-1 rounded-full flex items-center justify-center font-bold hidden">0</span></div>
       <div class="text-[10px] font-semibold tracking-[.15em] uppercase text-stone-600 px-4 mb-2 mt-6">Pengaturan</div>
       <div class="sidebar-link" onclick="goPage('team')" data-p="team"><iconify-icon icon="lucide:user-cog" width="18"></iconify-icon> Tim</div>
       <div class="sidebar-link" onclick="goPage('settings')" data-p="settings"><iconify-icon icon="lucide:settings" width="18"></iconify-icon> Pengaturan</div>
@@ -880,7 +1053,7 @@ body{
 <div class="toast-c" id="toast-c"></div>
 
 <script>
-    var DB={portfolios:[],appointments:[],messages:[],team:[],certifications:[],settings:{}};
+    var DB={portfolios:[],appointments:[],messages:[],team:[],certifications:[],services:[],testimonials:[],settings:{}};
     var ADMIN_AUTHENTICATED = @json($authenticated);
 
 async function doLogin(){
@@ -910,9 +1083,9 @@ var curPage='dashboard';
 function goPage(p){
   curPage=p;
   document.querySelectorAll('.sidebar-link').forEach(function(l){l.classList.toggle('active',l.dataset.p===p)});
-  var titles={dashboard:'Dashboard',portfolio:'Update Portfolio',certifications:'Sertifikasi',appointments:'Jadwal Pertemuan',messages:'Pesan Masuk',team:'Manajemen Tim',settings:'Pengaturan'};
+  var titles={dashboard:'Dashboard',portfolio:'Update Portfolio',certifications:'Sertifikasi',appointments:'Jadwal Pertemuan',messages:'Pesan Masuk',testimonials:'Testimoni Klien',team:'Manajemen Tim',settings:'Pengaturan'};
   document.getElementById('page-title').textContent=titles[p]||p;
-  var fn={dashboard:pgDashboard,portfolio:pgPortfolio,certifications:pgCertifications,appointments:pgAppointments,messages:pgMessages,team:pgTeam,settings:pgSettings};
+  var fn={dashboard:pgDashboard,portfolio:pgPortfolio,certifications:pgCertifications,appointments:pgAppointments,messages:pgMessages,testimonials:pgTestimonials,team:pgTeam,settings:pgSettings};
   if(fn[p])fn[p](document.getElementById('pages'));
   setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('rv')},i*50)})},50);
   document.querySelector('.sidebar').classList.remove('open');
@@ -922,8 +1095,10 @@ function pgDashboard(c){
     var categories=[];
     DB.portfolios.forEach(function(p){if(categories.indexOf(p.category)<0)categories.push(p.category)});
     var unread=DB.messages.filter(function(m){return!m.read}).length;
+    var pendingTestimonials=DB.testimonials.filter(function(t){return t.status==='pending'}).length;
     var latestUpdate=DB.portfolios.length?DB.portfolios[0].updated:'-';
     if(unread>0){var b=document.getElementById('msg-badge');b.textContent=unread;b.classList.remove('hidden')}
+    var tb=document.getElementById('testimonial-badge');if(tb){if(pendingTestimonials>0){tb.textContent=pendingTestimonials;tb.classList.remove('hidden')}else{tb.classList.add('hidden')}}
     c.innerHTML=`
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             <div class="stat-card bg-navy-800 rounded-2xl p-6 border border-navy-700/30 hover:border-gold-500/30 transition-colors"><div class="flex items-center justify-between mb-4"><div class="w-11 h-11 rounded-xl bg-blue-500/15 flex items-center justify-center text-blue-400"><iconify-icon icon="lucide:images" width="20"></iconify-icon></div><span class="text-xs text-stone-500">Total</span></div><div class="text-3xl font-serif text-white">${DB.portfolios.length}</div><div class="text-xs text-stone-500 mt-1">Item Portfolio</div></div>
@@ -942,10 +1117,10 @@ function pgPortfolio(c){
   <div class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-6 border border-navy-600/40 mb-6 reveal">
     <div class="flex items-center gap-2 text-gold-400 text-xs font-semibold tracking-[.18em] uppercase"><iconify-icon icon="lucide:database" width="15"></iconify-icon> Manajemen Portfolio</div>
     <h3 class="font-serif text-2xl text-white mt-2">Kelola data portfolio perusahaan</h3>
-    <p class="text-sm text-stone-400 mt-2 max-w-2xl">Tambahkan, perbarui, pratinjau, dan hapus data portfolio langsung dari admin panel.</p>
+    <p class="text-sm text-stone-400 mt-2 max-w-2xl">Data portfolio sepenuhnya dinamis. Kategori portfolio diambil langsung dari data <b>Layanan</b> yang sudah dibuat di Admin Panel.</p>
   </div>
-  <div class="flex flex-wrap gap-2 mb-6 reveal"><div class="flex-1 min-w-[240px] flex items-center gap-2"><iconify-icon icon="lucide:search" width="16" class="text-stone-500"></iconify-icon><input type="text" id="portfolio-search" placeholder="Cari judul, klien, atau kategori..." oninput="filterPortfolioTable()" class="flex-1 bg-navy-800 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-stone-600"></div><button onclick="openPortfolioModal()" class="px-5 py-2.5 bg-gold-500 text-white text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5 flex items-center gap-2 whitespace-nowrap"><iconify-icon icon="lucide:plus" width="14"></iconify-icon> Tambah Portfolio</button></div>
-  <div class="overflow-x-auto reveal" style="transition-delay:.1s"><table class="w-full text-sm"><thead><tr class="border-b border-navy-700/50"><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Portfolio</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Kategori</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Lokasi / Tahun</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Terakhir Update</th><th class="text-right py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Aksi</th></tr></thead><tbody id="portfolio-tbody"></tbody></table></div>`;
+  <div class="flex flex-wrap gap-2 mb-6 reveal"><div class="flex-1 min-w-[240px] flex items-center gap-2"><iconify-icon icon="lucide:search" width="16" class="text-stone-500"></iconify-icon><input type="text" id="portfolio-search" placeholder="Cari judul, klien, atau layanan..." oninput="filterPortfolioTable()" class="flex-1 bg-navy-800 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-stone-600"></div><button onclick="openPortfolioModal()" class="px-5 py-2.5 bg-gold-500 text-white text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5 flex items-center gap-2 whitespace-nowrap"><iconify-icon icon="lucide:plus" width="14"></iconify-icon> Tambah Portfolio</button></div>
+  <div class="overflow-x-auto reveal" style="transition-delay:.1s"><table class="w-full text-sm"><thead><tr class="border-b border-navy-700/50"><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Portfolio</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Layanan / Kategori</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Lokasi / Tahun</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Status / Urutan</th><th class="text-left py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Terakhir Update</th><th class="text-right py-3 px-4 text-xs font-semibold tracking-wider uppercase text-stone-500">Aksi</th></tr></thead><tbody id="portfolio-tbody"></tbody></table></div>`;
   filterPortfolioTable();
 }
 
@@ -956,15 +1131,20 @@ function filterPortfolioTable(){
   DB.portfolios.forEach(function(p){
     var haystack=(p.title+' '+p.client+' '+p.category+' '+p.location).toLowerCase();
     if(ql && haystack.indexOf(ql)<0) return;
-    h += '<tr class="table-row border-b border-navy-700/20"><td class="py-3 px-4"><div class="flex items-center gap-3"><img src="'+safeAttr(p.image)+'" alt="" class="w-14 h-12 rounded-xl object-cover flex-shrink-0"><div class="min-w-0"><div class="text-white font-medium truncate max-w-[250px]">'+escapeHtml(p.title)+'</div><div class="text-[11px] text-stone-500 line-clamp-2 max-w-[300px]">'+escapeHtml(p.description)+'</div></div></div></td><td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full bg-navy-700/50 text-[10px] text-stone-400">'+escapeHtml(p.category)+'</span></td><td class="py-3 px-4 text-stone-400"><div>'+escapeHtml(p.location)+'</div><div class="text-[10px] text-stone-600">'+escapeHtml(p.year)+'</div></td><td class="py-3 px-4 text-stone-400">'+escapeHtml(p.updated)+'</td><td class="py-3 px-4 text-right whitespace-nowrap"><button onclick="previewPortfolio('+p.id+')" class="text-blue-400 hover:text-blue-300 transition-colors p-1" title="Pratinjau"><iconify-icon icon="lucide:eye" width="16"></iconify-icon></button><button onclick="openPortfolioModal('+p.id+')" class="text-gold-400 hover:text-gold-300 transition-colors p-1 ml-1" title="Edit"><iconify-icon icon="lucide:pencil" width="16"></iconify-icon></button><button onclick="deletePortfolio('+p.id+')" class="text-red-400 hover:text-red-300 transition-colors p-1 ml-1" title="Hapus"><iconify-icon icon="lucide:trash-2" width="16"></iconify-icon></button></td></tr>';
+    var statusBadge=p.is_active?'<span class="badge badge-done">Tampil</span>':'<span class="badge badge-pending">Disembunyikan</span>';
+    h += '<tr class="table-row border-b border-navy-700/20"><td class="py-3 px-4"><div class="flex items-center gap-3"><img src="'+safeAttr(p.image)+'" alt="" class="w-14 h-12 rounded-xl object-cover flex-shrink-0"><div class="min-w-0"><div class="text-white font-medium truncate max-w-[250px]">'+escapeHtml(p.title)+'</div><div class="text-[11px] text-stone-500 line-clamp-2 max-w-[300px]">'+escapeHtml(p.description)+'</div></div></div></td><td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full bg-blue-50 text-[10px] text-blue-700">'+escapeHtml(p.category||'Belum dipilih')+'</span></td><td class="py-3 px-4 text-stone-400"><div>'+escapeHtml(p.location||'-')+'</div><div class="text-[10px] text-stone-600">'+escapeHtml(p.year||'-')+'</div></td><td class="py-3 px-4"><div>'+statusBadge+'</div><div class="text-[10px] text-stone-500 mt-1">Urutan '+escapeHtml(String(p.display_order??0))+'</div></td><td class="py-3 px-4 text-stone-400">'+escapeHtml(p.updated)+'</td><td class="py-3 px-4 text-right whitespace-nowrap"><button onclick="previewPortfolio('+p.id+')" class="text-blue-400 hover:text-blue-300 transition-colors p-1" title="Pratinjau"><iconify-icon icon="lucide:eye" width="16"></iconify-icon></button><button onclick="openPortfolioModal('+p.id+')" class="text-gold-400 hover:text-gold-300 transition-colors p-1 ml-1" title="Edit"><iconify-icon icon="lucide:pencil" width="16"></iconify-icon></button><button onclick="deletePortfolio('+p.id+')" class="text-red-400 hover:text-red-300 transition-colors p-1 ml-1" title="Hapus"><iconify-icon icon="lucide:trash-2" width="16"></iconify-icon></button></td></tr>';
   });
-  document.getElementById('portfolio-tbody').innerHTML = h || '<tr><td colspan="5" class="py-10 text-center text-stone-600">Tidak ada data portfolio.</td></tr>';
+  document.getElementById('portfolio-tbody').innerHTML = h || '<tr><td colspan="6" class="py-10 text-center text-stone-600">Tidak ada data portfolio.</td></tr>';
 }
 
 function openPortfolioModal(id){
   var p=id?DB.portfolios.find(function(x){return x.id===id}):null;
   var isEdit=!!p;
   var imageSrc=isEdit&&p.image?p.image:'';
+  var serviceOptions=(DB.services||[]).map(function(service){
+    var selected=String(isEdit&&p.service_id?p.service_id:'')===String(service.id)?' selected':'';
+    return '<option value="'+safeAttr(service.id)+'"'+selected+'>'+escapeHtml(service.title)+(service.is_active?'':' (Disembunyikan)')+'</option>';
+  }).join('');
 
   var h=`
     <div class="p-6">
@@ -987,8 +1167,13 @@ function openPortfolioModal(id){
             <input name="client" value="${safeAttr(isEdit?p.client||'':'')}" placeholder="Nama perusahaan / klien" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600">
           </div>
           <div>
-            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Kategori *</label>
-            <input name="category" value="${safeAttr(isEdit?p.category:'')}" required placeholder="Gedung, Interior, Landscape..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600">
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Layanan / Kategori *</label>
+            <select name="service_id" required class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black text-sm">
+              <option value="">Pilih layanan...</option>
+              ${serviceOptions}
+            </select>
+            <p class="text-[10px] text-stone-500 mt-1">Kategori tidak diketik manual. Daftar ini otomatis berasal dari menu Pengaturan → Layanan.</p>
+            ${(!DB.services||!DB.services.length)?'<p class="text-xs text-red-500 mt-2">Belum ada layanan. Tambahkan layanan terlebih dahulu dari Pengaturan → Layanan.</p>':''}
           </div>
         </div>
 
@@ -1006,6 +1191,20 @@ function openPortfolioModal(id){
         <div>
           <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Luas / Area</label>
           <input name="area" value="${safeAttr(isEdit?p.area||'':'')}" placeholder="Contoh: 1.250 m²" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600">
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Urutan Tampil</label>
+            <input name="display_order" type="number" min="0" max="9999" value="${safeAttr(isEdit?p.display_order||0:0)}" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black text-sm">
+          </div>
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Status Website *</label>
+            <select name="is_active" required class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black text-sm">
+              <option value="1" ${!isEdit||p.is_active?'selected':''}>Tampilkan di website</option>
+              <option value="0" ${isEdit&&!p.is_active?'selected':''}>Sembunyikan</option>
+            </select>
+          </div>
         </div>
 
         <div>
@@ -1041,7 +1240,7 @@ function openPortfolioModal(id){
           <textarea name="description" rows="4" required placeholder="Jelaskan konsep, hasil pekerjaan, dan keunggulan portfolio..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 resize-none">${escapeHtml(isEdit?p.description:'')}</textarea>
         </div>
 
-        <button id="portfolio-submit-btn" type="submit" class="w-full py-3 bg-gold-500 text-white text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5">
+        <button id="portfolio-submit-btn" type="submit" ${(!DB.services||!DB.services.length)?'disabled':''} class="w-full py-3 bg-gold-500 text-white text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed">
           ${isEdit?'Simpan Perubahan':'Tambah Portfolio'}
         </button>
       </form>
@@ -1747,6 +1946,173 @@ async function markRead(id){
   }catch(err){toast('❌ '+err.message);}
 }
 
+
+function testimonialStatusMeta(status){
+  if(status==='published')return {label:'Ditampilkan', cls:'bg-emerald-50 text-emerald-700 border-emerald-200'};
+  if(status==='hidden')return {label:'Disembunyikan', cls:'bg-stone-100 text-stone-600 border-stone-200'};
+  return {label:'Menunggu Review', cls:'bg-amber-50 text-amber-700 border-amber-200'};
+}
+function updateTestimonialBadge(){
+  var count=DB.testimonials.filter(function(t){return t.status==='pending'}).length;
+  var badge=document.getElementById('testimonial-badge');
+  if(!badge)return;
+  if(count>0){badge.textContent=count;badge.classList.remove('hidden')}else{badge.classList.add('hidden')}
+}
+function pgTestimonials(c){
+  updateTestimonialBadge();
+  var pending=DB.testimonials.filter(function(t){return t.status==='pending'}).length;
+  var published=DB.testimonials.filter(function(t){return t.status==='published'}).length;
+  var hidden=DB.testimonials.filter(function(t){return t.status==='hidden'}).length;
+  c.innerHTML=`
+    <div class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-6 border border-navy-600/40 mb-6 reveal">
+      <div class="flex items-center gap-2 text-gold-400 text-xs font-semibold tracking-[.18em] uppercase"><iconify-icon icon="lucide:message-square-heart" width="15"></iconify-icon> Testimoni Klien</div>
+      <h3 class="font-serif text-2xl text-white mt-2">Review testimoni sebelum ditampilkan</h3>
+      <p class="text-sm text-stone-400 mt-2 max-w-3xl">Testimoni yang dikirim klien dari landing page masuk sebagai Menunggu Review. Admin menentukan testimoni yang boleh tampil, dapat mengubah urutan, menyembunyikan, mengedit, atau menghapusnya.</p>
+      <div class="flex flex-wrap gap-3 mt-5 text-xs">
+        <span class="px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">${pending} Menunggu</span>
+        <span class="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">${published} Ditampilkan</span>
+        <span class="px-3 py-1.5 rounded-full bg-stone-500/10 text-stone-400 border border-stone-500/20">${hidden} Disembunyikan</span>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2 mb-6 reveal">
+      <div class="flex-1 min-w-[240px] flex items-center gap-2">
+        <iconify-icon icon="lucide:search" width="16" class="text-stone-500"></iconify-icon>
+        <input type="text" id="testimonial-search" placeholder="Cari nama, email, perusahaan, layanan..." oninput="filterTestimonials()" class="flex-1 bg-white border border-stone-300 rounded-xl px-4 py-2.5 text-sm text-black placeholder:text-stone-400">
+      </div>
+      <select id="testimonial-filter" onchange="filterTestimonials()" class="bg-white border border-stone-300 rounded-xl px-4 py-2.5 text-sm text-black">
+        <option value="all">Semua Status</option>
+        <option value="pending">Menunggu Review</option>
+        <option value="published">Ditampilkan</option>
+        <option value="hidden">Disembunyikan</option>
+      </select>
+    </div>
+    <div id="testimonial-list" class="space-y-3"></div>`;
+  filterTestimonials();
+}
+function filterTestimonials(){
+  var target=document.getElementById('testimonial-list');if(!target)return;
+  var q=((document.getElementById('testimonial-search')||{}).value||'').toLowerCase();
+  var status=((document.getElementById('testimonial-filter')||{}).value||'all');
+  var rows=DB.testimonials.filter(function(t){
+    if(status!=='all' && t.status!==status)return false;
+    var hay=[t.name,t.email,t.phone,t.company,t.position,t.service,t.testimonial].join(' ').toLowerCase();
+    return !q || hay.indexOf(q)>-1;
+  });
+  target.innerHTML=rows.map(function(t,i){
+    var meta=testimonialStatusMeta(t.status);
+    var stars='';
+    for(var s=1;s<=5;s++)stars+='<iconify-icon icon="lucide:star" width="14" class="'+(s<=Number(t.rating)?'text-amber-500':'text-stone-300')+'"></iconify-icon>';
+    var ident=[t.position,t.company].filter(Boolean).join(' · ');
+    return '<div class="testimonial-admin-card rounded-2xl p-5 md:p-6 reveal" style="transition-delay:'+(i*.03)+'s">'+
+      '<div class="flex flex-col lg:flex-row lg:items-start gap-4">'+
+        '<div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0"><iconify-icon icon="lucide:quote" width="18"></iconify-icon></div>'+
+        '<div class="flex-1 min-w-0">'+
+          '<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">'+
+            '<div><div class="flex flex-wrap gap-2 items-center"><span class="text-slate-900 font-semibold text-sm">'+escapeHtml(t.name)+'</span><span class="px-2.5 py-1 border rounded-full text-[10px] font-semibold '+meta.cls+'">'+meta.label+'</span></div>'+
+            '<div class="text-[11px] text-slate-500 mt-1">'+escapeHtml(t.email)+(ident?' · '+escapeHtml(ident):'')+'</div></div>'+
+            '<div class="text-right"><div class="flex gap-0.5 justify-start sm:justify-end">'+stars+'</div><div class="text-[10px] text-slate-400 mt-1">'+escapeHtml(t.created_at||'')+'</div></div>'+
+          '</div>'+
+          '<p class="text-sm text-slate-600 leading-relaxed mt-4 whitespace-pre-line">'+escapeHtml(t.testimonial)+'</p>'+
+          '<div class="flex flex-wrap items-center gap-2 mt-4">'+
+            (t.service?'<span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px]">'+escapeHtml(t.service)+'</span>':'')+
+            '<span class="px-2.5 py-1 rounded-full bg-slate-50 text-slate-500 text-[10px]">Urutan '+Number(t.display_order||0)+'</span>'+
+          '</div>'+
+          '<div class="flex flex-wrap gap-2 mt-5">'+
+            (t.status!=='published'?'<button onclick="setTestimonialStatus('+t.id+',\'published\')" class="px-3.5 py-2 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:eye" width="13"></iconify-icon> Tampilkan</button>':'<button onclick="setTestimonialStatus('+t.id+',\'hidden\')" class="px-3.5 py-2 rounded-lg bg-stone-100 text-stone-600 hover:bg-stone-200 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:eye-off" width="13"></iconify-icon> Sembunyikan</button>')+
+            '<button onclick="editTestimonial('+t.id+')" class="px-3.5 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:pencil" width="13"></iconify-icon> Edit</button>'+
+            '<button onclick="deleteTestimonial('+t.id+')" class="px-3.5 py-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:trash-2" width="13"></iconify-icon> Hapus</button>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('') || '<div class="text-center py-16 text-stone-500 reveal"><iconify-icon icon="lucide:message-square-dashed" width="34"></iconify-icon><p class="mt-3 text-sm">Belum ada testimoni yang sesuai.</p></div>';
+  setTimeout(function(){target.querySelectorAll('.reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('rv')},i*30)})},30);
+}
+function getTestimonial(id){
+  return DB.testimonials.find(function(t){return Number(t.id)===Number(id)});
+}
+function testimonialPayload(t,status){
+  return {
+    name:t.name,
+    email:t.email,
+    phone:t.phone||null,
+    company:t.company||null,
+    position:t.position||null,
+    service_id:t.service_id ? Number(t.service_id) : null,
+    rating:Number(t.rating||5),
+    testimonial:t.testimonial,
+    status:status||t.status,
+    display_order:Number(t.display_order||0)
+  };
+}
+async function setTestimonialStatus(id,status){
+  var t=getTestimonial(id);if(!t)return;
+  var label=status==='published'?'menampilkan':'menyembunyikan';
+  if(!confirm('Yakin ingin '+label+' testimoni dari '+t.name+'?'))return;
+  try{
+    var result=await apiRequest('/admin/testimonials/'+id,{method:'PUT',body:JSON.stringify(testimonialPayload(t,status))});
+    await loadAdminData();updateTestimonialBadge();toast('✅ '+result.message);goPage('testimonials');
+  }catch(err){toast('❌ '+err.message);}
+}
+function editTestimonial(id){
+  var t=getTestimonial(id);if(!t)return;
+  var serviceOptions='<option value="">Tanpa layanan</option>'+DB.services.map(function(s){
+    return '<option value="'+s.id+'" '+(Number(t.service_id)===Number(s.id)?'selected':'')+'>'+escapeHtml(s.title)+'</option>';
+  }).join('');
+  var statusOptions=[
+    ['pending','Menunggu Review'],['published','Ditampilkan'],['hidden','Disembunyikan']
+  ].map(function(o){return '<option value="'+o[0]+'" '+(t.status===o[0]?'selected':'')+'>'+o[1]+'</option>'}).join('');
+  var h=`
+    <form onsubmit="saveTestimonialEdit(event,${t.id})" class="p-6 md:p-7">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div><div class="text-[10px] text-blue-600 uppercase tracking-[.18em] font-semibold">Kelola Testimoni</div><h3 class="font-serif text-2xl text-slate-900 mt-2">Edit Testimoni Klien</h3></div>
+        <button type="button" onclick="closeModal()" class="w-9 h-9 rounded-lg bg-stone-100 text-stone-500 hover:text-slate-900 flex items-center justify-center"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Nama *</label><input id="tm-name" required maxlength="160" value="${safeAttr(t.name)}" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black"></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Email *</label><input id="tm-email" type="email" required maxlength="180" value="${safeAttr(t.email)}" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black"></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Telepon</label><input id="tm-phone" maxlength="60" value="${safeAttr(t.phone||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black"></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Perusahaan</label><input id="tm-company" maxlength="180" value="${safeAttr(t.company||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black"></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Jabatan</label><input id="tm-position" maxlength="180" value="${safeAttr(t.position||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black"></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Layanan</label><select id="tm-service" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black">${serviceOptions}</select></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Rating *</label><select id="tm-rating" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black">${[5,4,3,2,1].map(function(r){return '<option value="'+r+'" '+(Number(t.rating)===r?'selected':'')+'>'+r+' Bintang</option>'}).join('')}</select></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Status *</label><select id="tm-status" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black">${statusOptions}</select></div>
+        <div><label class="text-xs font-medium text-slate-500 uppercase">Urutan Tampil</label><input id="tm-order" type="number" min="0" max="9999" value="${Number(t.display_order||0)}" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black"></div>
+      </div>
+      <div class="mt-4"><label class="text-xs font-medium text-slate-500 uppercase">Isi Testimoni *</label><textarea id="tm-text" required minlength="20" maxlength="3000" rows="6" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black resize-y">${escapeHtml(t.testimonial)}</textarea></div>
+      <div class="flex justify-end gap-2 mt-6"><button type="button" onclick="closeModal()" class="px-5 py-3 rounded-xl border border-stone-300 text-slate-600 text-xs font-semibold">Batal</button><button type="submit" class="px-5 py-3 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500">Simpan Testimoni</button></div>
+    </form>`;
+  showModal(h);
+}
+async function saveTestimonialEdit(e,id){
+  e.preventDefault();
+  var payload={
+    name:document.getElementById('tm-name').value.trim(),
+    email:document.getElementById('tm-email').value.trim(),
+    phone:document.getElementById('tm-phone').value.trim()||null,
+    company:document.getElementById('tm-company').value.trim()||null,
+    position:document.getElementById('tm-position').value.trim()||null,
+    service_id:document.getElementById('tm-service').value ? Number(document.getElementById('tm-service').value) : null,
+    rating:Number(document.getElementById('tm-rating').value),
+    testimonial:document.getElementById('tm-text').value.trim(),
+    status:document.getElementById('tm-status').value,
+    display_order:Number(document.getElementById('tm-order').value||0)
+  };
+  try{
+    var result=await apiRequest('/admin/testimonials/'+id,{method:'PUT',body:JSON.stringify(payload)});
+    closeModal();await loadAdminData();updateTestimonialBadge();toast('✅ '+result.message);goPage('testimonials');
+  }catch(err){toast('❌ '+err.message);}
+}
+async function deleteTestimonial(id){
+  var t=getTestimonial(id);if(!t)return;
+  if(!confirm('Hapus permanen testimoni dari '+t.name+'?'))return;
+  try{
+    var result=await apiRequest('/admin/testimonials/'+id,{method:'DELETE'});
+    await loadAdminData();updateTestimonialBadge();toast('✅ '+result.message);goPage('testimonials');
+  }catch(err){toast('❌ '+err.message);}
+}
+
 function pgTeam(c){
   c.innerHTML = `
   <div class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-6 border border-navy-600/40 mb-6 reveal">
@@ -1859,6 +2225,24 @@ async function deleteTeamMember(id){
   }catch(err){toast('❌ '+err.message);}
 }
 
+function buildServiceSettingsRowsHtml(){
+  return (DB.services||[]).map(function(item){
+    var image=item.image_url
+      ? '<img src="'+safeAttr(item.image_url)+'" alt="'+safeAttr(item.title||'Layanan')+'" class="w-24 h-20 rounded-xl object-cover flex-shrink-0">'
+      : '<div class="w-24 h-20 rounded-xl bg-stone-100 text-stone-400 flex items-center justify-center flex-shrink-0"><iconify-icon icon="lucide:image" width="22"></iconify-icon></div>';
+    return '<div class="service-editor-card rounded-2xl p-4 flex flex-col md:flex-row md:items-center gap-4">'+
+      image+
+      '<div class="flex-1 min-w-0"><div class="flex flex-wrap items-center gap-2"><h4 class="font-semibold text-slate-900">'+escapeHtml(item.title||'-')+'</h4>'+(item.is_active?'<span class="badge badge-done">Tampil</span>':'<span class="badge badge-pending">Disembunyikan</span>')+'</div><p class="text-xs text-stone-500 mt-1 line-clamp-2">'+escapeHtml(item.description||'')+'</p><div class="text-[10px] text-stone-500 mt-2">Urutan '+escapeHtml(String(item.display_order??0))+' · '+((item.features||[]).length)+' poin layanan · Icon lucide:'+escapeHtml(item.icon||'hard-hat')+'</div></div>'+
+      '<div class="flex items-center gap-2 md:flex-shrink-0"><button type="button" onclick="openServiceModal('+item.id+')" class="px-3 py-2 rounded-lg border border-blue-200 text-blue-600 text-xs font-semibold hover:bg-blue-50 flex items-center gap-1"><iconify-icon icon="lucide:pencil" width="13"></iconify-icon> Edit</button><button type="button" onclick="deleteServiceItem('+item.id+')" class="px-3 py-2 rounded-lg border border-red-200 text-red-500 text-xs font-semibold hover:bg-red-50 flex items-center gap-1"><iconify-icon icon="lucide:trash-2" width="13"></iconify-icon> Hapus</button></div>'+
+    '</div>';
+  }).join('') || '<div class="service-editor-card rounded-2xl p-8 text-center text-stone-500 text-sm">Belum ada data layanan. Klik <b>Tambah Layanan</b> untuk membuat layanan baru.</div>';
+}
+
+function renderSettingsServiceList(){
+  var target=document.getElementById('settings-service-list');
+  if(target)target.innerHTML=buildServiceSettingsRowsHtml();
+}
+
 function pgSettings(c){
   var s = DB.settings || {};
   var logoPreview = s.logo_url
@@ -1871,16 +2255,110 @@ function pgSettings(c){
     ? '<img src="'+safeAttr(s.hero_image_url)+'" alt="Hero" class="w-full h-32 object-cover rounded-xl">'
     : '<div class="h-32 flex items-center justify-center text-stone-600 text-xs">Belum ada hero image</div>';
 
+  var aboutHeroPreview = s.about_hero_image_url
+    ? '<img src="'+safeAttr(s.about_hero_image_url)+'" alt="Hero Tentang" class="w-full h-36 object-cover rounded-xl">'
+    : '<div class="h-36 flex items-center justify-center text-stone-600 text-xs">Belum ada gambar hero Tentang</div>';
+  var aboutStoryPreview = s.about_story_image_url
+    ? '<img src="'+safeAttr(s.about_story_image_url)+'" alt="Gambar Tentang Perusahaan" class="w-full h-36 object-cover rounded-xl">'
+    : '<div class="h-36 flex items-center justify-center text-stone-600 text-xs">Belum ada gambar cerita perusahaan</div>';
+  var organizationPreview = s.organization_chart_url
+    ? '<img src="'+safeAttr(s.organization_chart_url)+'" alt="Struktur Organisasi" class="w-full h-52 object-contain rounded-xl bg-white">'
+    : '<div class="h-52 flex flex-col items-center justify-center text-stone-500 text-xs gap-2"><iconify-icon icon="lucide:network" width="28"></iconify-icon><span>Belum ada gambar struktur organisasi</span></div>';
+
+  var aboutMissions = Array.isArray(s.about_mission_items) && s.about_mission_items.length
+    ? s.about_mission_items
+    : [''];
+  var missionRows = aboutMissions.map(function(item,i){
+    return '<div class="about-mission-row about-editor-card rounded-xl p-4 flex gap-3 items-start">'+
+      '<div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-semibold flex-shrink-0">'+(i+1)+'</div>'+
+      '<textarea name="about_mission_items['+i+']" required rows="2" class="flex-1 px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Isi misi perusahaan">'+escapeHtml(item||'')+'</textarea>'+
+      '<button type="button" onclick="removeAboutMissionRow(this)" class="w-9 h-9 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 flex items-center justify-center flex-shrink-0" title="Hapus misi"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>'+
+    '</div>';
+  }).join('');
+
+  var aboutValues = Array.isArray(s.about_values) && s.about_values.length
+    ? s.about_values
+    : [{icon:'',title:'',description:''}];
+  var valueRows = aboutValues.map(function(item,i){
+    item=item||{};
+    return '<div class="about-value-row about-editor-card rounded-xl p-4 grid md:grid-cols-[90px_1fr_1.5fr_42px] gap-3 items-start">'+
+      '<div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Icon</label><input name="about_values['+i+'][icon]" value="'+safeAttr(item.icon||'')+'" maxlength="30" placeholder="🏆" class="w-full mt-1 px-3 py-3 rounded-xl border text-sm text-center"></div>'+
+      '<div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Nilai</label><input name="about_values['+i+'][title]" required value="'+safeAttr(item.title||'')+'" maxlength="120" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>'+
+      '<div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Deskripsi (Opsional)</label><input name="about_values['+i+'][description]" value="'+safeAttr(item.description||'')+'" maxlength="500" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>'+
+      '<button type="button" onclick="removeAboutValueRow(this)" class="mt-5 w-9 h-9 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 flex items-center justify-center" title="Hapus nilai"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>'+
+    '</div>';
+  }).join('');
+
+  var serviceHeroPreview = s.service_hero_image_url
+    ? '<img src="'+safeAttr(s.service_hero_image_url)+'" alt="Hero Layanan" class="w-full h-40 object-cover rounded-xl">'
+    : '<div class="h-40 flex items-center justify-center text-stone-500 text-xs">Belum ada gambar hero Layanan</div>';
+
+  var portfolioHeroPreview = s.portfolio_hero_image_url
+    ? '<img src="'+safeAttr(s.portfolio_hero_image_url)+'" alt="Hero Portofolio" class="w-full h-40 object-cover rounded-xl">'
+    : '<div class="h-40 flex items-center justify-center text-stone-500 text-xs">Belum ada gambar hero Portofolio</div>';
+
+  var serviceProcessSteps = Array.isArray(s.service_process_steps) && s.service_process_steps.length
+    ? s.service_process_steps
+    : [{title:'',description:''}];
+  var serviceProcessRows = serviceProcessSteps.map(function(item,i){
+    item=item||{};
+    return '<div class="service-process-row service-editor-card rounded-xl p-4 grid md:grid-cols-[46px_1fr_1.5fr_42px] gap-3 items-start">'+
+      '<div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-semibold mt-5">'+(i+1)+'</div>'+
+      '<div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Nama Tahap *</label><input name="service_process_steps['+i+'][title]" required value="'+safeAttr(item.title||'')+'" maxlength="180" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm" placeholder="Contoh: Konsultasi"></div>'+
+      '<div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Deskripsi *</label><textarea name="service_process_steps['+i+'][description]" required rows="2" maxlength="1000" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Jelaskan tahap proses kerja">'+escapeHtml(item.description||'')+'</textarea></div>'+
+      '<button type="button" onclick="removeServiceProcessRow(this)" class="mt-5 w-9 h-9 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 flex items-center justify-center" title="Hapus tahap"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>'+
+    '</div>';
+  }).join('');
+
+  var serviceRowsHtml=buildServiceSettingsRowsHtml();
+
+  var contactHeroPreview = s.contact_hero_image_url
+    ? '<img src="'+safeAttr(s.contact_hero_image_url)+'" alt="Hero Hubungi Kami" class="w-full h-40 object-cover rounded-xl">'
+    : '<div class="h-40 flex items-center justify-center text-stone-500 text-xs">Belum ada gambar hero Hubungi Kami</div>';
+
+  var contactBudgets = Array.isArray(s.contact_budget_options) && s.contact_budget_options.length ? s.contact_budget_options : [''];
+  var contactBudgetRows = contactBudgets.map(function(item,i){
+    return '<div class="contact-list-row contact-editor-card rounded-xl p-3 flex gap-3 items-center">'+
+      '<div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-semibold flex-shrink-0">'+(i+1)+'</div>'+
+      '<input name="contact_budget_options['+i+']" required maxlength="180" value="'+safeAttr(item||'')+'" class="flex-1 px-4 py-3 rounded-xl border text-sm" placeholder="Contoh: Rp 500 Juta - 1 Miliar">'+
+      '<button type="button" onclick="removeContactListRow(this,\'contact-budget-list\')" class="w-9 h-9 rounded-lg border border-red-200 text-red-500 flex items-center justify-center flex-shrink-0" title="Hapus"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>'+
+    '</div>';
+  }).join('');
+
+  var meetingTypes = Array.isArray(s.contact_schedule_types) && s.contact_schedule_types.length ? s.contact_schedule_types : [''];
+  var meetingTypeRows = meetingTypes.map(function(item,i){
+    return '<div class="contact-list-row contact-editor-card rounded-xl p-3 flex gap-3 items-center">'+
+      '<div class="w-8 h-8 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center text-xs font-semibold flex-shrink-0">'+(i+1)+'</div>'+
+      '<input name="contact_schedule_types['+i+']" required maxlength="180" value="'+safeAttr(item||'')+'" class="flex-1 px-4 py-3 rounded-xl border text-sm" placeholder="Contoh: Konsultasi Proyek Baru">'+
+      '<button type="button" onclick="removeContactListRow(this,\'contact-meeting-type-list\')" class="w-9 h-9 rounded-lg border border-red-200 text-red-500 flex items-center justify-center flex-shrink-0" title="Hapus"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>'+
+    '</div>';
+  }).join('');
+
   c.innerHTML = `
   <div class="max-w-6xl mx-auto space-y-6">
     <div class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-6 border border-navy-600/40 reveal">
       <div class="flex items-center gap-2 text-gold-400 text-xs font-semibold tracking-[.18em] uppercase"><iconify-icon icon="lucide:sliders-horizontal" width="15"></iconify-icon> Pengaturan Website</div>
       <h3 class="font-serif text-2xl text-white mt-2">Kelola identitas dan tampilan website</h3>
-      <p class="text-sm text-stone-400 mt-2 max-w-3xl">Nama perusahaan, logo, kontak, hero, statistik, media sosial, SEO, dan footer dapat diubah dari halaman ini tanpa mengedit source code.</p>
+      <p class="text-sm text-stone-400 mt-2 max-w-3xl">Nama perusahaan, logo, kontak, hero, halaman Tentang, Layanan, Portofolio, struktur organisasi, statistik, media sosial, SEO, dan footer dapat diubah dari halaman ini tanpa mengedit source code.</p>
+    </div>
+
+    <div class="settings-subnav rounded-2xl p-3 reveal">
+      <div class="flex flex-wrap gap-2">
+        <button type="button" data-settings-tab="general" onclick="setSettingsSubsection('general')" class="settings-subnav-btn active px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:building-2" width="14"></iconify-icon> Umum</button>
+        <button type="button" data-settings-tab="mail" onclick="setSettingsSubsection('mail')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:mail-cog" width="14"></iconify-icon> Email & SMTP</button>
+        <button type="button" data-settings-tab="templates" onclick="setSettingsSubsection('templates')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:file-text" width="14"></iconify-icon> Template Email</button>
+        <button type="button" data-settings-tab="home" onclick="setSettingsSubsection('home')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:house" width="14"></iconify-icon> Beranda</button>
+        <button type="button" data-settings-tab="about" onclick="setSettingsSubsection('about')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:info" width="14"></iconify-icon> Tentang</button>
+        <button type="button" data-settings-tab="services" onclick="setSettingsSubsection('services')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:hard-hat" width="14"></iconify-icon> Layanan</button>
+        <button type="button" data-settings-tab="portfolio" onclick="setSettingsSubsection('portfolio')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:images" width="14"></iconify-icon> Portofolio</button>
+        <button type="button" data-settings-tab="contact" onclick="setSettingsSubsection('contact')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:phone-call" width="14"></iconify-icon> Hubungi Kami</button>
+        <button type="button" data-settings-tab="testimonials" onclick="setSettingsSubsection('testimonials')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:message-square-heart" width="14"></iconify-icon> Testimoni</button>
+        <button type="button" data-settings-tab="seo" onclick="setSettingsSubsection('seo')" class="settings-subnav-btn px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:search-check" width="14"></iconify-icon> SEO & Footer</button>
+      </div>
     </div>
 
     <form id="settings-form" onsubmit="saveSettings(event)" class="space-y-6">
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="general" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:building-2" width="20" class="text-gold-400"></iconify-icon> Identitas Perusahaan</h3>
         <div class="grid sm:grid-cols-2 gap-4">
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Nama Perusahaan *</label><input name="company" required value="${safeAttr(s.company||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -1890,7 +2368,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="general" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:image" width="20" class="text-gold-400"></iconify-icon> Logo & Media Website</h3>
         <div class="grid lg:grid-cols-3 gap-5">
           <div class="settings-media-card rounded-2xl border border-navy-700/40 bg-navy-900/40 p-5">
@@ -1917,7 +2395,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="general" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:contact" width="20" class="text-gold-400"></iconify-icon> Kontak & Lokasi</h3>
         <div class="grid sm:grid-cols-2 gap-4">
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email Resmi *</label><input type="email" name="email" required value="${safeAttr(s.email||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -1931,7 +2409,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="mail" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
           <div>
             <h3 class="font-serif text-xl text-white flex items-center gap-2"><iconify-icon icon="lucide:mail-cog" width="20" class="text-gold-400"></iconify-icon> Email Pengirim & SMTP</h3>
@@ -1977,7 +2455,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="settings-email-template-section bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="templates" class="settings-email-template-section bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
           <div>
             <h3 class="font-serif text-xl text-white flex items-center gap-2"><iconify-icon icon="lucide:mail-open" width="20" class="text-gold-400"></iconify-icon> Template Kalimat Email</h3>
@@ -2044,7 +2522,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="general" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:share-2" width="20" class="text-gold-400"></iconify-icon> Media Sosial</h3>
         <div class="grid sm:grid-cols-2 gap-4">
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Instagram</label><input type="url" name="instagram_url" value="${safeAttr(s.instagram_url||'')}" placeholder="https://instagram.com/..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -2054,7 +2532,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="home" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:panel-top" width="20" class="text-gold-400"></iconify-icon> Hero Beranda</h3>
         <div class="grid sm:grid-cols-2 gap-4">
           <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Badge Hero *</label><input name="hero_badge" required value="${safeAttr(s.hero_badge||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -2066,7 +2544,385 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="about" class="settings-about-section rounded-2xl p-6 md:p-8 reveal">
+        <div class="flex items-start justify-between gap-4 mb-7">
+          <div>
+            <h3 class="font-serif text-xl text-white flex items-center gap-2"><iconify-icon icon="lucide:building-2" width="20" class="text-gold-400"></iconify-icon> Halaman Tentang</h3>
+            <p class="text-xs text-stone-500 mt-2 max-w-3xl leading-relaxed">Seluruh konten halaman Tentang di landing page dapat diubah dari sini. Tim dan sertifikasi tetap mengambil data dari menu CRUD masing-masing.</p>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-semibold whitespace-nowrap">DINAMIS</span>
+        </div>
+
+        <div class="space-y-7">
+          <div>
+            <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"><iconify-icon icon="lucide:panel-top" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Hero Tentang</h4><p class="text-[10px] text-stone-500">Judul, deskripsi, dan background bagian paling atas halaman Tentang.</p></div></div>
+            <div class="grid lg:grid-cols-[1fr_1.35fr] gap-5">
+              <div class="settings-media-card rounded-2xl p-5">
+                <div id="about-hero-preview" class="settings-media-preview rounded-xl p-3 mb-4">${aboutHeroPreview}</div>
+                <label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Background Hero Tentang</label>
+                <input type="file" name="about_hero_image_file" accept=".jpg,.jpeg,.png,.webp" onchange="previewSettingsImage(this,'about-hero-preview','cover')" class="w-full mt-2 text-xs">
+                <p class="text-[10px] text-stone-500 mt-2">JPG/PNG/WebP, maks. 10 MB. Disarankan landscape 1920×900.</p>
+                ${s.about_hero_image_path?'<label class="mt-3 flex items-center gap-2 text-xs text-red-500"><input type="checkbox" name="remove_about_hero_image" value="1"> Hapus gambar saat disimpan</label>':''}
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label Atas *</label><input name="about_hero_eyebrow" required value="${safeAttr(s.about_hero_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Utama *</label><input name="about_hero_title_primary" required value="${safeAttr(s.about_hero_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Highlight *</label><input name="about_hero_title_highlight" required value="${safeAttr(s.about_hero_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Deskripsi *</label><textarea name="about_hero_description" required rows="4" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.about_hero_description||'')}</textarea></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-stone-200 pt-7">
+            <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center"><iconify-icon icon="lucide:book-open-text" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Tentang Perusahaan</h4><p class="text-[10px] text-stone-500">Foto, judul, profil perusahaan dan dua informasi ringkas.</p></div></div>
+            <div class="grid lg:grid-cols-[1fr_1.35fr] gap-5">
+              <div class="settings-media-card rounded-2xl p-5">
+                <div id="about-story-preview" class="settings-media-preview rounded-xl p-3 mb-4">${aboutStoryPreview}</div>
+                <label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Gambar Tentang Perusahaan</label>
+                <input type="file" name="about_story_image_file" accept=".jpg,.jpeg,.png,.webp" onchange="previewSettingsImage(this,'about-story-preview','cover')" class="w-full mt-2 text-xs">
+                <p class="text-[10px] text-stone-500 mt-2">JPG/PNG/WebP, maks. 10 MB.</p>
+                ${s.about_story_image_path?'<label class="mt-3 flex items-center gap-2 text-xs text-red-500"><input type="checkbox" name="remove_about_story_image" value="1"> Hapus gambar saat disimpan</label>':''}
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label *</label><input name="about_story_eyebrow" required value="${safeAttr(s.about_story_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Utama *</label><input name="about_story_title_primary" required value="${safeAttr(s.about_story_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Highlight *</label><input name="about_story_title_highlight" required value="${safeAttr(s.about_story_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4 mt-4">
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Paragraf 1 *</label><textarea name="about_story_paragraph_1" required rows="5" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.about_story_paragraph_1||'')}</textarea></div>
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Paragraf 2</label><textarea name="about_story_paragraph_2" rows="5" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.about_story_paragraph_2||'')}</textarea></div>
+              <div class="about-editor-card rounded-xl p-4"><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Info Ringkas 1 *</label><input name="about_feature_1_title" required value="${safeAttr(s.about_feature_1_title||'')}" class="w-full mt-2 px-4 py-3 rounded-xl border text-sm"><textarea name="about_feature_1_description" required rows="3" class="w-full mt-3 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.about_feature_1_description||'')}</textarea></div>
+              <div class="about-editor-card rounded-xl p-4"><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Info Ringkas 2 *</label><input name="about_feature_2_title" required value="${safeAttr(s.about_feature_2_title||'')}" class="w-full mt-2 px-4 py-3 rounded-xl border text-sm"><textarea name="about_feature_2_description" required rows="3" class="w-full mt-3 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.about_feature_2_description||'')}</textarea></div>
+            </div>
+          </div>
+
+          <div class="border-t border-stone-200 pt-7 grid lg:grid-cols-2 gap-6">
+            <div>
+              <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"><iconify-icon icon="lucide:eye" width="17"></iconify-icon></div><h4 class="text-sm font-semibold text-white">Visi</h4></div>
+              <input name="about_vision_title" required value="${safeAttr(s.about_vision_title||'Visi')}" class="w-full mb-3 px-4 py-3 rounded-xl border text-sm" placeholder="Judul Visi">
+              <textarea name="about_vision" required rows="7" class="w-full px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.about_vision||'')}</textarea>
+            </div>
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center"><iconify-icon icon="lucide:compass" width="17"></iconify-icon></div><h4 class="text-sm font-semibold text-white">Misi</h4></div><button type="button" onclick="addAboutMissionRow()" class="px-3 py-2 rounded-lg bg-blue-50 text-blue-600 text-[10px] font-semibold flex items-center gap-1"><iconify-icon icon="lucide:plus" width="13"></iconify-icon> Tambah Misi</button></div>
+              <input name="about_mission_title" required value="${safeAttr(s.about_mission_title||'Misi')}" class="w-full mb-3 px-4 py-3 rounded-xl border text-sm" placeholder="Judul Misi">
+              <div id="about-mission-list" class="space-y-3">${missionRows}</div>
+            </div>
+          </div>
+
+          <div class="border-t border-stone-200 pt-7">
+            <div class="flex items-center justify-between gap-3 mb-4"><div><h4 class="text-sm font-semibold text-white">Nilai Perusahaan</h4><p class="text-[10px] text-stone-500 mt-1">Jumlah nilai dapat ditambah atau dikurangi. Icon boleh berupa emoji.</p></div><button type="button" onclick="addAboutValueRow()" class="px-3 py-2 rounded-lg bg-blue-50 text-blue-600 text-[10px] font-semibold flex items-center gap-1"><iconify-icon icon="lucide:plus" width="13"></iconify-icon> Tambah Nilai</button></div>
+            <div class="grid sm:grid-cols-3 gap-4 mb-4">
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label *</label><input name="about_values_eyebrow" required value="${safeAttr(s.about_values_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Utama *</label><input name="about_values_title_primary" required value="${safeAttr(s.about_values_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Highlight *</label><input name="about_values_title_highlight" required value="${safeAttr(s.about_values_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+            </div>
+            <div id="about-values-list" class="space-y-3">${valueRows}</div>
+          </div>
+
+          <div class="border-t border-stone-200 pt-7">
+            <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"><iconify-icon icon="lucide:network" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Struktur Organisasi Perusahaan</h4><p class="text-[10px] text-stone-500">Struktur organisasi ditampilkan sebagai satu gambar di landing page.</p></div></div>
+            <div class="grid lg:grid-cols-[1.1fr_1fr] gap-5">
+              <div class="settings-media-card rounded-2xl p-5">
+                <div id="organization-chart-preview" class="settings-media-preview rounded-xl p-3 mb-4">${organizationPreview}</div>
+                <label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Upload Gambar Struktur Organisasi</label>
+                <input type="file" name="organization_chart_file" accept=".jpg,.jpeg,.png,.webp" onchange="previewSettingsImage(this,'organization-chart-preview','contain')" class="w-full mt-2 text-xs">
+                <p class="text-[10px] text-stone-500 mt-2">JPG/PNG/WebP, maks. 15 MB. Gunakan gambar beresolusi tinggi agar tulisan struktur tetap terbaca.</p>
+                ${s.organization_chart_path?'<label class="mt-3 flex items-center gap-2 text-xs text-red-500"><input type="checkbox" name="remove_organization_chart" value="1"> Hapus gambar struktur saat disimpan</label>':''}
+              </div>
+              <div class="space-y-4">
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label *</label><input name="organization_eyebrow" required value="${safeAttr(s.organization_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Utama *</label><input name="organization_title_primary" required value="${safeAttr(s.organization_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Highlight *</label><input name="organization_title_highlight" required value="${safeAttr(s.organization_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Deskripsi</label><textarea name="organization_description" rows="5" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.organization_description||'')}</textarea></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-stone-200 pt-7 grid lg:grid-cols-2 gap-6">
+            <div class="about-editor-card rounded-xl p-5">
+              <h4 class="text-sm font-semibold text-white mb-4">Judul Section Tim</h4>
+              <div class="space-y-3"><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Label *</label><input name="about_team_eyebrow" required value="${safeAttr(s.about_team_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div class="grid sm:grid-cols-2 gap-3"><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Judul *</label><input name="about_team_title_primary" required value="${safeAttr(s.about_team_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Highlight *</label><input name="about_team_title_highlight" required value="${safeAttr(s.about_team_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"><p class="text-[9px] text-stone-500 mt-1">Boleh gunakan {short_name}.</p></div></div></div>
+            </div>
+            <div class="about-editor-card rounded-xl p-5">
+              <h4 class="text-sm font-semibold text-white mb-4">Judul Section Sertifikasi</h4>
+              <div class="space-y-3"><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Label *</label><input name="about_cert_eyebrow" required value="${safeAttr(s.about_cert_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div class="grid sm:grid-cols-2 gap-3"><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Judul *</label><input name="about_cert_title_primary" required value="${safeAttr(s.about_cert_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Highlight *</label><input name="about_cert_title_highlight" required value="${safeAttr(s.about_cert_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div></div><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Deskripsi *</label><textarea name="about_cert_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.about_cert_description||'')}</textarea></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-settings-panel="services" class="settings-services-section rounded-2xl p-6 md:p-8 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-7">
+          <div>
+            <h3 class="font-serif text-xl text-white flex items-center gap-2"><iconify-icon icon="lucide:hard-hat" width="20" class="text-gold-400"></iconify-icon> Halaman Layanan</h3>
+            <p class="text-xs text-stone-500 mt-2 max-w-3xl leading-relaxed">Hero, daftar layanan, gambar, poin layanan, urutan tampil, status publik, dan proses kerja seluruhnya dikelola dari sub-pengaturan ini.</p>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-semibold whitespace-nowrap">DINAMIS</span>
+        </div>
+
+        <div class="space-y-7">
+          <div class="service-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"><iconify-icon icon="lucide:panel-top" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Hero Halaman Layanan</h4><p class="text-[10px] text-stone-500">Background, label, judul dan deskripsi bagian paling atas.</p></div></div>
+            <div class="grid lg:grid-cols-[1.05fr_1.4fr] gap-5">
+              <div class="settings-media-card rounded-2xl p-5">
+                <div id="service-hero-preview" class="settings-media-preview rounded-xl p-3 mb-4">${serviceHeroPreview}</div>
+                <label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Background Hero Layanan</label>
+                <input type="file" name="service_hero_image_file" accept=".jpg,.jpeg,.png,.webp" onchange="previewSettingsImage(this,'service-hero-preview','cover')" class="w-full mt-2 text-xs">
+                <p class="text-[10px] text-stone-500 mt-2">JPG/PNG/WebP, maksimal 10 MB.</p>
+                ${s.service_hero_image_path?'<label class="mt-3 flex items-center gap-2 text-xs text-red-500"><input type="checkbox" name="remove_service_hero_image" value="1"> Hapus background hero saat disimpan</label>':''}
+              </div>
+              <div class="space-y-4">
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label *</label><input name="service_hero_eyebrow" required value="${safeAttr(s.service_hero_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Utama *</label><input name="service_hero_title_primary" required value="${safeAttr(s.service_hero_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Highlight *</label><input name="service_hero_title_highlight" required value="${safeAttr(s.service_hero_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Deskripsi *</label><textarea name="service_hero_description" required rows="5" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.service_hero_description||'')}</textarea></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-editor-card rounded-2xl p-5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+              <div><h4 class="text-sm font-semibold text-white">Daftar Layanan</h4><p class="text-[10px] text-stone-500 mt-1">Tambah, edit, hapus, upload gambar, atur icon, poin, urutan, dan status tampil.</p></div>
+              <button type="button" onclick="openServiceModal()" class="px-4 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-semibold flex items-center justify-center gap-2"><iconify-icon icon="lucide:plus" width="14"></iconify-icon> Tambah Layanan</button>
+            </div>
+            <div id="settings-service-list" class="space-y-3">${serviceRowsHtml}</div>
+          </div>
+
+          <div class="service-editor-card rounded-2xl p-5">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
+              <div><h4 class="text-sm font-semibold text-white">Proses Kerja</h4><p class="text-[10px] text-stone-500 mt-1">Judul section dan tahapan proses kerja di bagian bawah halaman Layanan.</p></div>
+              <button type="button" onclick="addServiceProcessRow()" class="px-4 py-2 rounded-xl border border-blue-200 text-blue-600 text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:plus" width="13"></iconify-icon> Tambah Tahap</button>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4 mb-5">
+              <div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Label *</label><input name="service_process_eyebrow" required value="${safeAttr(s.service_process_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Judul *</label><input name="service_process_title_primary" required value="${safeAttr(s.service_process_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Highlight *</label><input name="service_process_title_highlight" required value="${safeAttr(s.service_process_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+            </div>
+            <div id="service-process-list" class="space-y-3">${serviceProcessRows}</div>
+          </div>
+        </div>
+      </div>
+
+      <div data-settings-panel="portfolio" class="settings-portfolio-section rounded-2xl p-6 md:p-8 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-7">
+          <div>
+            <h3 class="font-serif text-xl text-white flex items-center gap-2"><iconify-icon icon="lucide:images" width="20" class="text-gold-400"></iconify-icon> Halaman Portofolio</h3>
+            <p class="text-xs text-stone-500 mt-2 max-w-3xl leading-relaxed">Hero, label filter, pesan data kosong, dan tombol konsultasi pada detail portofolio dapat diubah dari sub-pengaturan ini. Data proyek dikelola dari menu <b>Portfolio</b>.</p>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-semibold whitespace-nowrap">DINAMIS</span>
+        </div>
+
+        <div class="space-y-7">
+          <div class="portfolio-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"><iconify-icon icon="lucide:panel-top" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Hero Halaman Portofolio</h4><p class="text-[10px] text-stone-500">Background, label, judul dan deskripsi bagian paling atas halaman.</p></div></div>
+            <div class="grid lg:grid-cols-[1.05fr_1.4fr] gap-5">
+              <div class="settings-media-card rounded-2xl p-5">
+                <div id="portfolio-hero-preview" class="settings-media-preview rounded-xl p-3 mb-4">${portfolioHeroPreview}</div>
+                <label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Background Hero Portofolio</label>
+                <input type="file" name="portfolio_hero_image_file" accept=".jpg,.jpeg,.png,.webp" onchange="previewSettingsImage(this,'portfolio-hero-preview','cover')" class="w-full mt-2 text-xs">
+                <p class="text-[10px] text-stone-500 mt-2">JPG/PNG/WebP, maksimal 10 MB.</p>
+                ${s.portfolio_hero_image_path?'<label class="mt-3 flex items-center gap-2 text-xs text-red-500"><input type="checkbox" name="remove_portfolio_hero_image" value="1"> Hapus background hero saat disimpan</label>':''}
+              </div>
+              <div class="space-y-4">
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label *</label><input name="portfolio_hero_eyebrow" required value="${safeAttr(s.portfolio_hero_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Utama *</label><input name="portfolio_hero_title_primary" required value="${safeAttr(s.portfolio_hero_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Highlight *</label><input name="portfolio_hero_title_highlight" required value="${safeAttr(s.portfolio_hero_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Deskripsi *</label><textarea name="portfolio_hero_description" required rows="5" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.portfolio_hero_description||'')}</textarea></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-5"><div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center"><iconify-icon icon="lucide:sliders-horizontal" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold text-white">Teks & Interaksi Portofolio</h4><p class="text-[10px] text-stone-500">Kategori filter tidak dibuat manual; otomatis mengikuti Layanan yang dipakai pada data portofolio.</p></div></div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label Tombol Semua *</label><input name="portfolio_all_label" required value="${safeAttr(s.portfolio_all_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Tombol Detail / Konsultasi *</label><input name="portfolio_modal_cta_label" required value="${safeAttr(s.portfolio_modal_cta_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Saat Data Kosong *</label><input name="portfolio_empty_title" required value="${safeAttr(s.portfolio_empty_title||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Deskripsi Saat Data Kosong *</label><textarea name="portfolio_empty_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.portfolio_empty_description||'')}</textarea></div>
+            </div>
+            <div class="mt-5 p-4 rounded-xl bg-blue-50 border border-blue-100 text-xs text-blue-800 leading-relaxed"><b>Kategori Portofolio:</b> saat menambah/edit proyek, admin wajib memilih salah satu Layanan yang sudah dibuat. Tombol filter di landing page otomatis terbentuk dari seluruh layanan aktif yang sudah dibuat di Admin Panel.</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div data-settings-panel="contact" class="settings-contact-section rounded-2xl p-6 md:p-8 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-7">
+          <div>
+            <h3 class="font-serif text-xl text-white flex items-center gap-2"><iconify-icon icon="lucide:phone-call" width="20" class="text-blue-600"></iconify-icon> Halaman Hubungi Kami</h3>
+            <p class="text-xs text-stone-500 mt-2 max-w-3xl leading-relaxed">Semua konten utama halaman Hubungi Kami dikelola dari sub-pengaturan ini: hero, kartu informasi, formulir pesan, penjadwalan pertemuan, serta peta yang sekarang tampil di footer.</p>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-semibold whitespace-nowrap">DINAMIS</span>
+        </div>
+
+        <div class="space-y-7">
+          <div class="contact-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-5"><div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center"><iconify-icon icon="lucide:panel-top" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold">Hero Hubungi Kami</h4><p class="text-[10px] text-stone-500">Gambar, label, judul, highlight, dan deskripsi bagian atas halaman.</p></div></div>
+            <div class="grid lg:grid-cols-[1.05fr_1.4fr] gap-5">
+              <div class="settings-media-card rounded-2xl p-5">
+                <div id="contact-hero-preview" class="settings-media-preview rounded-xl p-3 mb-4">${contactHeroPreview}</div>
+                <label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Background Hero</label>
+                <input type="file" name="contact_hero_image_file" accept=".jpg,.jpeg,.png,.webp" onchange="previewSettingsImage(this,'contact-hero-preview','cover')" class="w-full mt-2 text-xs">
+                <p class="text-[10px] text-stone-500 mt-2">JPG/PNG/WebP, maksimal 10 MB.</p>
+                ${s.contact_hero_image_path?'<label class="mt-3 flex items-center gap-2 text-xs text-red-500"><input type="checkbox" name="remove_contact_hero_image" value="1"> Hapus background hero saat disimpan</label>':''}
+              </div>
+              <div class="space-y-4">
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Label *</label><input name="contact_hero_eyebrow" required value="${safeAttr(s.contact_hero_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+                <div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Judul Utama *</label><input name="contact_hero_title_primary" required value="${safeAttr(s.contact_hero_title_primary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Highlight *</label><input name="contact_hero_title_highlight" required value="${safeAttr(s.contact_hero_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div></div>
+                <div><label class="text-xs font-medium text-stone-500 tracking-wider uppercase">Deskripsi *</label><textarea name="contact_hero_description" required rows="4" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.contact_hero_description||'')}</textarea></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-5"><div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center"><iconify-icon icon="lucide:contact" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold">Label Informasi Kontak</h4><p class="text-[10px] text-stone-500">Nilai alamat, telepon, email dan jam operasional mengikuti Pengaturan Umum; di sini Anda mengatur nama label yang tampil.</p></div></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Label Kantor *</label><input name="contact_office_label" required value="${safeAttr(s.contact_office_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Label Telepon *</label><input name="contact_phone_label" required value="${safeAttr(s.contact_phone_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Label Email *</label><input name="contact_email_label" required value="${safeAttr(s.contact_email_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Label Jam Operasional *</label><input name="contact_hours_label" required value="${safeAttr(s.contact_hours_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+            </div>
+          </div>
+
+          <div class="contact-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-5"><div class="w-9 h-9 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center"><iconify-icon icon="lucide:send" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold">Form Kirim Pesan</h4><p class="text-[10px] text-stone-500">Atur seluruh judul, label, placeholder, opsi anggaran dan pesan sukses pada formulir kontak.</p></div></div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Judul Form *</label><input name="contact_form_title" required value="${safeAttr(s.contact_form_title||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Tombol Kirim *</label><input name="contact_form_submit_label" required value="${safeAttr(s.contact_form_submit_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+            </div>
+            <div class="mt-4"><label class="text-xs font-medium text-stone-500 uppercase">Deskripsi Form *</label><textarea name="contact_form_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.contact_form_description||'')}</textarea></div>
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <div class="grid grid-cols-2 gap-2"><input name="contact_form_name_label" required value="${safeAttr(s.contact_form_name_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label nama"><input name="contact_form_name_placeholder" required value="${safeAttr(s.contact_form_name_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder nama"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_form_email_label" required value="${safeAttr(s.contact_form_email_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label email"><input name="contact_form_email_placeholder" required value="${safeAttr(s.contact_form_email_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder email"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_form_phone_label" required value="${safeAttr(s.contact_form_phone_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label telepon"><input name="contact_form_phone_placeholder" required value="${safeAttr(s.contact_form_phone_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder telepon"></div>
+              <div class="grid grid-cols-3 gap-2"><input name="contact_form_service_label" required value="${safeAttr(s.contact_form_service_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label layanan"><input name="contact_form_service_placeholder" required value="${safeAttr(s.contact_form_service_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder layanan"><input name="contact_form_other_service_label" required value="${safeAttr(s.contact_form_other_service_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label lainnya"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_form_budget_label" required value="${safeAttr(s.contact_form_budget_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label anggaran"><input name="contact_form_budget_placeholder" required value="${safeAttr(s.contact_form_budget_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder anggaran"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_form_detail_label" required value="${safeAttr(s.contact_form_detail_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label detail"><textarea name="contact_form_detail_placeholder" required rows="2" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Placeholder detail">${escapeHtml(s.contact_form_detail_placeholder||'')}</textarea></div>
+            </div>
+            <div class="mt-5">
+              <div class="flex items-center justify-between gap-3 mb-3"><div><label class="text-xs font-medium text-stone-500 uppercase">Pilihan Estimasi Anggaran *</label><p class="text-[10px] text-stone-500 mt-1">Pilihan ini muncul pada dropdown anggaran di landing page.</p></div><button type="button" onclick="addContactListRow('contact-budget-list','contact_budget_options','Contoh: Rp 1 - 5 Miliar')" class="px-3 py-2 rounded-lg bg-blue-50 text-blue-700 text-xs font-semibold flex items-center gap-1.5"><iconify-icon icon="lucide:plus" width="13"></iconify-icon> Tambah</button></div>
+              <div id="contact-budget-list" class="space-y-2">${contactBudgetRows}</div>
+            </div>
+            <div class="mt-4"><label class="text-xs font-medium text-stone-500 uppercase">Pesan Sukses *</label><textarea name="contact_form_success_message" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.contact_form_success_message||'')}</textarea></div>
+          </div>
+
+          <div class="contact-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-5"><div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center"><iconify-icon icon="lucide:calendar-clock" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold">Penjadwalan Pertemuan</h4><p class="text-[10px] text-stone-500">Seluruh teks utama pada kalender, pilihan waktu, formulir, ringkasan, dan tampilan sukses.</p></div></div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Label Section *</label><input name="contact_schedule_eyebrow" required value="${safeAttr(s.contact_schedule_eyebrow||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_schedule_title_primary" required value="${safeAttr(s.contact_schedule_title_primary||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Judul"><input name="contact_schedule_title_highlight" required value="${safeAttr(s.contact_schedule_title_highlight||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Highlight"></div>
+            </div>
+            <div class="mt-4"><label class="text-xs font-medium text-stone-500 uppercase">Deskripsi *</label><textarea name="contact_schedule_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.contact_schedule_description||'')}</textarea></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+              <input name="contact_schedule_time_picker_title" required value="${safeAttr(s.contact_schedule_time_picker_title||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Judul pilih waktu">
+              <input name="contact_schedule_time_picker_hint" required value="${safeAttr(s.contact_schedule_time_picker_hint||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Petunjuk pilih tanggal">
+              <input name="contact_schedule_morning_label" required value="${safeAttr(s.contact_schedule_morning_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label pagi">
+              <input name="contact_schedule_afternoon_label" required value="${safeAttr(s.contact_schedule_afternoon_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label siang">
+            </div>
+            <div class="mt-3"><input name="contact_schedule_select_datetime_warning" required value="${safeAttr(s.contact_schedule_select_datetime_warning||'')}" class="w-full px-4 py-3 rounded-xl border text-sm" placeholder="Pesan jika tanggal/waktu belum dipilih"></div>
+
+            <div class="mt-5">
+              <div class="flex items-center justify-between gap-3 mb-3"><div><label class="text-xs font-medium text-stone-500 uppercase">Jenis Pertemuan *</label><p class="text-[10px] text-stone-500 mt-1">Pilihan yang dapat dipilih user pada form jadwal temu.</p></div><button type="button" onclick="addContactListRow('contact-meeting-type-list','contact_schedule_types','Contoh: Site Visit')" class="px-3 py-2 rounded-lg bg-violet-50 text-violet-700 text-xs font-semibold flex items-center gap-1.5"><iconify-icon icon="lucide:plus" width="13"></iconify-icon> Tambah</button></div>
+              <div id="contact-meeting-type-list" class="space-y-2">${meetingTypeRows}</div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-5">
+              <input name="contact_schedule_detail_title" required value="${safeAttr(s.contact_schedule_detail_title||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Judul detail pertemuan">
+              <div class="grid grid-cols-2 gap-2"><input name="contact_schedule_type_label" required value="${safeAttr(s.contact_schedule_type_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label jenis"><input name="contact_schedule_type_placeholder" required value="${safeAttr(s.contact_schedule_type_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder jenis"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_schedule_name_label" required value="${safeAttr(s.contact_schedule_name_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label nama"><input name="contact_schedule_name_placeholder" required value="${safeAttr(s.contact_schedule_name_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder nama"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_schedule_phone_label" required value="${safeAttr(s.contact_schedule_phone_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label telepon"><input name="contact_schedule_phone_placeholder" required value="${safeAttr(s.contact_schedule_phone_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder telepon"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_schedule_email_label" required value="${safeAttr(s.contact_schedule_email_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label email"><input name="contact_schedule_email_placeholder" required value="${safeAttr(s.contact_schedule_email_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder email"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="contact_schedule_notes_label" required value="${safeAttr(s.contact_schedule_notes_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label catatan"><textarea name="contact_schedule_notes_placeholder" required rows="2" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Placeholder catatan">${escapeHtml(s.contact_schedule_notes_placeholder||'')}</textarea></div>
+            </div>
+
+            <div class="mt-5 p-4 rounded-xl border border-stone-200 bg-stone-50">
+              <div class="text-xs font-semibold text-slate-700 mb-3">Ringkasan & Tombol</div>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <input name="contact_schedule_summary_title" required value="${safeAttr(s.contact_schedule_summary_title||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Judul ringkasan">
+                <input name="contact_schedule_date_label" required value="${safeAttr(s.contact_schedule_date_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label tanggal">
+                <input name="contact_schedule_time_label" required value="${safeAttr(s.contact_schedule_time_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label waktu">
+                <input name="contact_schedule_location_label" required value="${safeAttr(s.contact_schedule_location_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label lokasi">
+              </div>
+              <div class="grid sm:grid-cols-2 gap-3 mt-3">
+                <input name="contact_schedule_submit_label" required value="${safeAttr(s.contact_schedule_submit_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Tombol konfirmasi">
+                <textarea name="contact_schedule_submit_note" required rows="2" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Catatan di bawah tombol">${escapeHtml(s.contact_schedule_submit_note||'')}</textarea>
+              </div>
+            </div>
+
+            <div class="mt-5 p-4 rounded-xl border border-emerald-200 bg-emerald-50">
+              <div class="text-xs font-semibold text-emerald-800 mb-3">Tampilan Setelah Jadwal Dikirim</div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <input name="contact_schedule_success_title" required value="${safeAttr(s.contact_schedule_success_title||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Judul sukses">
+                <input name="contact_schedule_again_label" required value="${safeAttr(s.contact_schedule_again_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Tombol jadwalkan lagi">
+                <textarea name="contact_schedule_success_description" required rows="3" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Deskripsi sukses">${escapeHtml(s.contact_schedule_success_description||'')}</textarea>
+                <textarea name="contact_schedule_reminder_text" required rows="3" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Teks informasi validasi admin">${escapeHtml(s.contact_schedule_reminder_text||'')}</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-editor-card rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-5"><div class="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center"><iconify-icon icon="lucide:map" width="17"></iconify-icon></div><div><h4 class="text-sm font-semibold">Maps di Footer</h4><p class="text-[10px] text-stone-500">Peta tidak lagi berada pada halaman Hubungi Kami. Peta tampil pada footer di seluruh website.</p></div></div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Judul Maps *</label><input name="footer_map_title" required value="${safeAttr(s.footer_map_title||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div><label class="text-xs font-medium text-stone-500 uppercase">Label Buka Maps *</label><input name="footer_map_open_label" required value="${safeAttr(s.footer_map_open_label||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div>
+              <div class="md:col-span-2"><label class="text-xs font-medium text-stone-500 uppercase">Google Maps Embed URL</label><input name="map_embed_url" value="${safeAttr(s.map_embed_url||'')}" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm" placeholder="https://www.google.com/maps/embed?..."><p class="text-[10px] text-stone-500 mt-2">Opsional. Jika kosong, sistem membuat peta otomatis berdasarkan Alamat Perusahaan. Bila memakai Google Maps Embed, tempel hanya URL pada atribut <b>src</b> iframe.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-settings-panel="testimonials" class="settings-testimonial-section rounded-2xl p-6 md:p-8 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-7">
+          <div>
+            <h3 class="font-serif text-xl flex items-center gap-2"><iconify-icon icon="lucide:message-square-heart" width="20" class="text-rose-600"></iconify-icon> Tampilan & Form Testimoni</h3>
+            <p class="text-xs text-stone-500 mt-2 max-w-3xl leading-relaxed">Atur teks section dan formulir testimoni. Untuk menentukan testimoni klien yang tampil, gunakan menu <b>Testimoni</b> pada sidebar.</p>
+          </div>
+          <button type="button" onclick="goPage('testimonials')" class="px-4 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:list-checks" width="14"></iconify-icon> Kelola Testimoni</button>
+        </div>
+
+        <div class="space-y-6">
+          <div class="testimonial-editor-card rounded-2xl p-5">
+            <h4 class="text-sm font-semibold mb-4">Judul Section Testimoni</h4>
+            <div class="grid md:grid-cols-3 gap-4">
+              <input name="testimonial_eyebrow" required value="${safeAttr(s.testimonial_eyebrow||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label">
+              <input name="testimonial_title_primary" required value="${safeAttr(s.testimonial_title_primary||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Judul utama">
+              <input name="testimonial_title_highlight" required value="${safeAttr(s.testimonial_title_highlight||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Highlight">
+            </div>
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <textarea name="testimonial_description" required rows="3" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Deskripsi section">${escapeHtml(s.testimonial_description||'')}</textarea>
+              <textarea name="testimonial_empty_text" required rows="3" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Teks saat belum ada testimoni">${escapeHtml(s.testimonial_empty_text||'')}</textarea>
+            </div>
+          </div>
+
+          <div class="testimonial-editor-card rounded-2xl p-5">
+            <h4 class="text-sm font-semibold mb-4">Form Testimoni Klien</h4>
+            <div class="grid md:grid-cols-2 gap-4">
+              <input name="testimonial_form_title" required value="${safeAttr(s.testimonial_form_title||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Judul form">
+              <input name="testimonial_submit_label" required value="${safeAttr(s.testimonial_submit_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label tombol kirim">
+              <textarea name="testimonial_form_description" required rows="3" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Deskripsi form">${escapeHtml(s.testimonial_form_description||'')}</textarea>
+              <textarea name="testimonial_review_notice" required rows="3" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Informasi review admin">${escapeHtml(s.testimonial_review_notice||'')}</textarea>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <div class="grid grid-cols-2 gap-2"><input name="testimonial_name_label" required value="${safeAttr(s.testimonial_name_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label nama"><input name="testimonial_name_placeholder" required value="${safeAttr(s.testimonial_name_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder nama"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="testimonial_email_label" required value="${safeAttr(s.testimonial_email_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label email"><input name="testimonial_email_placeholder" required value="${safeAttr(s.testimonial_email_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder email"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="testimonial_company_label" required value="${safeAttr(s.testimonial_company_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label perusahaan"><input name="testimonial_company_placeholder" required value="${safeAttr(s.testimonial_company_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder perusahaan"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="testimonial_position_label" required value="${safeAttr(s.testimonial_position_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label jabatan"><input name="testimonial_position_placeholder" required value="${safeAttr(s.testimonial_position_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder jabatan"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="testimonial_phone_label" required value="${safeAttr(s.testimonial_phone_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label telepon"><input name="testimonial_phone_placeholder" required value="${safeAttr(s.testimonial_phone_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder telepon"></div>
+              <div class="grid grid-cols-2 gap-2"><input name="testimonial_service_label" required value="${safeAttr(s.testimonial_service_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label layanan"><input name="testimonial_service_placeholder" required value="${safeAttr(s.testimonial_service_placeholder||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Placeholder layanan"></div>
+            </div>
+            <div class="mt-4"><label class="text-xs font-medium text-stone-500 uppercase">Rating</label><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2"><input name="testimonial_rating_label" required value="${safeAttr(s.testimonial_rating_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label rating"><input name="testimonial_rating_5_label" required value="${safeAttr(s.testimonial_rating_5_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Rating 5"><input name="testimonial_rating_4_label" required value="${safeAttr(s.testimonial_rating_4_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Rating 4"><input name="testimonial_rating_3_label" required value="${safeAttr(s.testimonial_rating_3_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Rating 3"><input name="testimonial_rating_2_label" required value="${safeAttr(s.testimonial_rating_2_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Rating 2"><input name="testimonial_rating_1_label" required value="${safeAttr(s.testimonial_rating_1_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Rating 1"></div></div>
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <input name="testimonial_content_label" required value="${safeAttr(s.testimonial_content_label||'')}" class="px-4 py-3 rounded-xl border text-sm" placeholder="Label isi testimoni">
+              <textarea name="testimonial_content_placeholder" required rows="2" class="px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Placeholder isi testimoni">${escapeHtml(s.testimonial_content_placeholder||'')}</textarea>
+            </div>
+            <div class="mt-4"><label class="text-xs font-medium text-stone-500 uppercase">Pesan Sukses *</label><textarea name="testimonial_success_message" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y">${escapeHtml(s.testimonial_success_message||'')}</textarea></div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800 leading-relaxed">
+            <b>Alur publikasi:</b> user mengirim testimoni → status otomatis <b>Menunggu Review</b> → admin membuka menu <b>Testimoni</b> → klik <b>Tampilkan</b> → testimoni baru muncul di landing page. Admin juga dapat menyembunyikan kembali testimoni kapan saja.
+          </div>
+        </div>
+      </div>
+
+      <div data-settings-panel="home" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:chart-no-axes-column-increasing" width="20" class="text-gold-400"></iconify-icon> Statistik Beranda</h3>
         <div class="grid md:grid-cols-2 gap-4">
           <div class="grid grid-cols-[120px_1fr] gap-3"><input type="number" min="0" name="stat_projects" required value="${safeAttr(s.stat_projects??0)}" class="px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"><input name="stat_projects_label" required value="${safeAttr(s.stat_projects_label||'')}" class="px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -2077,7 +2933,7 @@ function pgSettings(c){
         <p class="text-[10px] text-stone-600 mt-3">Kolom kiri = angka, kolom kanan = label yang tampil di website.</p>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="seo" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:search-check" width="20" class="text-gold-400"></iconify-icon> SEO</h3>
         <div class="space-y-4">
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">SEO Title *</label><input name="seo_title" required value="${safeAttr(s.seo_title||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
@@ -2086,7 +2942,7 @@ function pgSettings(c){
         </div>
       </div>
 
-      <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
+      <div data-settings-panel="seo" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:panel-bottom" width="20" class="text-gold-400"></iconify-icon> Footer</h3>
         <div class="space-y-4">
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi Footer *</label><textarea name="footer_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.footer_description||'')}</textarea></div>
@@ -2099,6 +2955,217 @@ function pgSettings(c){
       </div>
     </form>
   </div>`;
+  setSettingsSubsection(window.settingsSubsection||'general');
+}
+
+function setSettingsSubsection(key){
+  window.settingsSubsection=key||'general';
+  document.querySelectorAll('[data-settings-panel]').forEach(function(el){
+    el.classList.toggle('settings-panel-hidden',el.getAttribute('data-settings-panel')!==window.settingsSubsection);
+  });
+  document.querySelectorAll('[data-settings-tab]').forEach(function(btn){
+    btn.classList.toggle('active',btn.getAttribute('data-settings-tab')===window.settingsSubsection);
+  });
+}
+
+function previewSettingsImage(input,targetId,fit){
+  var target=document.getElementById(targetId);
+  if(!target||!input.files||!input.files[0])return;
+  var file=input.files[0];
+  if(!file.type.startsWith('image/'))return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    target.innerHTML='<img src="'+ev.target.result+'" alt="Preview" class="w-full h-'+(fit==='contain'?'52':'36')+' object-'+(fit==='contain'?'contain':'cover')+' rounded-xl bg-white">';
+  };
+  reader.readAsDataURL(file);
+}
+
+function reindexContactList(listId,fieldName){
+  var list=document.getElementById(listId);if(!list)return;
+  list.querySelectorAll('.contact-list-row').forEach(function(row,i){
+    var input=row.querySelector('input');
+    var badge=row.querySelector('.w-8.h-8');
+    if(input)input.name=fieldName+'['+i+']';
+    if(badge)badge.textContent=String(i+1);
+  });
+}
+function addContactListRow(listId,fieldName,placeholder){
+  var list=document.getElementById(listId);if(!list)return;
+  var count=list.querySelectorAll('.contact-list-row').length;
+  if(count>=20){toast('Maksimal 20 pilihan');return;}
+  var row=document.createElement('div');
+  row.className='contact-list-row contact-editor-card rounded-xl p-3 flex gap-3 items-center';
+  row.innerHTML='<div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-semibold flex-shrink-0">'+(count+1)+'</div><input name="'+fieldName+'['+count+']" required maxlength="180" class="flex-1 px-4 py-3 rounded-xl border text-sm" placeholder="'+safeAttr(placeholder||'Isi pilihan')+'"><button type="button" data-list-id="'+safeAttr(listId)+'" onclick="removeContactListRow(this,this.dataset.listId)" class="w-9 h-9 rounded-lg border border-red-200 text-red-500 flex items-center justify-center flex-shrink-0" title="Hapus"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>';
+  list.appendChild(row);
+  reindexContactList(listId,fieldName);
+}
+function removeContactListRow(btn,listId){
+  var list=document.getElementById(listId);if(!list)return;
+  if(list.querySelectorAll('.contact-list-row').length<=1){toast('Minimal harus ada 1 pilihan');return;}
+  var row=btn.closest('.contact-list-row');if(row)row.remove();
+  var fieldName=listId==='contact-budget-list'?'contact_budget_options':'contact_schedule_types';
+  reindexContactList(listId,fieldName);
+}
+
+function reindexServiceProcessRows(){
+  document.querySelectorAll('#service-process-list .service-process-row').forEach(function(row,i){
+    var title=row.querySelector('input[name*="[title]"]');
+    var desc=row.querySelector('textarea[name*="[description]"]');
+    var badge=row.querySelector('.w-9.h-9');
+    if(title)title.name='service_process_steps['+i+'][title]';
+    if(desc)desc.name='service_process_steps['+i+'][description]';
+    if(badge)badge.textContent=String(i+1);
+  });
+}
+
+function addServiceProcessRow(){
+  var list=document.getElementById('service-process-list'); if(!list)return;
+  var i=list.querySelectorAll('.service-process-row').length;
+  if(i>=12){toast('Maksimal 12 tahap proses kerja');return;}
+  var row=document.createElement('div');
+  row.className='service-process-row service-editor-card rounded-xl p-4 grid md:grid-cols-[46px_1fr_1.5fr_42px] gap-3 items-start';
+  row.innerHTML='<div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-semibold mt-5">'+(i+1)+'</div><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Nama Tahap *</label><input name="service_process_steps['+i+'][title]" required maxlength="180" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm" placeholder="Contoh: Konsultasi"></div><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Deskripsi *</label><textarea name="service_process_steps['+i+'][description]" required rows="2" maxlength="1000" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Jelaskan tahap proses kerja"></textarea></div><button type="button" onclick="removeServiceProcessRow(this)" class="mt-5 w-9 h-9 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 flex items-center justify-center" title="Hapus tahap"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>';
+  list.appendChild(row); reindexServiceProcessRows();
+}
+
+function removeServiceProcessRow(btn){
+  var list=document.getElementById('service-process-list'); if(!list)return;
+  if(list.querySelectorAll('.service-process-row').length<=1){toast('Minimal harus ada 1 tahap proses kerja');return;}
+  var row=btn.closest('.service-process-row'); if(row)row.remove();
+  reindexServiceProcessRows();
+}
+
+function openServiceModal(id){
+  var item=id?(DB.services||[]).find(function(x){return x.id===id}):null;
+  var edit=!!item;
+  var features=edit&&Array.isArray(item.features)&&item.features.length?item.features:[''];
+  var featureRows=features.map(function(feature,i){
+    return '<div class="service-feature-row flex gap-2 items-center"><div class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-[10px] flex-shrink-0">'+(i+1)+'</div><input name="features['+i+']" required maxlength="500" value="'+safeAttr(feature||'')+'" class="flex-1 px-4 py-2.5 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm" placeholder="Poin layanan"><button type="button" onclick="removeServiceFeatureRow(this)" class="w-9 h-9 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10 flex items-center justify-center"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button></div>';
+  }).join('');
+  var preview=edit&&item.image_url
+    ? '<img id="service-image-preview" src="'+safeAttr(item.image_url)+'" alt="Preview" class="w-full h-48 rounded-xl object-cover">'
+    : '<div id="service-image-preview-placeholder" class="h-44 rounded-xl bg-navy-900/40 border border-navy-700/40 flex flex-col items-center justify-center text-stone-500"><iconify-icon icon="lucide:image" width="28"></iconify-icon><span class="text-xs mt-2">Belum ada gambar khusus</span></div>';
+  var h='<div class="p-6"><div class="flex items-center justify-between mb-6"><div><h3 class="font-serif text-xl text-white">'+(edit?'Edit':'Tambah')+' Layanan</h3><p class="text-xs text-stone-500 mt-1">Konten ini otomatis digunakan di halaman Layanan, kartu Beranda, form Hubungi Kami, dan footer.</p></div><button onclick="closeModal()" class="text-stone-500 hover:text-white p-1"><iconify-icon icon="lucide:x" width="18"></iconify-icon></button></div>'+
+    '<form onsubmit="saveServiceItem(event,'+(id||0)+')" class="space-y-4">'+
+      '<div>'+preview+'</div>'+
+      '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Gambar Layanan</label><input type="file" name="service_image" accept=".jpg,.jpeg,.png,.webp" onchange="previewServiceImage(this)" class="w-full mt-2 text-xs text-stone-400 file:mr-3 file:px-3 file:py-2 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white file:font-semibold"><p class="text-[10px] text-stone-600 mt-1">JPG, PNG, WebP. Maksimal 10 MB.</p>'+(edit&&item.image_path?'<label class="mt-2 flex items-center gap-2 text-xs text-red-300"><input type="checkbox" name="remove_image" value="1"> Hapus gambar upload dan gunakan gambar bawaan</label>':'')+'</div>'+
+      '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Nama Layanan *</label><input name="title" required maxlength="180" value="'+safeAttr(edit?item.title:'')+'" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>'+
+      '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Icon Lucide *</label><input name="icon" required maxlength="120" value="'+safeAttr(edit?(item.icon||'hard-hat'):'hard-hat')+'" placeholder="hard-hat" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"><p class="text-[10px] text-stone-600 mt-1">Contoh: hard-hat, building-2, wrench, sofa, trees, clipboard-list.</p></div>'+
+      '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi *</label><textarea name="description" required maxlength="5000" rows="5" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-y">'+escapeHtml(edit?(item.description||''):'')+'</textarea></div>'+
+      '<div><div class="flex items-center justify-between mb-2"><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Poin Layanan *</label><button type="button" onclick="addServiceFeatureRow()" class="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1"><iconify-icon icon="lucide:plus" width="13"></iconify-icon> Tambah Poin</button></div><div id="service-feature-list" class="space-y-2">'+featureRows+'</div></div>'+
+      '<div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Urutan Tampil</label><input type="number" name="display_order" min="0" max="9999" value="'+safeAttr(edit?String(item.display_order??0):String((DB.services||[]).length+1))+'" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div><div class="flex items-end"><label class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-sm text-stone-300"><input type="checkbox" name="is_active" value="1" '+(!edit||item.is_active?'checked':'')+'> Tampilkan di website</label></div></div>'+
+      '<div class="flex justify-end gap-3 pt-2"><button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-navy-600 text-stone-400 text-xs">Batal</button><button type="submit" class="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs hover:bg-blue-500 flex items-center gap-2"><iconify-icon icon="lucide:save" width="14"></iconify-icon> '+(edit?'Simpan Perubahan':'Tambah Layanan')+'</button></div>'+
+    '</form></div>';
+  showModal(h);
+}
+
+function previewServiceImage(input){
+  var file=input.files&&input.files[0]; if(!file)return;
+  var url=URL.createObjectURL(file);
+  var img=document.getElementById('service-image-preview');
+  var ph=document.getElementById('service-image-preview-placeholder');
+  if(img){img.src=url;return;}
+  if(ph)ph.outerHTML='<img id="service-image-preview" src="'+safeAttr(url)+'" alt="Preview" class="w-full h-48 rounded-xl object-cover">';
+}
+
+function reindexServiceFeatureRows(){
+  document.querySelectorAll('#service-feature-list .service-feature-row').forEach(function(row,i){
+    var input=row.querySelector('input');
+    var badge=row.querySelector('.w-7.h-7');
+    if(input)input.name='features['+i+']';
+    if(badge)badge.textContent=String(i+1);
+  });
+}
+
+function addServiceFeatureRow(){
+  var list=document.getElementById('service-feature-list'); if(!list)return;
+  var i=list.querySelectorAll('.service-feature-row').length;
+  if(i>=20){toast('Maksimal 20 poin layanan');return;}
+  var row=document.createElement('div');
+  row.className='service-feature-row flex gap-2 items-center';
+  row.innerHTML='<div class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-[10px] flex-shrink-0">'+(i+1)+'</div><input name="features['+i+']" required maxlength="500" class="flex-1 px-4 py-2.5 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm" placeholder="Poin layanan"><button type="button" onclick="removeServiceFeatureRow(this)" class="w-9 h-9 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10 flex items-center justify-center"><iconify-icon icon="lucide:trash-2" width="14"></iconify-icon></button>';
+  list.appendChild(row); reindexServiceFeatureRows();
+}
+
+function removeServiceFeatureRow(btn){
+  var list=document.getElementById('service-feature-list'); if(!list)return;
+  if(list.querySelectorAll('.service-feature-row').length<=1){toast('Minimal harus ada 1 poin layanan');return;}
+  var row=btn.closest('.service-feature-row'); if(row)row.remove();
+  reindexServiceFeatureRows();
+}
+
+async function saveServiceItem(e,id){
+  e.preventDefault();
+  var f=e.target;
+  reindexServiceFeatureRows();
+  var fd=new FormData(f);
+  fd.set('is_active',f.is_active&&f.is_active.checked?'1':'0');
+  if(id)fd.append('_method','PUT');
+  try{
+    await apiRequest(id?'/admin/services/'+id:'/admin/services',{method:'POST',body:fd});
+    await loadAdminData();
+    closeModal();
+    renderSettingsServiceList();
+    toast(id?'✅ Layanan berhasil diperbarui':'✅ Layanan berhasil ditambahkan');
+  }catch(err){toast('❌ '+err.message);}
+}
+
+async function deleteServiceItem(id){
+  var item=(DB.services||[]).find(function(x){return x.id===id});
+  if(!confirm('Hapus layanan'+(item?' "'+item.title+'"':'')+'?'))return;
+  try{
+    await apiRequest('/admin/services/'+id,{method:'DELETE'});
+    await loadAdminData();
+    renderSettingsServiceList();
+    toast('🗑️ Layanan berhasil dihapus');
+  }catch(err){toast('❌ '+err.message);}
+}
+
+function reindexAboutEditors(){
+  document.querySelectorAll('#about-mission-list .about-mission-row').forEach(function(row,i){
+    var area=row.querySelector('textarea');
+    var badge=row.querySelector('.w-8.h-8');
+    if(area)area.name='about_mission_items['+i+']';
+    if(badge)badge.textContent=String(i+1);
+  });
+  document.querySelectorAll('#about-values-list .about-value-row').forEach(function(row,i){
+    var icon=row.querySelector('input[name*="[icon]"]');
+    var title=row.querySelector('input[name*="[title]"]');
+    var desc=row.querySelector('input[name*="[description]"]');
+    if(icon)icon.name='about_values['+i+'][icon]';
+    if(title)title.name='about_values['+i+'][title]';
+    if(desc)desc.name='about_values['+i+'][description]';
+  });
+}
+
+function addAboutMissionRow(){
+  var list=document.getElementById('about-mission-list'); if(!list)return;
+  var i=list.querySelectorAll('.about-mission-row').length;
+  var row=document.createElement('div');
+  row.className='about-mission-row about-editor-card rounded-xl p-4 flex gap-3 items-start';
+  row.innerHTML='<div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-semibold flex-shrink-0">'+(i+1)+'</div><textarea name="about_mission_items['+i+']" required rows="2" class="flex-1 px-4 py-3 rounded-xl border text-sm resize-y" placeholder="Isi misi perusahaan"></textarea><button type="button" onclick="removeAboutMissionRow(this)" class="w-9 h-9 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 flex items-center justify-center flex-shrink-0" title="Hapus misi"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>';
+  list.appendChild(row); reindexAboutEditors();
+}
+
+function removeAboutMissionRow(btn){
+  var list=document.getElementById('about-mission-list'); if(!list)return;
+  if(list.querySelectorAll('.about-mission-row').length<=1){toast('Minimal harus ada 1 misi');return;}
+  btn.closest('.about-mission-row').remove(); reindexAboutEditors();
+}
+
+function addAboutValueRow(){
+  var list=document.getElementById('about-values-list'); if(!list)return;
+  var i=list.querySelectorAll('.about-value-row').length;
+  var row=document.createElement('div');
+  row.className='about-value-row about-editor-card rounded-xl p-4 grid md:grid-cols-[90px_1fr_1.5fr_42px] gap-3 items-start';
+  row.innerHTML='<div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Icon</label><input name="about_values['+i+'][icon]" maxlength="30" placeholder="🏆" class="w-full mt-1 px-3 py-3 rounded-xl border text-sm text-center"></div><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Nilai</label><input name="about_values['+i+'][title]" required maxlength="120" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><div><label class="text-[10px] font-medium text-stone-500 uppercase tracking-wider">Deskripsi (Opsional)</label><input name="about_values['+i+'][description]" maxlength="500" class="w-full mt-1 px-4 py-3 rounded-xl border text-sm"></div><button type="button" onclick="removeAboutValueRow(this)" class="mt-5 w-9 h-9 rounded-lg border border-red-200 text-red-500 hover:bg-red-50 flex items-center justify-center" title="Hapus nilai"><iconify-icon icon="lucide:trash-2" width="15"></iconify-icon></button>';
+  list.appendChild(row); reindexAboutEditors();
+}
+
+function removeAboutValueRow(btn){
+  var list=document.getElementById('about-values-list'); if(!list)return;
+  if(list.querySelectorAll('.about-value-row').length<=1){toast('Minimal harus ada 1 nilai perusahaan');return;}
+  btn.closest('.about-value-row').remove(); reindexAboutEditors();
 }
 
 function resetEmailTemplates(){
@@ -2127,6 +3194,10 @@ async function saveSettings(e){
   if(btn){btn.disabled=true;btn.innerHTML='<iconify-icon icon="lucide:loader-circle" width="15"></iconify-icon> Menyimpan...';}
 
   try{
+    reindexAboutEditors();
+    reindexServiceProcessRows();
+    reindexContactList('contact-budget-list','contact_budget_options');
+    reindexContactList('contact-meeting-type-list','contact_schedule_types');
     var formData=new FormData(f);
     await apiRequest('/admin/settings',{method:'POST',body:formData});
     await loadAdminData();
@@ -2153,6 +3224,10 @@ async function saveSettingsAndTestEmail(){
   if(btn){btn.disabled=true;btn.innerHTML='<iconify-icon icon="lucide:loader-circle" width="15"></iconify-icon> Menguji...';}
 
   try{
+    reindexAboutEditors();
+    reindexServiceProcessRows();
+    reindexContactList('contact-budget-list','contact_budget_options');
+    reindexContactList('contact-meeting-type-list','contact_schedule_types');
     var formData=new FormData(f);
     await apiRequest('/admin/settings',{method:'POST',body:formData});
     var result=await apiRequest('/admin/settings/test-email',{method:'POST',body:JSON.stringify({email:recipient})});

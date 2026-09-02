@@ -61,3 +61,13 @@ Controller sudah memanggil Laravel Mail. Pada `.env.example`, `MAIL_MAILER=log` 
 ## Validasi Jadwal & Email Gmail
 
 Jadwal dari user masuk dengan status `pending`. Admin dapat ACC atau membatalkan jadwal dari menu **Jadwal Temu**. Keputusan disimpan ke database dan sistem mengirim email status ke user. Untuk Gmail SMTP, lihat `README-EMAIL-JADWAL.txt` dan jalankan migration terbaru dengan `php artisan migrate`.
+
+## Halaman Layanan Dinamis & Sub Pengaturan
+Halaman Layanan kini sepenuhnya dinamis. Hero, CRUD daftar layanan, gambar, icon, poin layanan, urutan/status tampil, serta Proses Kerja dapat dikelola dari **Admin > Pengaturan > Layanan**. Pengaturan website juga dibagi menjadi tab Umum, Email & SMTP, Template Email, Beranda, Tentang, Layanan, serta SEO & Footer. Jalankan migration terbaru setelah memasang patch.
+
+## Portofolio dinamis
+Halaman Portofolio sekarang sepenuhnya dinamis. Kategori proyek menggunakan relasi ke data Layanan, filter landing page otomatis berasal dari Layanan aktif, dan hero/teks halaman dapat diubah dari Admin Panel -> Pengaturan -> Portofolio. Lihat `README-PORTFOLIO-DINAMIS.txt`.
+
+
+## Hubungi Kami & Testimoni Dinamis (2026-09-02)
+Halaman Hubungi Kami sudah dinamis, halaman Kategori landing dihapus, Google Maps dipindah ke footer, dan testimoni klien menggunakan alur moderasi admin sebelum ditampilkan. Lihat `README-HUBUNGI-TESTIMONI.txt`.

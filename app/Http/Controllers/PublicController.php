@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\CompanySetting;
 use App\Models\Message;
+use App\Models\Testimonial;
 use App\Services\DynamicMailer;
 use App\Services\EmailTemplateService;
 use Illuminate\Database\QueryException;
@@ -52,6 +53,31 @@ class PublicController extends Controller
         return response()->json([
             'message' => 'Pesan berhasil dikirim.',
             'id' => $message->id,
+        ], 201);
+    }
+
+
+    public function storeTestimonial(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:160',
+            'email' => 'required|email|max:180',
+            'phone' => 'nullable|string|max:60',
+            'company' => 'nullable|string|max:180',
+            'position' => 'nullable|string|max:180',
+            'service_id' => 'nullable|integer|exists:services,id',
+            'rating' => 'required|integer|min:1|max:5',
+            'testimonial' => 'required|string|min:20|max:3000',
+        ]);
+
+        $testimonial = Testimonial::create($data + [
+            'status' => 'pending',
+            'display_order' => 0,
+        ]);
+
+        return response()->json([
+            'message' => 'Testimoni berhasil dikirim dan menunggu peninjauan admin.',
+            'id' => $testimonial->id,
         ], 201);
     }
 

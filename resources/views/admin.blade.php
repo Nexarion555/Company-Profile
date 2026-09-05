@@ -123,7 +123,82 @@ body{
 #login-screen .bg-navy-800\/80{
   background:rgba(18,71,119,.90)!important;
 }
-@media(max-width:1023px){.sidebar{transform:translateX(-100%);position:fixed;z-index:90;transition:transform .3s ease}.sidebar.open{transform:translateX(0)}.main-area{margin-left:0!important}}
+/* ===== MOBILE SIDEBAR ===== */
+.sidebar-mobile-toggle,
+.sidebar-mobile-overlay{
+  display:none;
+}
+
+@media(max-width:1023px){
+  .sidebar{
+    transform:translateX(-100%);
+    position:fixed;
+    z-index:90!important;
+    transition:transform .3s ease;
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main-area{
+    margin-left:0!important;
+  }
+
+  /* Tombol benar-benar menjadi bagian dari sidebar.
+     Saat sidebar tertutup tombol tetap terlihat di tepi kiri layar. */
+  .sidebar-mobile-toggle{
+    display:flex;
+    position:absolute;
+    /* Diletakkan di bawah top bar (tinggi top bar 64px) agar tidak menutupi judul. */
+    top:72px;
+    right:-46px;
+    width:40px;
+    height:40px;
+    align-items:center;
+    justify-content:center;
+    background:#ffffff;
+    color:#475569!important;
+    border:1px solid #e5e7eb;
+    border-left:0;
+    border-radius:0 12px 12px 0;
+    box-shadow:5px 4px 14px rgba(15,23,42,.10);
+    cursor:pointer;
+    z-index:95;
+    transition:background .2s ease,color .2s ease,box-shadow .2s ease;
+  }
+
+  .sidebar-mobile-toggle:hover{
+    background:#f8fafc;
+    color:#0f172a!important;
+  }
+
+  .sidebar-mobile-overlay{
+    display:block;
+    position:fixed;
+    inset:0;
+    z-index:80;
+    background:rgba(15,23,42,.32);
+    backdrop-filter:blur(2px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .3s ease,visibility .3s ease;
+  }
+
+  .sidebar-mobile-overlay.show{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+}
+
+@media(min-width:1024px){
+  .sidebar-mobile-toggle,
+  .sidebar-mobile-overlay{
+    display:none!important;
+  }
+}
 
 
 /* ===== ADMIN LIGHT BACKGROUND THEME ===== */
@@ -992,11 +1067,11 @@ body{
     <div class="bg-navy-800/80 backdrop-blur-xl rounded-2xl p-8 border border-navy-700/50 shadow-2xl reveal rv" style="transition-delay:.1s">
       <h2 class="font-serif text-xl text-white mb-6">Masuk ke Dashboard</h2>
       <div class="space-y-4">
-        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email</label><input type="email" id="login-email" value="admin@ksn.co.id" class="w-full mt-1.5 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 transition-all"></div>
-        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Password</label><input type="password" id="login-pass" value="admin123" class="w-full mt-1.5 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 transition-all"></div>
+        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email / Username</label><input type="text" id="login-email" autocomplete="username" placeholder="Masukkan email atau username" class="w-full mt-1.5 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 transition-all"></div>
+        <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Password</label><input type="password" id="login-pass" autocomplete="current-password" placeholder="Masukkan password" class="w-full mt-1.5 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm placeholder:text-stone-600 transition-all"></div>
         <button onclick="doLogin()" class="w-full py-3.5 bg-gold-500 text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-gold-400 transition-all hover:shadow-lg hover:shadow-gold-500/20 hover:-translate-y-0.5 mt-2">Masuk</button>
       </div>
-      <p class="text-[10px] text-stone-600 text-center mt-6">Demo: admin@ksn.co.id / admin123</p>
+      <p class="text-[10px] text-stone-600 text-center mt-6">Masuk menggunakan email atau username akun admin.</p>
     </div>
   </div>
 </div>
@@ -1016,7 +1091,21 @@ body{
         <div><div class="text-sm font-semibold text-white leading-tight">{{ $branding['short_name'] }} Admin</div><div class="text-[10px] text-stone-500 tracking-wider">Management Panel</div></div>
       </div>
     </div>
-    <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+
+    <!-- Hamburger / Close khusus mobile, menempel pada sidebar -->
+    <button
+      type="button"
+      id="sidebar-mobile-toggle"
+      class="sidebar-mobile-toggle"
+      onclick="toggleMobileSidebar()"
+      aria-label="Buka menu"
+      aria-expanded="false"
+      aria-controls="admin-sidebar-menu"
+    >
+      <iconify-icon id="sidebar-toggle-icon" icon="lucide:menu" width="21"></iconify-icon>
+    </button>
+
+    <nav id="admin-sidebar-menu" class="flex-1 p-4 space-y-1 overflow-y-auto">
       <div class="text-[10px] font-semibold tracking-[.15em] uppercase text-stone-600 px-4 mb-2 mt-2">Menu Utama</div>
       <div class="sidebar-link active" onclick="goPage('dashboard')" data-p="dashboard"><iconify-icon icon="lucide:layout-dashboard" width="18"></iconify-icon> Dashboard</div>
       <div class="sidebar-link" onclick="goPage('portfolio')" data-p="portfolio"><iconify-icon icon="lucide:images" width="18"></iconify-icon> Update Portfolio</div>
@@ -1026,6 +1115,7 @@ body{
       <div class="sidebar-link" onclick="goPage('testimonials')" data-p="testimonials"><iconify-icon icon="lucide:message-square-heart" width="18"></iconify-icon> Testimoni <span id="testimonial-badge" class="ml-auto bg-amber-500 text-white text-[10px] min-w-5 h-5 px-1 rounded-full flex items-center justify-center font-bold hidden">0</span></div>
       <div class="text-[10px] font-semibold tracking-[.15em] uppercase text-stone-600 px-4 mb-2 mt-6">Pengaturan</div>
       <div class="sidebar-link" onclick="goPage('team')" data-p="team"><iconify-icon icon="lucide:user-cog" width="18"></iconify-icon> Tim</div>
+      <div class="sidebar-link" onclick="goPage('account')" data-p="account"><iconify-icon icon="lucide:shield-user" width="18"></iconify-icon> Akun Admin</div>
       <div class="sidebar-link" onclick="goPage('settings')" data-p="settings"><iconify-icon icon="lucide:settings" width="18"></iconify-icon> Pengaturan</div>
     </nav>
     <div class="p-4 border-t border-navy-700/50">
@@ -1033,14 +1123,21 @@ body{
     </div>
   </aside>
 
+  <!-- Overlay mobile: klik area luar untuk menutup sidebar -->
+  <div
+    id="sidebar-mobile-overlay"
+    class="sidebar-mobile-overlay"
+    onclick="closeMobileSidebar()"
+    aria-hidden="true">
+  </div>
+
   <!-- Main -->
   <div class="main-area" style="margin-left:256px;min-height:100vh">
     <header class="sticky top-0 z-40 bg-navy-900/90 backdrop-blur-xl border-b border-navy-700/30 px-6 h-16 flex items-center justify-between">
-      <button onclick="document.querySelector('.sidebar').classList.toggle('open')" class="lg:hidden text-stone-400 hover:text-white p-1"><iconify-icon icon="lucide:menu" width="22"></iconify-icon></button>
       <h2 id="page-title" class="font-serif text-lg text-white">Dashboard</h2>
       <div class="flex items-center gap-4">
         <div class="hidden sm:flex items-center gap-2 text-xs text-stone-500"><iconify-icon icon="lucide:clock" width="14"></iconify-icon><span id="live-clock"></span></div>
-        <div class="w-9 h-9 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 font-semibold text-sm">A</div>
+        <div id="admin-avatar-initial" class="w-9 h-9 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 font-semibold text-sm" title="Akun Admin">A</div>
       </div>
     </header>
     <div id="pages" class="p-6"></div>
@@ -1053,14 +1150,14 @@ body{
 <div class="toast-c" id="toast-c"></div>
 
 <script>
-    var DB={portfolios:[],appointments:[],messages:[],team:[],certifications:[],services:[],testimonials:[],settings:{}};
+    var DB={portfolios:[],appointments:[],messages:[],team:[],certifications:[],services:[],testimonials:[],settings:{},account:{}};
     var ADMIN_AUTHENTICATED = @json($authenticated);
 
 async function doLogin(){
     var email=document.getElementById('login-email').value.trim();
     var password=document.getElementById('login-pass').value;
     try{
-      await apiRequest('/admin/login',{method:'POST',body:JSON.stringify({email:email,password:password})});
+      await apiRequest('/admin/login',{method:'POST',body:JSON.stringify({login:email,password:password})});
       await loadAdminData();
       document.getElementById('login-screen').classList.add('hidden');
       document.getElementById('admin-layout').classList.remove('hidden');
@@ -1079,16 +1176,65 @@ setInterval(
         if(el)el.textContent=n.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})
     },1000);
 
+function setMobileSidebarState(isOpen){
+  var sidebar=document.querySelector('.sidebar');
+  var overlay=document.getElementById('sidebar-mobile-overlay');
+  var button=document.getElementById('sidebar-mobile-toggle');
+  var icon=document.getElementById('sidebar-toggle-icon');
+
+  if(!sidebar)return;
+
+  sidebar.classList.toggle('open',!!isOpen);
+
+  if(overlay){
+    overlay.classList.toggle('show',!!isOpen);
+    overlay.setAttribute('aria-hidden',isOpen?'false':'true');
+  }
+
+  if(icon){
+    icon.setAttribute('icon',isOpen?'lucide:x':'lucide:menu');
+  }
+
+  if(button){
+    button.setAttribute('aria-expanded',isOpen?'true':'false');
+    button.setAttribute('aria-label',isOpen?'Tutup menu':'Buka menu');
+  }
+}
+
+function toggleMobileSidebar(){
+  var sidebar=document.querySelector('.sidebar');
+  if(!sidebar)return;
+  setMobileSidebarState(!sidebar.classList.contains('open'));
+}
+
+function closeMobileSidebar(){
+  setMobileSidebarState(false);
+}
+
+/* Escape juga menutup sidebar pada perangkat kecil. */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    closeMobileSidebar();
+  }
+});
+
+/* Pastikan state mobile dibersihkan ketika kembali ke desktop. */
+window.addEventListener('resize',function(){
+  if(window.innerWidth>=1024){
+    closeMobileSidebar();
+  }
+});
+
 var curPage='dashboard';
 function goPage(p){
   curPage=p;
   document.querySelectorAll('.sidebar-link').forEach(function(l){l.classList.toggle('active',l.dataset.p===p)});
-  var titles={dashboard:'Dashboard',portfolio:'Update Portfolio',certifications:'Sertifikasi',appointments:'Jadwal Pertemuan',messages:'Pesan Masuk',testimonials:'Testimoni Klien',team:'Manajemen Tim',settings:'Pengaturan'};
+  var titles={dashboard:'Dashboard',portfolio:'Update Portfolio',certifications:'Sertifikasi',appointments:'Jadwal Pertemuan',messages:'Pesan Masuk',testimonials:'Testimoni Klien',team:'Manajemen Tim',account:'Akun Admin',settings:'Pengaturan'};
   document.getElementById('page-title').textContent=titles[p]||p;
-  var fn={dashboard:pgDashboard,portfolio:pgPortfolio,certifications:pgCertifications,appointments:pgAppointments,messages:pgMessages,testimonials:pgTestimonials,team:pgTeam,settings:pgSettings};
+  var fn={dashboard:pgDashboard,portfolio:pgPortfolio,certifications:pgCertifications,appointments:pgAppointments,messages:pgMessages,testimonials:pgTestimonials,team:pgTeam,account:pgAccount,settings:pgSettings};
   if(fn[p])fn[p](document.getElementById('pages'));
   setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('rv')},i*50)})},50);
-  document.querySelector('.sidebar').classList.remove('open');
+  closeMobileSidebar();
 }
 
 function pgDashboard(c){
@@ -1828,7 +1974,7 @@ function filterMessages(){
           '<div class="flex flex-wrap gap-2 mt-4">'+
             '<button onclick="openMessageDetail('+m.id+')" class="px-3.5 py-2 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:eye" width="13"></iconify-icon> Buka Detail</button>'+
             '<button onclick="replyMessageGmail('+m.id+')" class="px-3.5 py-2 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:mail" width="13"></iconify-icon> Gmail</button>'+
-            '<button onclick="replyMessageEmail('+m.id+')" class="px-3.5 py-2 rounded-lg bg-violet-500/10 text-violet-400 hover:bg-violet-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:send" width="13"></iconify-icon> Email</button>'+
+            // '<button onclick="replyMessageEmail('+m.id+')" class="px-3.5 py-2 rounded-lg bg-violet-500/10 text-violet-400 hover:bg-violet-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:send" width="13"></iconify-icon> Email</button>'+
             (m.phone?'<button onclick="replyMessageWhatsApp('+m.id+')" class="px-3.5 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 text-xs font-medium transition-all flex items-center gap-1.5"><iconify-icon icon="lucide:message-circle" width="13"></iconify-icon> WhatsApp</button>':'')+
           '</div>'+
         '</div>'+
@@ -1904,7 +2050,7 @@ async function openMessageDetail(id){
         <div class="text-xs text-stone-500 mb-3">Lanjutkan konsultasi melalui:</div>
         <div class="grid sm:grid-cols-3 gap-2">
           <button onclick="replyMessageGmail(${m.id})" class="py-3 rounded-xl bg-red-500 text-white text-xs font-semibold hover:bg-red-400 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:mail" width="14"></iconify-icon> Gmail</button>
-          <button onclick="replyMessageEmail(${m.id})" class="py-3 rounded-xl bg-blue-500 text-white text-xs font-semibold hover:bg-blue-400 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:send" width="14"></iconify-icon> Email</button>
+          
           ${m.phone?'<button onclick="replyMessageWhatsApp('+m.id+')" class="py-3 rounded-xl bg-emerald-500 text-white text-xs font-semibold hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:message-circle" width="14"></iconify-icon> WhatsApp</button>':'<button disabled class="py-3 rounded-xl bg-stone-700/40 text-stone-600 text-xs font-semibold cursor-not-allowed">WhatsApp tidak tersedia</button>'}
         </div>
       </div>
@@ -2111,6 +2257,172 @@ async function deleteTestimonial(id){
     var result=await apiRequest('/admin/testimonials/'+id,{method:'DELETE'});
     await loadAdminData();updateTestimonialBadge();toast('✅ '+result.message);goPage('testimonials');
   }catch(err){toast('❌ '+err.message);}
+}
+
+
+function adminInitial(){
+  var a=DB.account||{};
+  var source=(a.name||a.username||'A').trim();
+  return source ? source.charAt(0).toUpperCase() : 'A';
+}
+
+function refreshAdminIdentity(){
+  var el=document.getElementById('admin-avatar-initial');
+  if(!el)return;
+  el.textContent=adminInitial();
+  var a=DB.account||{};
+  el.setAttribute('title',a.name ? a.name+(a.username?' (@'+a.username+')':'') : 'Akun Admin');
+}
+
+function toggleAccountPassword(inputId,button){
+  var input=document.getElementById(inputId);
+  if(!input)return;
+  var showing=input.type==='text';
+  input.type=showing?'password':'text';
+  var icon=button?button.querySelector('iconify-icon'):null;
+  if(icon)icon.setAttribute('icon',showing?'lucide:eye':'lucide:eye-off');
+  if(button)button.setAttribute('aria-label',showing?'Tampilkan password':'Sembunyikan password');
+}
+
+function pgAccount(c){
+  var a=DB.account||{};
+  var created=a.created_at||'-';
+  var updated=a.updated_at||'-';
+
+  c.innerHTML=`
+    <div class="max-w-5xl mx-auto space-y-6">
+      <div class="bg-gradient-to-r from-navy-800 to-navy-700 rounded-2xl p-6 border border-navy-600/40 reveal">
+        <div class="flex items-center gap-2 text-gold-400 text-xs font-semibold tracking-[.18em] uppercase"><iconify-icon icon="lucide:shield-user" width="15"></iconify-icon> Keamanan Akun</div>
+        <h3 class="font-serif text-2xl text-white mt-2">Pengaturan Akun Admin</h3>
+        <p class="text-sm text-stone-400 mt-2 max-w-3xl">Ubah nama admin, username login, email, dan password. Login dapat dilakukan menggunakan username atau email.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-[280px_1fr] gap-6">
+        <div class="bg-navy-800 rounded-2xl p-6 border border-navy-700/30 reveal">
+          <div class="w-20 h-20 rounded-2xl bg-gold-500/15 text-gold-500 flex items-center justify-center text-3xl font-bold mx-auto">${escapeHtml(adminInitial())}</div>
+          <div class="text-center mt-4">
+            <div class="text-lg font-semibold text-white">${escapeHtml(a.name||'Administrator')}</div>
+            <div class="text-xs text-stone-500 mt-1">@${escapeHtml(a.username||'-')}</div>
+            <div class="text-xs text-stone-500 mt-1 break-all">${escapeHtml(a.email||'-')}</div>
+          </div>
+          <div class="mt-6 pt-5 border-t border-navy-700/30 space-y-3">
+            <div><div class="text-[10px] uppercase tracking-wider text-stone-500">Akun Dibuat</div><div class="text-xs text-stone-400 mt-1">${escapeHtml(created)}</div></div>
+            <div><div class="text-[10px] uppercase tracking-wider text-stone-500">Terakhir Diperbarui</div><div class="text-xs text-stone-400 mt-1">${escapeHtml(updated)}</div></div>
+          </div>
+        </div>
+
+        <div class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal" style="transition-delay:.06s">
+          <form id="admin-account-form" onsubmit="saveAdminAccount(event)" class="space-y-6">
+            <div>
+              <h4 class="text-sm font-semibold text-white flex items-center gap-2"><iconify-icon icon="lucide:user-round-cog" width="17" class="text-blue-500"></iconify-icon> Identitas Login</h4>
+              <p class="text-xs text-stone-500 mt-1">Username dan email harus unik.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="sm:col-span-2">
+                <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Nama Admin *</label>
+                <input name="name" required maxlength="120" value="${safeAttr(a.name||'')}" autocomplete="name" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black text-sm">
+              </div>
+              <div>
+                <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Username *</label>
+                <input name="username" required minlength="3" maxlength="50" value="${safeAttr(a.username||'')}" autocomplete="username" placeholder="admin" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black text-sm">
+                <p class="text-[10px] text-stone-500 mt-1">Huruf, angka, titik, garis bawah, dan tanda minus.</p>
+              </div>
+              <div>
+                <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email *</label>
+                <input type="email" name="email" required maxlength="180" value="${safeAttr(a.email||'')}" autocomplete="email" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-stone-300 text-black text-sm">
+              </div>
+            </div>
+
+            <div class="pt-5 border-t border-navy-700/30">
+              <h4 class="text-sm font-semibold text-white flex items-center gap-2"><iconify-icon icon="lucide:key-round" width="17" class="text-gold-500"></iconify-icon> Password</h4>
+              <p class="text-xs text-stone-500 mt-1">Kosongkan password baru jika hanya ingin mengganti nama, username, atau email.</p>
+            </div>
+
+            <div>
+              <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Password Saat Ini *</label>
+              <div class="relative mt-1">
+                <input id="account-current-password" type="password" name="current_password" required autocomplete="current-password" class="w-full px-4 py-3 pr-12 rounded-xl bg-white border border-stone-300 text-black text-sm" placeholder="Masukkan password saat ini">
+                <button type="button" onclick="toggleAccountPassword('account-current-password',this)" aria-label="Tampilkan password" class="absolute inset-y-0 right-0 w-11 flex items-center justify-center text-stone-500 hover:text-stone-700"><iconify-icon icon="lucide:eye" width="17"></iconify-icon></button>
+              </div>
+              <p class="text-[10px] text-stone-500 mt-1">Wajib diisi untuk memverifikasi perubahan akun.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Password Baru</label>
+                <div class="relative mt-1">
+                  <input id="account-new-password" type="password" name="new_password" minlength="8" maxlength="255" autocomplete="new-password" class="w-full px-4 py-3 pr-12 rounded-xl bg-white border border-stone-300 text-black text-sm" placeholder="Minimal 8 karakter">
+                  <button type="button" onclick="toggleAccountPassword('account-new-password',this)" aria-label="Tampilkan password" class="absolute inset-y-0 right-0 w-11 flex items-center justify-center text-stone-500 hover:text-stone-700"><iconify-icon icon="lucide:eye" width="17"></iconify-icon></button>
+                </div>
+              </div>
+              <div>
+                <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Konfirmasi Password Baru</label>
+                <div class="relative mt-1">
+                  <input id="account-new-password-confirmation" type="password" name="new_password_confirmation" minlength="8" maxlength="255" autocomplete="new-password" class="w-full px-4 py-3 pr-12 rounded-xl bg-white border border-stone-300 text-black text-sm" placeholder="Ulangi password baru">
+                  <button type="button" onclick="toggleAccountPassword('account-new-password-confirmation',this)" aria-label="Tampilkan password" class="absolute inset-y-0 right-0 w-11 flex items-center justify-center text-stone-500 hover:text-stone-700"><iconify-icon icon="lucide:eye" width="17"></iconify-icon></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-xl bg-blue-50 border border-blue-100 p-4 text-xs text-slate-600 leading-relaxed flex gap-2">
+              <iconify-icon icon="lucide:shield-check" width="17" class="text-blue-600 flex-shrink-0 mt-0.5"></iconify-icon>
+              <div>Password disimpan dalam bentuk hash oleh Laravel. Setelah username/email diganti, gunakan data baru tersebut pada login berikutnya.</div>
+            </div>
+
+            <div class="flex justify-end">
+              <button id="admin-account-save-btn" type="submit" class="px-5 py-3 bg-gold-500 text-white text-xs font-semibold tracking-[.12em] uppercase rounded-xl hover:bg-gold-400 transition-all flex items-center justify-center gap-2" style="color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;">
+                <iconify-icon icon="lucide:save" width="14" style="color:#ffffff!important;"></iconify-icon> Simpan Akun
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>`;
+}
+
+async function saveAdminAccount(e){
+  e.preventDefault();
+  var form=e.target;
+  var btn=document.getElementById('admin-account-save-btn');
+  var oldText=btn?btn.innerHTML:'';
+  var newPassword=(form.new_password.value||'').trim();
+  var confirmation=(form.new_password_confirmation.value||'').trim();
+
+  if(newPassword!==confirmation){
+    toast('❌ Konfirmasi password baru tidak sama.');
+    return;
+  }
+
+  if(newPassword && newPassword.length<8){
+    toast('❌ Password baru minimal 8 karakter.');
+    return;
+  }
+
+  var payload={
+    name:form.name.value.trim(),
+    username:form.username.value.trim(),
+    email:form.email.value.trim(),
+    current_password:form.current_password.value,
+    new_password:newPassword||null,
+    new_password_confirmation:confirmation||null
+  };
+
+  if(btn){
+    btn.disabled=true;
+    btn.innerHTML='<iconify-icon icon="lucide:loader-circle" width="14"></iconify-icon> Menyimpan...';
+  }
+
+  try{
+    var result=await apiRequest('/admin/account',{method:'PUT',body:JSON.stringify(payload)});
+    DB.account=result.account||DB.account;
+    refreshAdminIdentity();
+    toast('✅ '+result.message);
+    goPage('account');
+  }catch(err){
+    toast('❌ '+err.message);
+    if(btn){btn.disabled=false;btn.innerHTML=oldText;}
+  }
 }
 
 function pgTeam(c){
@@ -2396,16 +2708,171 @@ function pgSettings(c){
       </div>
 
       <div data-settings-panel="general" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
-        <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:contact" width="20" class="text-gold-400"></iconify-icon> Kontak & Lokasi</h3>
+
+        <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2">
+          <iconify-icon
+            icon="lucide:contact"
+            width="20"
+            class="text-gold-400">
+          </iconify-icon>
+          Kontak & Lokasi
+        </h3>
+
         <div class="grid sm:grid-cols-2 gap-4">
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email Resmi *</label><input type="email" name="email" required value="${safeAttr(s.email||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Email Marketing</label><input type="email" name="marketing_email" value="${safeAttr(s.marketing_email||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Telepon *</label><input name="phone" required value="${safeAttr(s.phone||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">WhatsApp *</label><input name="whatsapp" required value="${safeAttr(s.whatsapp||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Jam Senin - Jumat *</label><input name="office_hours_weekday" required value="${safeAttr(s.office_hours_weekday||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Jam Sabtu</label><input name="office_hours_saturday" value="${safeAttr(s.office_hours_saturday||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Alamat *</label><textarea name="address" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.address||'')}</textarea></div>
-          <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">URL Google Maps</label><input type="url" name="map_url" value="${safeAttr(s.map_url||'')}" placeholder="https://maps.google.com/..." class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
+
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              Email Resmi *
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              value="${safeAttr(s.email||'')}"
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-navy-900/60 border border-navy-700
+                    text-white text-sm outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                   ">
+          </div>
+
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              Email Marketing
+            </label>
+            <input
+              type="email"
+              name="marketing_email"
+              value="${safeAttr(s.marketing_email||'')}"
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-navy-900/60 border border-navy-700
+                    text-white text-sm outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                    focus:bg-navy-900/80">
+          </div>
+
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              Telepon *
+            </label>
+            <input
+              name="phone"
+              required
+              value="${safeAttr(s.phone||'')}"
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-navy-900/60 border border-navy-700
+                    text-white text-sm outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                    focus:bg-navy-900/80">
+          </div>
+
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              WhatsApp *
+            </label>
+            <input
+              name="whatsapp"
+              required
+              value="${safeAttr(s.whatsapp||'')}"
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-navy-900/60 border border-navy-700
+                    text-white text-sm outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                    focus:bg-navy-900/80">
+          </div>
+
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              Jam Senin - Jumat *
+            </label>
+            <input
+              name="office_hours_weekday"
+              required
+              value="${safeAttr(s.office_hours_weekday||'')}"
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-navy-900/60 border border-navy-700
+                    text-white text-sm outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                    focus:bg-navy-900/80">
+          </div>
+
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              Jam Sabtu
+            </label>
+            <input
+              name="office_hours_saturday"
+              value="${safeAttr(s.office_hours_saturday||'')}"
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-navy-900/60 border border-navy-700
+                    text-white text-sm outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                    focus:bg-navy-900/80">
+          </div>
+
+          <!-- ALAMAT -->
+          <div class="sm:col-span-2">
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              Alamat *
+            </label>
+
+            <textarea
+              name="address"
+              required
+              rows="3"
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-white border border-navy-700
+                    text-white text-sm
+                    resize-none outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                    "
+            >${escapeHtml(s.address||'')}</textarea>
+          </div>
+
+          <!-- GOOGLE MAPS -->
+          <div class="sm:col-span-2">
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">
+              URL Google Maps
+            </label>
+
+            <input
+              type="url"
+              name="map_url"
+              value="${safeAttr(s.map_url||'')}"
+              placeholder="https://maps.google.com/..."
+              class="w-full mt-1 px-4 py-3 rounded-xl
+                    bg-navy-900/60 border border-navy-700
+                    text-white text-sm
+                    placeholder:text-stone-600
+                    outline-none
+                    transition-all duration-200
+                    hover:border-gold-400/50
+                    focus:border-gold-400
+                    focus:ring-2 focus:ring-gold-400/10
+                    focus:bg-navy-900/80">
+          </div>
+
         </div>
       </div>
 
@@ -2421,14 +2888,14 @@ function pgSettings(c){
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Status Pengiriman</label>
-            <select name="mail_enabled" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm">
+            <select name="mail_enabled" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-navy-700 text-white text-sm">
               <option value="0" ${!s.mail_enabled?'selected':''}>Nonaktif</option>
               <option value="1" ${s.mail_enabled?'selected':''}>Aktif</option>
             </select>
           </div>
           <div>
             <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Keamanan SMTP</label>
-            <select name="mail_security" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm">
+            <select name="mail_security" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-navy-700 text-white text-sm">
               <option value="starttls" ${(s.mail_security||'starttls')==='starttls'?'selected':''}>STARTTLS / Port 587 (Gmail disarankan)</option>
               <option value="ssl" ${s.mail_security==='ssl'?'selected':''}>SSL/TLS / Port 465</option>
             </select>
@@ -2450,8 +2917,10 @@ function pgSettings(c){
         </div>
 
         <div class="mt-5 grid sm:grid-cols-[1fr_auto] gap-3 items-end">
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Kirim Tes Ke</label><input type="email" id="mail-test-recipient" placeholder="emailanda@gmail.com" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <button type="button" id="mail-test-btn" onclick="saveSettingsAndTestEmail()" class="px-5 py-3 bg-blue-600 text-white text-xs font-semibold tracking-wider uppercase rounded-xl hover:bg-blue-500 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:send" width="14"></iconify-icon> Simpan & Tes Email</button>
+          <div>
+            <label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Kirim Tes Ke</label><input type="email" id="mail-test-recipient" placeholder="emailanda@gmail.com" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
+
+            <button type="button" id="mail-test-btn" onclick="saveSettingsAndTestEmail()" class="px-5 py-3 bg-gold-500 text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-red-500 transition-all flex items-center justify-center gap-2"><iconify-icon icon="lucide:send" width="14"></iconify-icon> Simpan & Tes Email</button>
         </div>
       </div>
 
@@ -2540,7 +3009,7 @@ function pgSettings(c){
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Judul Highlight *</label><input name="hero_title_highlight" required value="${safeAttr(s.hero_title_highlight||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Judul Baris 3 *</label><input name="hero_title_secondary" required value="${safeAttr(s.hero_title_secondary||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Tahun Berdiri *</label><input type="number" min="1900" max="2100" name="founded_year" required value="${safeAttr(s.founded_year||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi Hero *</label><textarea name="hero_description" required rows="4" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.hero_description||'')}</textarea></div>
+          <div class="sm:col-span-2"><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi Hero *</label><textarea name="hero_description" required rows="4" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.hero_description||'')}</textarea></div>
         </div>
       </div>
 
@@ -2681,8 +3150,14 @@ function pgSettings(c){
 
           <div class="service-editor-card rounded-2xl p-5">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
-              <div><h4 class="text-sm font-semibold text-white">Daftar Layanan</h4><p class="text-[10px] text-stone-500 mt-1">Tambah, edit, hapus, upload gambar, atur icon, poin, urutan, dan status tampil.</p></div>
-              <button type="button" onclick="openServiceModal()" class="px-4 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-semibold flex items-center justify-center gap-2"><iconify-icon icon="lucide:plus" width="14"></iconify-icon> Tambah Layanan</button>
+              <div>
+                <h4 class="text-sm font-semibold text-white">Daftar Layanan</h4><p class="text-[10px] text-stone-500 mt-1">Tambah, edit, hapus, upload gambar, atur icon, poin, urutan, dan status tampil.</p>
+              </div>
+
+              <button type="button" onclick="openServiceModal()" class="px-4 py-2.5 bg-gold-500 !text-white text-xs font-semibold tracking-[.15em] uppercase rounded-xl hover:bg-gold-400 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              <iconify-icon icon="lucide:plus" width="14"></iconify-icon> 
+              Tambah Layanan
+              </button>
             </div>
             <div id="settings-service-list" class="space-y-3">${serviceRowsHtml}</div>
           </div>
@@ -2875,7 +3350,7 @@ function pgSettings(c){
             <h3 class="font-serif text-xl flex items-center gap-2"><iconify-icon icon="lucide:message-square-heart" width="20" class="text-rose-600"></iconify-icon> Tampilan & Form Testimoni</h3>
             <p class="text-xs text-stone-500 mt-2 max-w-3xl leading-relaxed">Atur teks section dan formulir testimoni. Untuk menentukan testimoni klien yang tampil, gunakan menu <b>Testimoni</b> pada sidebar.</p>
           </div>
-          <button type="button" onclick="goPage('testimonials')" class="px-4 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:list-checks" width="14"></iconify-icon> Kelola Testimoni</button>
+          <button type="button" onclick="goPage('testimonials')" class="px-4 py-2.5 rounded-xl bg-blue-600 !text-white text-xs font-semibold flex items-center gap-2"><iconify-icon icon="lucide:list-checks" width="14"></iconify-icon> Kelola Testimoni</button>
         </div>
 
         <div class="space-y-6">
@@ -2937,15 +3412,15 @@ function pgSettings(c){
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:search-check" width="20" class="text-gold-400"></iconify-icon> SEO</h3>
         <div class="space-y-4">
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">SEO Title *</label><input name="seo_title" required value="${safeAttr(s.seo_title||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Meta Description *</label><textarea name="seo_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.seo_description||'')}</textarea></div>
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Meta Keywords</label><textarea name="seo_keywords" rows="2" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.seo_keywords||'')}</textarea></div>
+          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Meta Description *</label><textarea name="seo_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.seo_description||'')}</textarea></div>
+          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Meta Keywords</label><textarea name="seo_keywords" rows="2" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.seo_keywords||'')}</textarea></div>
         </div>
       </div>
 
       <div data-settings-panel="seo" class="bg-navy-800 rounded-2xl p-6 md:p-8 border border-navy-700/30 reveal">
         <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2"><iconify-icon icon="lucide:panel-bottom" width="20" class="text-gold-400"></iconify-icon> Footer</h3>
         <div class="space-y-4">
-          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi Footer *</label><textarea name="footer_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.footer_description||'')}</textarea></div>
+          <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi Footer *</label><textarea name="footer_description" required rows="3" class="w-full mt-1 px-4 py-3 rounded-xl bg-white border border-navy-700 text-white text-sm resize-none">${escapeHtml(s.footer_description||'')}</textarea></div>
           <div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Teks Hak Cipta *</label><input name="copyright_text" required value="${safeAttr(s.copyright_text||'')}" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div>
         </div>
       </div>
@@ -3054,7 +3529,7 @@ function openServiceModal(id){
       '<div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Deskripsi *</label><textarea name="description" required maxlength="5000" rows="5" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm resize-y">'+escapeHtml(edit?(item.description||''):'')+'</textarea></div>'+
       '<div><div class="flex items-center justify-between mb-2"><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Poin Layanan *</label><button type="button" onclick="addServiceFeatureRow()" class="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1"><iconify-icon icon="lucide:plus" width="13"></iconify-icon> Tambah Poin</button></div><div id="service-feature-list" class="space-y-2">'+featureRows+'</div></div>'+
       '<div class="grid sm:grid-cols-2 gap-4"><div><label class="text-xs font-medium text-stone-400 tracking-wider uppercase">Urutan Tampil</label><input type="number" name="display_order" min="0" max="9999" value="'+safeAttr(edit?String(item.display_order??0):String((DB.services||[]).length+1))+'" class="w-full mt-1 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-white text-sm"></div><div class="flex items-end"><label class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-navy-900/60 border border-navy-700 text-sm text-stone-300"><input type="checkbox" name="is_active" value="1" '+(!edit||item.is_active?'checked':'')+'> Tampilkan di website</label></div></div>'+
-      '<div class="flex justify-end gap-3 pt-2"><button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-navy-600 text-stone-400 text-xs">Batal</button><button type="submit" class="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs hover:bg-blue-500 flex items-center gap-2"><iconify-icon icon="lucide:save" width="14"></iconify-icon> '+(edit?'Simpan Perubahan':'Tambah Layanan')+'</button></div>'+
+      '<div class="flex justify-end gap-3 pt-2"><button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-navy-600 text-stone-400 text-xs">Batal</button><button type="submit" class="px-5 py-2.5 rounded-xl bg-blue-600 !text-white font-semibold text-xs hover:bg-blue-500 flex items-center gap-2"><iconify-icon icon="lucide:save" width="14"></iconify-icon> '+(edit?'Simpan Perubahan':'Tambah Layanan')+'</button></div>'+
     '</form></div>';
   showModal(h);
 }
@@ -3264,7 +3739,7 @@ async function apiRequest(url,options){
   }
   return data;
 }
-async function loadAdminData(){DB=await apiRequest('/admin/data');return DB;}
+async function loadAdminData(){DB=await apiRequest('/admin/data');refreshAdminIdentity();return DB;}
 async function bootAdmin(){
   if(!ADMIN_AUTHENTICATED)return;
   try{

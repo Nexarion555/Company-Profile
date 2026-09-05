@@ -36,15 +36,27 @@ class AdminController extends Controller
     public function login(Request $request): JsonResponse
     {
         $data = $request->validate([
-            'email' => 'required|email',
+            'login' => 'nullable|string|max:180',
+            'email' => 'nullable|string|max:180',
             'password' => 'required|string',
         ]);
 
-        $admin = Admin::where('email', $data['email'])->first();
+        $login = trim((string) ($data['login'] ?? $data['email'] ?? ''));
+
+        if ($login === '') {
+            throw ValidationException::withMessages([
+                'login' => 'Email atau username wajib diisi.',
+            ]);
+        }
+
+        $admin = Admin::query()
+            ->where('email', $login)
+            ->orWhere('username', $login)
+            ->first();
 
         if (!$admin || !Hash::check($data['password'], $admin->password)) {
             return response()->json([
-                'message' => 'Email atau password salah.',
+                'message' => 'Email/username atau password salah.',
             ], 422);
         }
 
@@ -72,7 +84,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function data(): JsonResponse
+    public function data(Request $request): JsonResponse
     {
         $portfolios = Portfolio::query()
             ->with('service:id,title,is_active')
@@ -226,6 +238,7 @@ class AdminController extends Controller
             ]);
 
         $s = CompanySetting::current();
+        $admin = Admin::find($request->session()->get('admin_id'));
 
         return response()->json([
             'portfolios' => $portfolios,
@@ -236,6 +249,87 @@ class AdminController extends Controller
             'services' => $services,
             'testimonials' => $testimonials,
             'settings' => array_merge($s->publicData(), $s->mailAdminData()),
+            'account' => $admin ? [
+                'id' => $admin->id,
+                'name' => $admin->name,
+                'username' => $admin->username,
+                'email' => $admin->email,
+                'created_at' => $admin->created_at?->format('d M Y H:i'),
+                'updated_at' => $admin->updated_at?->format('d M Y H:i'),
+            ] : null,
+        ]);
+    }
+
+    public function updateAccount(Request $request): JsonResponse
+    {
+        $admin = Admin::find($request->session()->get('admin_id'));
+
+        if (!$admin) {
+            return response()->json([
+                'message' => 'Akun admin tidak ditemukan. Silakan login kembali.',
+            ], 401);
+        }
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:120'],
+            'username' => [
+                'required',
+                'string',
+                'min:3',
+                'max:50',
+                'regex:/^[A-Za-z0-9._-]+$/',
+                Rule::unique('admins', 'username')->ignore($admin->id),
+            ],
+            'email' => [
+                'required',
+                'email',
+                'max:180',
+                Rule::unique('admins', 'email')->ignore($admin->id),
+            ],
+            'current_password' => ['required', 'string'],
+            'new_password' => ['nullable', 'string', 'min:8', 'max:255', 'confirmed'],
+        ], [
+            'username.regex' => 'Username hanya boleh berisi huruf, angka, titik, garis bawah, atau tanda minus.',
+            'username.unique' => 'Username tersebut sudah digunakan.',
+            'email.unique' => 'Email tersebut sudah digunakan.',
+            'new_password.min' => 'Password baru minimal 8 karakter.',
+            'new_password.confirmed' => 'Konfirmasi password baru tidak sama.',
+        ]);
+
+        if (!Hash::check($data['current_password'], $admin->password)) {
+            throw ValidationException::withMessages([
+                'current_password' => 'Password saat ini tidak sesuai.',
+            ]);
+        }
+
+        $admin->name = trim($data['name']);
+        $admin->username = trim($data['username']);
+        $admin->email = strtolower(trim($data['email']));
+
+        if (!empty($data['new_password'])) {
+            $admin->password = Hash::make($data['new_password']);
+        }
+
+        $admin->save();
+
+        $request->session()->regenerate();
+        $request->session()->put([
+            'admin_authenticated' => true,
+            'admin_id' => $admin->id,
+        ]);
+
+        return response()->json([
+            'message' => !empty($data['new_password'])
+                ? 'Akun admin dan password berhasil diperbarui.'
+                : 'Akun admin berhasil diperbarui.',
+            'account' => [
+                'id' => $admin->id,
+                'name' => $admin->name,
+                'username' => $admin->username,
+                'email' => $admin->email,
+                'created_at' => $admin->created_at?->format('d M Y H:i'),
+                'updated_at' => $admin->updated_at?->format('d M Y H:i'),
+            ],
         ]);
     }
 

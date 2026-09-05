@@ -3,7 +3,7 @@ namespace Database\Seeders;
 use App\Models\Admin; use App\Models\Appointment; use App\Models\Certification; use App\Models\Client; use App\Models\CompanySetting; use App\Models\Message; use App\Models\Portfolio; use App\Models\TeamMember;
 use Illuminate\Database\Seeder; use Illuminate\Support\Facades\Hash;
 class DatabaseSeeder extends Seeder { public function run(): void {
-Admin::updateOrCreate(['email'=>'admin@ksn.co.id'],['name'=>'Administrator','password'=>Hash::make('admin123')]);
+Admin::updateOrCreate(['email'=>'admin@ksn.co.id'],['name'=>'Administrator','username'=>'admin','password'=>Hash::make('admin123')]);
 $portfolios=[
 ['title'=>'Residensi Harmoni','client'=>'Dr. Andi & Family','category'=>'Interior • Minimalis','year'=>2023,'location'=>'Jakarta Selatan','area'=>'280 m²','description'=>'Transformasi total hunian 280 m² menjadi ruang minimalis modern yang lapang dan terang. Menggunakan material kayu oak, marmer travertine, dan palet warna netral dengan aksen hitam.','image'=>'https://picsum.photos/seed/residence-harmoni/900/500'],
 ['title'=>'Tower Nusantara','client'=>'PT Nusantara Development','category'=>'Gedung • Modern','year'=>2022,'location'=>'Jakarta Pusat','area'=>'25.000 m²','description'=>'Gedung perkantoran 20 lantai dengan fasad double-skin glass curtain wall untuk efisiensi energi. Interior lobby premium dengan ceiling tinggi 12 meter.','image'=>'https://picsum.photos/seed/tower-office/900/500'],

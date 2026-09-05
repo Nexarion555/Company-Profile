@@ -16,6 +16,7 @@ Route::post('/admin/logout', [AdminController::class, 'logout']);
 
 Route::middleware('admin.session')->prefix('admin')->group(function () {
     Route::get('/data', [AdminController::class, 'data']);
+    Route::put('/account', [AdminController::class, 'updateAccount']);
 
     Route::post('/portfolios', [AdminController::class, 'storePortfolio']);
     Route::put('/portfolios/{portfolio}', [AdminController::class, 'updatePortfolio']);
